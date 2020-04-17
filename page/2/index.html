@@ -1,0 +1,1384 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"i.nekom.cc","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"gitment":{"clientId":"edfce7eb929b8f32bacb","clientSecret":"b93d4572c7f4dd3846404a932009c71f99dfa8f2"},"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="喵喵喵">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neko的技术书库">
+<meta property="og:url" content="https://i.nekom.cc/page/2/index.html">
+<meta property="og:site_name" content="Neko的技术书库">
+<meta property="og:description" content="喵喵喵">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="花猫">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://i.nekom.cc/page/2/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Neko的技术书库</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Neko的技术书库</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/likeneko" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/" class="post-title-link" itemprop="url">关于ssh链接服务器之后的提示信息是做什么用的</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/" class="post-meta-item leancloud_visitors" data-flag-title="关于ssh链接服务器之后的提示信息是做什么用的" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
+<p>如图↑</p>
+<p>翻译如下↓</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
+<p>第二行可以看出有多少次失败了</p>
+<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
+</blockquote>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" class="post-title-link" itemprop="url">消息推送</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" class="post-meta-item leancloud_visitors" data-flag-title="消息推送" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>app:</p>
+<p>1.链接-定时刷新/socket方案/友盟信鸽之类的第三方</p>
+<p>2.通知-后台存活的情况下推送消息</p>
+<p>3.记录-记录所有的汇报，保存在数据库中，每次app打开的时候提示</p>
+<p>4.图表-用图显示汇报</p>
+<p>server:</p>
+<p>1.存储记录</p>
+<p>2.转发信息</p>
+<p>3.被动收集信息</p>
+<p>4.主动收集信息</p>
+<p>延伸：某些记录过多则报异常-根据异常等级 通知</p>
+<p>sdk:</p>
+<p>1.发送信息到server</p>
+<p>server:</p>
+<p>记录表</p>
+<p>Id，类型，产生时间，标题，内容，来自哪里</p>
+<p>服务端：</p>
+<p>sdk:</p>
+<p>推送消息，需要各种message类。</p>
+<p>iOS端：</p>
+<p>sdk：</p>
+<blockquote>
+<p>信息包括</p>
+</blockquote>
+<p>每小时多少条各种类型的数据</p>
+<p>当前n分钟内，那种类型的数据最多</p>
+<p>每个类型的数据，每小时条数表格</p>
+<p>警告级别的数据展示</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/" class="post-title-link" itemprop="url">破解idea系列</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/" class="post-meta-item leancloud_visitors" data-flag-title="破解idea系列" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-27-jetbrains-agent.jar.zip" target="_blank" rel="noopener">破解文件</a></p>
+<p>编辑： Edit Custom VM Options</p>
+<p>添加：</p>
+<p>-javaagent:/Applications/PhpStorm.app/Contents/bin/jetbrains-agent.jar</p>
+<p>激活框里输入</p>
+<p><a href="http://jetbrains-license-server" target="_blank" rel="noopener">http://jetbrains-license-server</a></p>
+<p>将下载的激活用的jar包jetbrains-agent.jar移动到PhpStorm安装目录下的bin/文件夹下，目的是为了保存，不会被误删。<br>在第一步中已经打开了PhpStorm，并建立了一个项目，现在执行菜单”Help”-&gt;“Edit Custom VM Options…”，打开文件后在末尾添加一行参数，指向激活用的jar包的绝对地址。<br>这里指向的是你自己系统中的绝对地址，注意看一下是否准确（虽然Mac系统基本一样）。</p>
+<p>-javaagent:/Applications/PhpStorm.app/Contents/bin/jetbrains-agent.jar</p>
+<p>添加完后记得保存，然后退出重启PhpStorm。</p>
+<p>重启完成后，执行菜单”Help”-&gt;“Register”，打开注册框，选择”License server”方式，默认会自动填充”License server address:“文本框，如果没有自动填充，可以手动输入值为”<a href="http://jetbrains-license-server”，然后点击&quot;Activate&quot;完成激活。" target="_blank" rel="noopener">http://jetbrains-license-server”，然后点击&quot;Activate&quot;完成激活。</a></p>
+<p>激活完成后，可以执行菜单”PhpStorm”-&gt;”About PhpStorm”来查看激活情况。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/" class="post-title-link" itemprop="url">配置Xcode在build时cocos的技巧</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/" class="post-meta-item leancloud_visitors" data-flag-title="配置Xcode在build时cocos的技巧" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
+
+<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E6%9E%9C%E5%9B%AD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/%E6%9E%9C%E5%9B%AD/" class="post-title-link" itemprop="url">果园</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/%E6%9E%9C%E5%9B%AD/" class="post-meta-item leancloud_visitors" data-flag-title="果园" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/%E6%9E%9C%E5%9B%AD/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E6%9E%9C%E5%9B%AD/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 树的状态</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 小树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Middlie</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Big</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大树开花</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">15</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 大树长🍎</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">30</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">qq小程序提现问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="qq小程序提现问题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="qq小程序SYSTEMERROR-错误的原因"><a href="#qq小程序SYSTEMERROR-错误的原因" class="headerlink" title="qq小程序SYSTEMERROR 错误的原因"></a>qq小程序SYSTEMERROR 错误的原因</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-18-104703.png?x-oss-process=style/shuiyin" alt="image-20191118184702213"></p>
+<p>如图所示，可能是操作员不存在</p>
+<p>配上操作员可能报</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-18-110648.png?x-oss-process=style/shuiyin" alt="image-20191118190648075"></p>
+<p>配上权限即可</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/" class="post-title-link" itemprop="url">php中的数组操作之游标current方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/" class="post-meta-item leancloud_visitors" data-flag-title="php中的数组操作之游标current方法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>获取数组中的第一个元素的值，我们一般都是<code>$array[0]</code>就可以拿到第一个值了。</p>
+<p>可如果数组是这样的呢？</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"a"</span> =&gt;<span class="string">"nekom.cc"</span>,</span><br><span class="line">    <span class="string">'bb'</span>=&gt;<span class="string">"www.baidu.com"</span>,</span><br><span class="line">    <span class="string">"c"</span> =&gt;<span class="string">'php'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>这时候你可能会想</p>
+<p>这简单，不就一个循环的事情嘛！</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$tmp = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item)&#123;</span><br><span class="line">	$tmp = $item;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后如果这种需求多了的话~</p>
+<p>…</p>
+<p>大概有经验的猿都会去封装一个方法吧~</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">one</span><span class="params">($arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item)&#123;</span><br><span class="line">        <span class="keyword">return</span> $item</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Php中隐藏在角落的current-方法"><a href="#Php中隐藏在角落的current-方法" class="headerlink" title="Php中隐藏在角落的current()方法"></a>Php中隐藏在角落的current()方法</h2><p><code>current()</code>函数返回数组中的当前元素</p>
+<p>每个数组中都有一个内部的指针指向它“当前的”元素，初始指向插入到数组中的第一个元素。</p>
+<p><code>current()</code> 函数返回当前被内部指针指向的数组元素的值，并不移动指针。如果内部指针指向超出了单元列表的末端，<code>current()</code> 返回 FALSE。</p>
+<p>如果有空的元素，或元素没有值，该函数也返回 FALSE。</p>
+<p><strong>该函数不会移动内部指针。</strong></p>
+<p>还是上面的例子，如果用它就可以这样了~</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$item = current($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的兄-next"><a href="#current-方法的兄-next" class="headerlink" title="current()方法的兄 - next()"></a>current()方法的兄 - next()</h2><p><code>next()</code>返回数组内部指针指向的下一个单元的值，或当没有更多单元时返回FALSE。 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$item = next($arr);<span class="comment">// "www.baidu.com"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的弟-prev"><a href="#current-方法的弟-prev" class="headerlink" title="current()方法的弟 - prev()"></a>current()方法的弟 - prev()</h2><p><code>prev()</code>返回数组内部指针指向的前一个单元的值，或当没有更多单元时返回FALSE。 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$item = prev($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的姐-end"><a href="#current-方法的姐-end" class="headerlink" title="current()方法的姐 - end()"></a>current()方法的姐 - end()</h2><p><code>end()</code>将array的内部指针移动到最后一个单元并返回其值。 </p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$item = end($arr);<span class="comment">// "php"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的姐-reset"><a href="#current-方法的姐-reset" class="headerlink" title="current()方法的姐 - reset()"></a>current()方法的姐 - reset()</h2><p><code>reset()</code> 将array的内部指针倒回到第一个单元并返回第一个数组单元的值，如果数组为空则返回FALSE。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$item = reset($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/" class="post-title-link" itemprop="url">php中的class类里的class与self与this与static</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/" class="post-meta-item leancloud_visitors" data-flag-title="php中的class类里的class与self与this与static" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Php里一个<code>class类</code>，应该都不陌生。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">....</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">static public function newClass()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">self</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看到这样一段伪代码，会有哪些疑问呢？</p>
+<blockquote>
+<p>Q&amp;A</p>
+</blockquote>
+<ol>
+<li><code>newClass</code>为什么要创建这么一个方法，可以用在哪里？</li>
+<li><code>return</code> 的 <code>new self</code> <code>self</code>是个什么？</li>
+<li>为什么是<code>new self</code>而不是 <code>new Person</code>,明明这样也行啊？</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Person </span></span><br><span class="line">$obj = Person::newClass();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>A1</p>
+</blockquote>
+<p>获得一个类的对象,<code>newClass</code>是一个静态方法，所以可以这么去获取一个类的对象。</p>
+<p>这样获取<strong>现在</strong>这种情况是没什么好处的，甚至因为多走一个方法还慢一点，相对于<code>new Person</code></p>
+<p>但举个🌰</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; Person </span><br><span class="line">$obj &#x3D; Person::newClassA(&quot;所在班级&quot;);&#x2F;&#x2F; 方法里可以需要用其他的东西</span><br><span class="line">&#x2F;&#x2F; Person </span><br><span class="line">$obj &#x3D; Person::newClassB(&quot;姓名&quot;,&quot;性别&quot;,&quot;年龄&quot;)&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-title-link" itemprop="url">mysql5.7分组group by 查询报错only_full_group_by</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-meta-item leancloud_visitors" data-flag-title="mysql5.7分组group by 查询报错only_full_group_by" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/" class="post-title-link" itemprop="url">mac拖动应用程序秒切</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/" class="post-meta-item leancloud_visitors" data-flag-title="mac拖动应用程序秒切" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
+<p>什么是秒切，就是你拖动窗口到屏幕边缘，无需停留，就自动切到下一桌面空间。</p>
+<p>首先打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>现在大家试一下秒切吧。哈哈。。很爽不。是不是太快了，如果觉得太快，我们还可以在改改设定，我就设定在屏幕边缘停留半秒切换吧。<br>再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0.15;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>如果你想还原成原样，也很简单，再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">defaults delete com.apple.dock workspaces-edge-delay;killall Dock</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="花猫"
+      src="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+  <p class="site-author-name" itemprop="name">花猫</p>
+  <div class="site-description" itemprop="description">喵喵喵</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花猫</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdnjs.cloudflare.com/ajax/libs/valine/1.3.10/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '8pqz0hUevoEWwXxLY0JRFrCv-gzGzoHsz',
+      appKey     : '1QUY4EHL8qTJJppQiRyW2k5E',
+      placeholder: "不来一发嘛~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"tagMode":false,"debug":true,"log":true,"model":{"jsonPath":"/live2dw/assets/Delisha.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+</html>

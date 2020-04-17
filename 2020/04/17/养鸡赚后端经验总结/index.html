@@ -23,19 +23,19 @@
     var CONFIG = {"hostname":"i.nekom.cc","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"gitment":{"clientId":"edfce7eb929b8f32bacb","clientSecret":"b93d4572c7f4dd3846404a932009c71f99dfa8f2"},"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+  <meta name="description" content="经验总结设计高性能的接口的时候要考虑的问题 尽量减少Sql处理，特别是能加索引的地方一定要加。 需要做运算的操作，可以适当的交给前端来做。并不是所有东西都必须后端计算好。尽量把处理时间长的逻辑放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。 Sql尽量别做聚合操作，比如sum add group 之类的，这种的搞不好就会不走索引 需要展示的数据尽量不要做验证">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://i.nekom.cc/2020/04/16/hello-world/index.html">
+<meta property="og:title" content="养鸡赚后端经验总结">
+<meta property="og:url" content="https://i.nekom.cc/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="Neko的技术书库">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="经验总结设计高性能的接口的时候要考虑的问题 尽量减少Sql处理，特别是能加索引的地方一定要加。 需要做运算的操作，可以适当的交给前端来做。并不是所有东西都必须后端计算好。尽量把处理时间长的逻辑放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。 Sql尽量别做聚合操作，比如sum add group 之类的，这种的搞不好就会不走索引 需要展示的数据尽量不要做验证">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-16T12:55:34.681Z">
-<meta property="article:modified_time" content="2020-04-16T12:55:34.681Z">
+<meta property="article:published_time" content="2020-04-17T10:13:28.753Z">
+<meta property="article:modified_time" content="2020-04-17T10:13:37.537Z">
 <meta property="article:author" content="花猫">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://i.nekom.cc/2020/04/16/hello-world/">
+<link rel="canonical" href="https://i.nekom.cc/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">
 
 
 <script id="page-configurations">
@@ -48,7 +48,7 @@
   };
 </script>
 
-  <title>Hello World | Neko的技术书库</title>
+  <title>养鸡赚后端经验总结 | Neko的技术书库</title>
   
 
 
@@ -185,7 +185,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/16/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
@@ -198,7 +198,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          养鸡赚后端经验总结
         </h1>
 
         <div class="post-meta">
@@ -207,12 +207,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-16 20:55:34" itemprop="dateCreated datePublished" datetime="2020-04-16T20:55:34+08:00">2020-04-16</time>
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
             </span>
 
           
-            <span id="/2020/04/16/hello-world/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
+            <span id="/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" class="post-meta-item leancloud_visitors" data-flag-title="养鸡赚后端经验总结" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -227,8 +228,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2020/04/16/hello-world/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/hello-world/" itemprop="commentCount"></span>
+    <a title="valine" href="/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -243,19 +244,35 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+        <h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="设计高性能的接口的时候要考虑的问题"><a href="#设计高性能的接口的时候要考虑的问题" class="headerlink" title="设计高性能的接口的时候要考虑的问题"></a>设计高性能的接口的时候要考虑的问题</h2><ol>
+<li>尽量减少Sql处理，特别是能加索引的地方一定要加。</li>
+<li>需要做<strong>运算</strong>的操作，可以<strong>适当</strong>的交给<strong>前端来做</strong>。并不是所有东西都必须后端计算好。尽量把<strong>处理时间长的逻辑</strong>放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。</li>
+<li>Sql尽量别做<strong>聚合操作</strong>，比如<code>sum</code> <code>add</code> <code>group</code> 之类的，这种的搞不好就会<strong>不走索引</strong></li>
+<li>需要展示的数据尽量不要做<strong>验证逻辑</strong></li>
+<li>字符串里没有变量的话必须用<code>&#39;&#39;</code> 而不是<code>&quot;&quot;</code></li>
+<li>用<code>group</code> <code>order</code> 的时候一定要注意索引问题，否则会<strong>导致数据库cpu飙升</strong></li>
+<li>不一定非得是索引才会导致数据库<strong>cpu飙升</strong> <code>sending data</code> 也要注意</li>
+</ol>
+<h2 id="养鸡赚中的设计模式"><a href="#养鸡赚中的设计模式" class="headerlink" title="养鸡赚中的设计模式"></a>养鸡赚中的设计模式</h2><blockquote>
+<p>策略模式</p>
+</blockquote>
+<p>用在添加鸡的时候。因为在用户45元以前，到45元以后每一元都有一个算法去计算鸡蛋，时间，种鸡的次数，等等条件！</p>
+<p>主要解决的问题是：<strong>超级多的<code>if else</code>在一个方法中</strong>把他们封装成类后面也好维护一些</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-859.html">php后台接口在自己公司项目中的设计模式之策略模式的实战应用与心得</a></p>
+<h2 id="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"><a href="#安卓养鸡和小程序养鸡的后端逻辑不同之登录分享" class="headerlink" title="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"></a>安卓养鸡和小程序养鸡的后端逻辑不同之登录分享</h2><h2 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h2><p>做小程序后端的时候需要判断很多逻辑，其中有一个就是找第一条数据和第二条数据，研究了一下</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-863.html">Php中的数组操作之游标操作 current()与其兄弟姐妹prev(),next(),end(),reset()的个人理解实践</a></p>
+<h2 id="Php时间是可以直接比大小的"><a href="#Php时间是可以直接比大小的" class="headerlink" title="Php时间是可以直接比大小的"></a>Php时间是可以直接比大小的</h2><p>比如</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">'11:00'</span> &gt; <span class="string">'11:05'</span> ? <span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="string">'2019/11/20'</span> &gt; <span class="string">'2019/10/20'</span>?<span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+<h2 id="并发消峰问题，领取提现次数"><a href="#并发消峰问题，领取提现次数" class="headerlink" title="并发消峰问题，领取提现次数"></a>并发消峰问题，领取提现次数</h2><h2 id="如果mysql自增id到头了怎么办"><a href="#如果mysql自增id到头了怎么办" class="headerlink" title="如果mysql自增id到头了怎么办"></a>如果mysql自增id到头了怎么办</h2><blockquote>
+<p>面试官:”那自增主键达到最大值了，用完了怎么办？”</p>
+<p>我:”这问题没遇到过，因为自增主键我们用int类型，一般达不到最大值，我们就分库分表了，所以不曾遇见过！”</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_35393693/article/details/100059966" target="_blank" rel="noopener">mysql中主键用完了怎么办</a></p>
+<h2 id="数据库表中随机取一条数据"><a href="#数据库表中随机取一条数据" class="headerlink" title="数据库表中随机取一条数据"></a>数据库表中随机取一条数据</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT column FROM table  ORDER BY RAND() LIMIT 1</span><br></pre></td></tr></table></figure>
 
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+<p>↑适合表中数量不多的情况</p>
+<p><a href="https://www.jianshu.com/p/aba6fc58a219" target="_blank" rel="noopener">适合一些表里数据特别多的情况</a></p>
 
     </div>
 
@@ -270,10 +287,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/" rel="next" title="Ios中下拉刷新整个视图都会卡顿">
-      Ios中下拉刷新整个视图都会卡顿 <i class="fa fa-chevron-right"></i>
+    <a href="/2020/04/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/" rel="prev" title="面向对象思想">
+      <i class="fa fa-chevron-left"></i> 面向对象思想
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/04/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/" rel="next" title="设计模式的应用场景">
+      设计模式的应用场景 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -334,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#经验总结"><span class="nav-number">1.</span> <span class="nav-text">经验总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#设计高性能的接口的时候要考虑的问题"><span class="nav-number">1.1.</span> <span class="nav-text">设计高性能的接口的时候要考虑的问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#养鸡赚中的设计模式"><span class="nav-number">1.2.</span> <span class="nav-text">养鸡赚中的设计模式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"><span class="nav-number">1.3.</span> <span class="nav-text">安卓养鸡和小程序养鸡的后端逻辑不同之登录分享</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Php中的数组操作之游标操作"><span class="nav-number">1.4.</span> <span class="nav-text">Php中的数组操作之游标操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Php时间是可以直接比大小的"><span class="nav-number">1.5.</span> <span class="nav-text">Php时间是可以直接比大小的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并发消峰问题，领取提现次数"><span class="nav-number">1.6.</span> <span class="nav-text">并发消峰问题，领取提现次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如果mysql自增id到头了怎么办"><span class="nav-number">1.7.</span> <span class="nav-text">如果mysql自增id到头了怎么办</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据库表中随机取一条数据"><span class="nav-number">1.8.</span> <span class="nav-text">数据库表中随机取一条数据</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -513,7 +533,7 @@ window.addEventListener('pjax:success', () => {
       quicklink({
         timeout : 3000,
         priority: true,
-        ignores : [uri => uri.includes('#'),uri => uri === 'https://i.nekom.cc/2020/04/16/hello-world/',]
+        ignores : [uri => uri.includes('#'),uri => uri === 'https://i.nekom.cc/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/',]
       });
       });
   </script>

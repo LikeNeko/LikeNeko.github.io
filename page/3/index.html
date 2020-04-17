@@ -1,0 +1,1192 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/pace-js@1/themes/blue/pace-theme-minimal.css">
+  <script src="//cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"i.nekom.cc","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#222","save":"auto"},"fancybox":true,"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"gitment":{"clientId":"edfce7eb929b8f32bacb","clientSecret":"b93d4572c7f4dd3846404a932009c71f99dfa8f2"},"style":"buttons","active":"valine","storage":true,"lazyload":false,"nav":null,"activeClass":"valine"},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="喵喵喵">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Neko的技术书库">
+<meta property="og:url" content="https://i.nekom.cc/page/3/index.html">
+<meta property="og:site_name" content="Neko的技术书库">
+<meta property="og:description" content="喵喵喵">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:author" content="花猫">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://i.nekom.cc/page/3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : true,
+    isPost : false,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Neko的技术书库</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Neko的技术书库</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/likeneko" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content index posts-expand">
+            
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/ios%E5%AE%A1%E6%A0%B8/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/ios%E5%AE%A1%E6%A0%B8/" class="post-title-link" itemprop="url">ios审核</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/ios%E5%AE%A1%E6%A0%B8/" class="post-meta-item leancloud_visitors" data-flag-title="ios审核" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/ios%E5%AE%A1%E6%A0%B8/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/ios%E5%AE%A1%E6%A0%B8/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p>使用博客，从网页中获取某个标签然后判断这个标签隐藏</p>
+<blockquote>
+<p>核心-&gt;blog 网页</p>
+</blockquote>
+<blockquote>
+<p>来源 <a href="https://www.jianshu.com/p/0c6864055703" target="_blank" rel="noopener">https://www.jianshu.com/p/0c6864055703</a></p>
+</blockquote>
+<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-040154.png?x-oss-process=style/shuiyin" alt="image-20200407120153630"></p>
+<p>代码命名规范</p>
+<blockquote>
+<p>来源: <a href="https://blog.csdn.net/kun__kun/article/details/89466477" target="_blank" rel="noopener">https://blog.csdn.net/kun__kun/article/details/89466477</a></p>
+</blockquote>
+<h1 id="方案3"><a href="#方案3" class="headerlink" title="方案3"></a>方案3</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041121.png?x-oss-process=style/shuiyin" alt="image-20200407121120680"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041224.png?x-oss-process=style/shuiyin" alt="image-20200407121223576"></p>
+<h1 id="方案4"><a href="#方案4" class="headerlink" title="方案4"></a>方案4</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-063453.png?x-oss-process=style/shuiyin" alt="image-20200407143452555"></p>
+<blockquote>
+<p>来源 <a href="https://www.zhihu.com/question/351008255" target="_blank" rel="noopener">https://www.zhihu.com/question/351008255</a></p>
+</blockquote>
+<h1 id="方案5"><a href="#方案5" class="headerlink" title="方案5"></a>方案5</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-080900.png?x-oss-process=style/shuiyin" alt="image-20200407160859782"></p>
+<p>quick预审</p>
+<p>他们这个ios机审预检测还是可以看一下的,每个可能被拒原因都有案例</p>
+<blockquote>
+<p>链接:<a href="https://www.quicksdk.com/" target="_blank" rel="noopener">https://www.quicksdk.com/</a></p>
+</blockquote>
+<h1 id="方案6"><a href="#方案6" class="headerlink" title="方案6"></a>方案6</h1><p>跟钱有关的，提现页面</p>
+<p>个人觉得是不是可以考虑换成h5页面，然后点击某个按钮打开h5去提现。</p>
+<p>毕竟隐藏一个UI界面来讲，一个按钮应该还好</p>
+<p>不过这个测试可以放在，某个app通过之后测试。</p>
+<h1 id="方案7"><a href="#方案7" class="headerlink" title="方案7"></a>方案7</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-085424.png?x-oss-process=style/shuiyin" alt="image-20200407165423727"></p>
+<p>准备在某个无隐藏版本过了后试一下。</p>
+<p>录个视频，备注写详细，某些地方balabala的，通过备注，和视频向苹果那边回复，自己这边明确没有隐藏。</p>
+<p>个人猜测，可能苹果那边不太明白咱们的app然后就感觉你这app怪怪的就拒了。录个完整视频也许会有点效果。针对小果园，养鸡，这些app。</p>
+<p>在移除掉隐藏功能之后还是被拒是不是可以去申诉一下？我觉得这有点像被机审拒了。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090125.png?x-oss-process=style/shuiyin" alt="image-20200407170125303"></p>
+<p>还有,貌似可以确定的是<strong>审核人员一定在美国</strong>了。看知乎上说的，国内的审核好像只是负责传话。</p>
+<p>苹果好像对审核把控的很严，只在美国审核。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090936.jpg?x-oss-process=style/shuiyin" alt="image-20200407170758079"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-093226.png?x-oss-process=style/shuiyin" alt="image-20200407173226398"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090913.png?x-oss-process=style/shuiyin" alt="image-20200407170913403"></p>
+<p>下面这个连接都有说。</p>
+<blockquote>
+<p>来源:<a href="https://zhuanlan.zhihu.com/p/38181527" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38181527</a></p>
+</blockquote>
+<h1 id="方案8"><a href="#方案8" class="headerlink" title="方案8"></a>方案8</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-091307.png?x-oss-process=style/shuiyin" alt="image-20200407171306815"></p>
+<p>尽量把能说明的都说明了。某些sdk的关键词，比如友盟有webview。之类的。</p>
+<blockquote>
+<p>来源:<a href="https://forum.cocos.org/t/ios/81504/19" target="_blank" rel="noopener">https://forum.cocos.org/t/ios/81504/19</a></p>
+</blockquote>
+<p>#方案9</p>
+<p>愤怒的飞刀被拒之前加入了广点通，而广点通的sdk里刚好有敏感词，这里等待这次(4.7日)审核结果。</p>
+<p>如果被拒绝，回复邮件：说明广点通sdk，不包含支付宝，不包含热更新。</p>
+<p>以上是我现在找到的所有资料了。</p>
+<p>极光合规政策:<a href="http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/" target="_blank" rel="noopener">http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/</a></p>
+<h1 id="方案10"><a href="#方案10" class="headerlink" title="方案10"></a>方案10</h1><p>项目内参数判断，如，排行榜第一名，某个数据是n，如果为n，则骗审</p>
+<p>金额判断:当金币大于n，则显示提现</p>
+<h1 id="方案11"><a href="#方案11" class="headerlink" title="方案11"></a>方案11</h1><p>尝试性修改提审时的备注信息，文案一定要怂，别硬刚，把审核当客户，教他。如果确定没隐藏，则晓之以情动之以理。</p>
+<p>ps:个人经验，苹果那边好像隐藏管的不是很严，隐藏或<strong>营销</strong>营销应该才是重头。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">iOS 13 present 问题</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/" class="post-meta-item leancloud_visitors" data-flag-title="iOS 13 present 问题" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="present-vc-之后"><a href="#present-vc-之后" class="headerlink" title="present(vc) 之后"></a>present(vc) 之后</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-074911.png?x-oss-process=style/shuiyin" alt="image-20200317154909698"></p>
+<p>网上查90的博客都是一句话就完事了，不告诉你加在哪。</p>
+<p><code>vc.modalPresentationStyle = .fullScreen</code></p>
+<p>这样没问题，真的相信我。</p>
+<p>你们加上了还是没有效果的原因是因为你们是可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<p>可能是两边都加</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 但这样都是<strong>不行的</strong>因为我试过……</p>
+</blockquote>
+<p>但正确做法是这样</p>
+<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line">vc.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-075658.png?x-oss-process=style/shuiyin" alt="image-20200317155657412"></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/" class="post-title-link" itemprop="url">cocos js 与iOS 交互</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/" class="post-meta-item leancloud_visitors" data-flag-title="cocos js 与iOS 交互" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/" class="post-title-link" itemprop="url">QQ小程序提现工具类文档</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/" class="post-meta-item leancloud_visitors" data-flag-title="QQ小程序提现工具类文档" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>composer require nekom/qq-wallet-money:dev-master</code></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre></td><td class="code"><pre><span class="line">$key  = <span class="keyword">__DIR__</span>.<span class="string">'/cert/key.pem'</span>;</span><br><span class="line">$cert = <span class="keyword">__DIR__</span>.<span class="string">'/cert/cert.pem'</span>;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> \QQ\QQPay([</span><br><span class="line">    <span class="string">'momo'</span>           =&gt; <span class="string">'提现啦！'</span>,</span><br><span class="line">    <span class="string">'appid'</span>          =&gt; <span class="string">'小程序appid'</span>,</span><br><span class="line">    <span class="string">'mch_id'</span>         =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_id'</span>     =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_passwd'</span> =&gt; md5(<span class="string">''</span>)</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 设置好商户的key</span></span><br><span class="line">$obj-&gt;setKey(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// 设置key.pem证书路径</span></span><br><span class="line">$obj-&gt;setKeyPath($key);</span><br><span class="line"><span class="comment">// 设置cert.pem证书路径</span></span><br><span class="line">$obj-&gt;setCertPath($cert);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置打款金额 单位元</span></span><br><span class="line">$obj-&gt;price(<span class="number">1.00</span>);</span><br><span class="line"><span class="comment">// 设置打款金额的另一种写法，和文档需要的数值同步</span></span><br><span class="line">$obj-&gt;priceTo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">$obj-&gt;openid(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line">$out = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置成功时的回调</span></span><br><span class="line">$obj-&gt;success(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line">$obj-&gt;error(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line">$success = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line">$error = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样也是可以的</span></span><br><span class="line">$obj-&gt;success($success);</span><br><span class="line">$obj-&gt;error($error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你还可以这样写</span></span><br><span class="line">$status = $obj-&gt;send($success,$error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只监听成功的回调</span></span><br><span class="line">$status = $obj-&gt;send(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/" class="post-title-link" itemprop="url">Mac外接固态</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/" class="post-meta-item leancloud_visitors" data-flag-title="Mac外接固态" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
+<p>steam的流式传输</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/Laravel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Laravel/" class="post-title-link" itemprop="url">Laravel</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/Laravel/" class="post-meta-item leancloud_visitors" data-flag-title="Laravel" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/Laravel/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/Laravel/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>请求的生命周期:</p>
+<p>1.http控制内核</p>
+<p>2.服务提供器-providers:负责引导</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/" class="post-title-link" itemprop="url">Ios中下拉刷新整个视图都会卡顿</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-04-17 18:13:28 / 修改时间：18:13:37" itemprop="dateCreated datePublished" datetime="2020-04-17T18:13:28+08:00">2020-04-17</time>
+            </span>
+
+          
+            <span id="/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/" class="post-meta-item leancloud_visitors" data-flag-title="Ios中下拉刷新整个视图都会卡顿" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="造成卡顿的原因"><a href="#造成卡顿的原因" class="headerlink" title="造成卡顿的原因"></a>造成卡顿的原因</h2><ol>
+<li><strong>动画</strong>:使用的是uiview中的动画，然后<strong>递归</strong>调用。任何一个使用递归的地方都应该<strong>谨慎</strong>。</li>
+<li><strong>广告</strong>:非必要情况下，下拉<strong>重新加载</strong>也会导致卡顿。</li>
+</ol>
+<h2 id="其他原因卡顿"><a href="#其他原因卡顿" class="headerlink" title="其他原因卡顿"></a>其他原因卡顿</h2><p>并非由下拉造成的，可能是滚动时触发的卡顿。</p>
+<ol>
+<li>滚动时触发了某些ui的刷新。提示，滚动并不像看上去滚了一下。实际上滚动时触发的事件有超多次。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 造成闪烁的原因，主要是因为CALayer有一个隐式动画，只要在调用reloadData刷新时，关闭隐式动画就可以避免了</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">[self.collectionView reloadData];</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><a href="https://www.jianshu.com/p/cdd4a0a3968a" target="_blank" rel="noopener">UICollectionView刷新时页面会有闪烁问题的解决</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/16/hello-world/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/16/hello-world/" class="post-title-link" itemprop="url">Hello World</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-16 20:55:34" itemprop="dateCreated datePublished" datetime="2020-04-16T20:55:34+08:00">2020-04-16</time>
+            </span>
+
+          
+            <span id="/2020/04/16/hello-world/" class="post-meta-item leancloud_visitors" data-flag-title="Hello World" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/16/hello-world/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/16/hello-world/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+  </nav>
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="花猫"
+      src="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+  <p class="site-author-name" itemprop="name">花猫</p>
+  <div class="site-description" itemprop="description">喵喵喵</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">28</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">花猫</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="//cdn.jsdelivr.net/npm/animejs@3.1.0/lib/anime.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-pjax@0/pjax.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script>
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/lozad.js/1.14.0/lozad.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+  <script>
+var pjax = new Pjax({
+  selectors: [
+    'head title',
+    '#page-configurations',
+    '.content-wrap',
+    '.post-toc-wrap',
+    '.languages',
+    '#pjax'
+  ],
+  switches: {
+    '.post-toc-wrap': Pjax.switches.innerHTML
+  },
+  analytics: false,
+  cacheBust: false,
+  scrollTo : !CONFIG.bookmark.enable
+});
+
+window.addEventListener('pjax:success', () => {
+  document.querySelectorAll('script[data-pjax], script#page-configurations, #pjax script').forEach(element => {
+    var code = element.text || element.textContent || element.innerHTML || '';
+    var parent = element.parentNode;
+    parent.removeChild(element);
+    var script = document.createElement('script');
+    if (element.id) {
+      script.id = element.id;
+    }
+    if (element.className) {
+      script.className = element.className;
+    }
+    if (element.type) {
+      script.type = element.type;
+    }
+    if (element.src) {
+      script.src = element.src;
+      // Force synchronous loading of peripheral JS.
+      script.async = false;
+    }
+    if (element.dataset.pjax !== undefined) {
+      script.dataset.pjax = '';
+    }
+    if (code !== '') {
+      script.appendChild(document.createTextNode(code));
+    }
+    parent.appendChild(script);
+  });
+  NexT.boot.refresh();
+  // Define Motion Sequence & Bootstrap Motion.
+  if (CONFIG.motion.enable) {
+    NexT.motion.integrator
+      .init()
+      .add(NexT.motion.middleWares.subMenu)
+      .add(NexT.motion.middleWares.postList)
+      .bootstrap();
+  }
+  NexT.utils.updateSidebarPosition();
+});
+</script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div id="pjax">
+  
+
+  
+
+
+<script>
+NexT.utils.loadComments(document.querySelector('#valine-comments'), () => {
+  NexT.utils.getScript('//cdnjs.cloudflare.com/ajax/libs/valine/1.3.10/Valine.min.js', () => {
+    var GUEST = ['nick', 'mail', 'link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item => {
+      return GUEST.includes(item);
+    });
+    new Valine({
+      el         : '#valine-comments',
+      verify     : false,
+      notify     : false,
+      appId      : '8pqz0hUevoEWwXxLY0JRFrCv-gzGzoHsz',
+      appKey     : '1QUY4EHL8qTJJppQiRyW2k5E',
+      placeholder: "不来一发嘛~",
+      avatar     : 'mm',
+      meta       : guest,
+      pageSize   : '10' || 10,
+      visitor    : true,
+      lang       : '' || 'zh-cn',
+      path       : location.pathname,
+      recordIP   : false,
+      serverURLs : ''
+    });
+  }, window.Valine);
+});
+</script>
+
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/live2d-widget@^3.1.3/lib/L2Dwidget.min.js"></script><script>L2Dwidget.init({"tagMode":false,"debug":true,"log":true,"model":{"jsonPath":"/live2dw/assets/Delisha.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":true},"react":{"opacity":1},"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/"});</script></body>
+</html>

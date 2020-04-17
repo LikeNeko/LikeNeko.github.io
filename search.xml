@@ -18,4 +18,597 @@
 <p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
   </entry>
+  <entry>
+    <title>Ios中下拉刷新整个视图都会卡顿</title>
+    <url>/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/</url>
+    <content><![CDATA[<h2 id="造成卡顿的原因"><a href="#造成卡顿的原因" class="headerlink" title="造成卡顿的原因"></a>造成卡顿的原因</h2><ol>
+<li><strong>动画</strong>:使用的是uiview中的动画，然后<strong>递归</strong>调用。任何一个使用递归的地方都应该<strong>谨慎</strong>。</li>
+<li><strong>广告</strong>:非必要情况下，下拉<strong>重新加载</strong>也会导致卡顿。</li>
+</ol>
+<h2 id="其他原因卡顿"><a href="#其他原因卡顿" class="headerlink" title="其他原因卡顿"></a>其他原因卡顿</h2><p>并非由下拉造成的，可能是滚动时触发的卡顿。</p>
+<ol>
+<li>滚动时触发了某些ui的刷新。提示，滚动并不像看上去滚了一下。实际上滚动时触发的事件有超多次。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 造成闪烁的原因，主要是因为CALayer有一个隐式动画，只要在调用reloadData刷新时，关闭隐式动画就可以避免了</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">[self.collectionView reloadData];</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><a href="https://www.jianshu.com/p/cdd4a0a3968a" target="_blank" rel="noopener">UICollectionView刷新时页面会有闪烁问题的解决</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Laravel</title>
+    <url>/2020/04/17/Laravel/</url>
+    <content><![CDATA[<p>请求的生命周期:</p>
+<p>1.http控制内核</p>
+<p>2.服务提供器-providers:负责引导</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Mac外接固态</title>
+    <url>/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/</url>
+    <content><![CDATA[<p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
+<p>steam的流式传输</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>QQ小程序提现工具类文档</title>
+    <url>/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>composer require nekom/qq-wallet-money:dev-master</code></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$key  = <span class="keyword">__DIR__</span>.<span class="string">'/cert/key.pem'</span>;</span><br><span class="line">$cert = <span class="keyword">__DIR__</span>.<span class="string">'/cert/cert.pem'</span>;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> \QQ\QQPay([</span><br><span class="line">    <span class="string">'momo'</span>           =&gt; <span class="string">'提现啦！'</span>,</span><br><span class="line">    <span class="string">'appid'</span>          =&gt; <span class="string">'小程序appid'</span>,</span><br><span class="line">    <span class="string">'mch_id'</span>         =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_id'</span>     =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_passwd'</span> =&gt; md5(<span class="string">''</span>)</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 设置好商户的key</span></span><br><span class="line">$obj-&gt;setKey(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// 设置key.pem证书路径</span></span><br><span class="line">$obj-&gt;setKeyPath($key);</span><br><span class="line"><span class="comment">// 设置cert.pem证书路径</span></span><br><span class="line">$obj-&gt;setCertPath($cert);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置打款金额 单位元</span></span><br><span class="line">$obj-&gt;price(<span class="number">1.00</span>);</span><br><span class="line"><span class="comment">// 设置打款金额的另一种写法，和文档需要的数值同步</span></span><br><span class="line">$obj-&gt;priceTo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">$obj-&gt;openid(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line">$out = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置成功时的回调</span></span><br><span class="line">$obj-&gt;success(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line">$obj-&gt;error(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line">$success = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line">$error = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样也是可以的</span></span><br><span class="line">$obj-&gt;success($success);</span><br><span class="line">$obj-&gt;error($error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你还可以这样写</span></span><br><span class="line">$status = $obj-&gt;send($success,$error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只监听成功的回调</span></span><br><span class="line">$status = $obj-&gt;send(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>ios审核</title>
+    <url>/2020/04/17/ios%E5%AE%A1%E6%A0%B8/</url>
+    <content><![CDATA[<h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p>使用博客，从网页中获取某个标签然后判断这个标签隐藏</p>
+<blockquote>
+<p>核心-&gt;blog 网页</p>
+</blockquote>
+<blockquote>
+<p>来源 <a href="https://www.jianshu.com/p/0c6864055703" target="_blank" rel="noopener">https://www.jianshu.com/p/0c6864055703</a></p>
+</blockquote>
+<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-040154.png?x-oss-process=style/shuiyin" alt="image-20200407120153630"></p>
+<p>代码命名规范</p>
+<blockquote>
+<p>来源: <a href="https://blog.csdn.net/kun__kun/article/details/89466477" target="_blank" rel="noopener">https://blog.csdn.net/kun__kun/article/details/89466477</a></p>
+</blockquote>
+<h1 id="方案3"><a href="#方案3" class="headerlink" title="方案3"></a>方案3</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041121.png?x-oss-process=style/shuiyin" alt="image-20200407121120680"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041224.png?x-oss-process=style/shuiyin" alt="image-20200407121223576"></p>
+<h1 id="方案4"><a href="#方案4" class="headerlink" title="方案4"></a>方案4</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-063453.png?x-oss-process=style/shuiyin" alt="image-20200407143452555"></p>
+<blockquote>
+<p>来源 <a href="https://www.zhihu.com/question/351008255" target="_blank" rel="noopener">https://www.zhihu.com/question/351008255</a></p>
+</blockquote>
+<h1 id="方案5"><a href="#方案5" class="headerlink" title="方案5"></a>方案5</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-080900.png?x-oss-process=style/shuiyin" alt="image-20200407160859782"></p>
+<p>quick预审</p>
+<p>他们这个ios机审预检测还是可以看一下的,每个可能被拒原因都有案例</p>
+<blockquote>
+<p>链接:<a href="https://www.quicksdk.com/" target="_blank" rel="noopener">https://www.quicksdk.com/</a></p>
+</blockquote>
+<h1 id="方案6"><a href="#方案6" class="headerlink" title="方案6"></a>方案6</h1><p>跟钱有关的，提现页面</p>
+<p>个人觉得是不是可以考虑换成h5页面，然后点击某个按钮打开h5去提现。</p>
+<p>毕竟隐藏一个UI界面来讲，一个按钮应该还好</p>
+<p>不过这个测试可以放在，某个app通过之后测试。</p>
+<h1 id="方案7"><a href="#方案7" class="headerlink" title="方案7"></a>方案7</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-085424.png?x-oss-process=style/shuiyin" alt="image-20200407165423727"></p>
+<p>准备在某个无隐藏版本过了后试一下。</p>
+<p>录个视频，备注写详细，某些地方balabala的，通过备注，和视频向苹果那边回复，自己这边明确没有隐藏。</p>
+<p>个人猜测，可能苹果那边不太明白咱们的app然后就感觉你这app怪怪的就拒了。录个完整视频也许会有点效果。针对小果园，养鸡，这些app。</p>
+<p>在移除掉隐藏功能之后还是被拒是不是可以去申诉一下？我觉得这有点像被机审拒了。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090125.png?x-oss-process=style/shuiyin" alt="image-20200407170125303"></p>
+<p>还有,貌似可以确定的是<strong>审核人员一定在美国</strong>了。看知乎上说的，国内的审核好像只是负责传话。</p>
+<p>苹果好像对审核把控的很严，只在美国审核。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090936.jpg?x-oss-process=style/shuiyin" alt="image-20200407170758079"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-093226.png?x-oss-process=style/shuiyin" alt="image-20200407173226398"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090913.png?x-oss-process=style/shuiyin" alt="image-20200407170913403"></p>
+<p>下面这个连接都有说。</p>
+<blockquote>
+<p>来源:<a href="https://zhuanlan.zhihu.com/p/38181527" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38181527</a></p>
+</blockquote>
+<h1 id="方案8"><a href="#方案8" class="headerlink" title="方案8"></a>方案8</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-091307.png?x-oss-process=style/shuiyin" alt="image-20200407171306815"></p>
+<p>尽量把能说明的都说明了。某些sdk的关键词，比如友盟有webview。之类的。</p>
+<blockquote>
+<p>来源:<a href="https://forum.cocos.org/t/ios/81504/19" target="_blank" rel="noopener">https://forum.cocos.org/t/ios/81504/19</a></p>
+</blockquote>
+<p>#方案9</p>
+<p>愤怒的飞刀被拒之前加入了广点通，而广点通的sdk里刚好有敏感词，这里等待这次(4.7日)审核结果。</p>
+<p>如果被拒绝，回复邮件：说明广点通sdk，不包含支付宝，不包含热更新。</p>
+<p>以上是我现在找到的所有资料了。</p>
+<p>极光合规政策:<a href="http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/" target="_blank" rel="noopener">http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/</a></p>
+<h1 id="方案10"><a href="#方案10" class="headerlink" title="方案10"></a>方案10</h1><p>项目内参数判断，如，排行榜第一名，某个数据是n，如果为n，则骗审</p>
+<p>金额判断:当金币大于n，则显示提现</p>
+<h1 id="方案11"><a href="#方案11" class="headerlink" title="方案11"></a>方案11</h1><p>尝试性修改提审时的备注信息，文案一定要怂，别硬刚，把审核当客户，教他。如果确定没隐藏，则晓之以情动之以理。</p>
+<p>ps:个人经验，苹果那边好像隐藏管的不是很严，隐藏或<strong>营销</strong>营销应该才是重头。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>mac拖动应用程序秒切</title>
+    <url>/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/</url>
+    <content><![CDATA[<p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
+<p>什么是秒切，就是你拖动窗口到屏幕边缘，无需停留，就自动切到下一桌面空间。</p>
+<p>首先打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>现在大家试一下秒切吧。哈哈。。很爽不。是不是太快了，如果觉得太快，我们还可以在改改设定，我就设定在屏幕边缘停留半秒切换吧。<br>再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0.15;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>如果你想还原成原样，也很简单，再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults delete com.apple.dock workspaces-edge-delay;killall Dock</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>php中的class类里的class与self与this与static</title>
+    <url>/2020/04/17/php%E4%B8%AD%E7%9A%84class%E7%B1%BB%E9%87%8C%E7%9A%84class%E4%B8%8Eself%E4%B8%8Ethis%E4%B8%8Estatic/</url>
+    <content><![CDATA[<p>Php里一个<code>class类</code>，应该都不陌生。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span></span></span><br><span class="line"><span class="class">....</span></span><br><span class="line"><span class="class"></span></span><br><span class="line">static public function newClass()</span><br><span class="line">&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="keyword">self</span>();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>看到这样一段伪代码，会有哪些疑问呢？</p>
+<blockquote>
+<p>Q&amp;A</p>
+</blockquote>
+<ol>
+<li><code>newClass</code>为什么要创建这么一个方法，可以用在哪里？</li>
+<li><code>return</code> 的 <code>new self</code> <code>self</code>是个什么？</li>
+<li>为什么是<code>new self</code>而不是 <code>new Person</code>,明明这样也行啊？</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// Person </span></span><br><span class="line">$obj = Person::newClass();</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>A1</p>
+</blockquote>
+<p>获得一个类的对象,<code>newClass</code>是一个静态方法，所以可以这么去获取一个类的对象。</p>
+<p>这样获取<strong>现在</strong>这种情况是没什么好处的，甚至因为多走一个方法还慢一点，相对于<code>new Person</code></p>
+<p>但举个🌰</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; Person </span><br><span class="line">$obj &#x3D; Person::newClassA(&quot;所在班级&quot;);&#x2F;&#x2F; 方法里可以需要用其他的东西</span><br><span class="line">&#x2F;&#x2F; Person </span><br><span class="line">$obj &#x3D; Person::newClassB(&quot;姓名&quot;,&quot;性别&quot;,&quot;年龄&quot;)&#x2F;&#x2F;</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]]></content>
+  </entry>
+  <entry>
+    <title>php中的数组操作之游标current方法</title>
+    <url>/2020/04/17/php%E4%B8%AD%E7%9A%84%E6%95%B0%E7%BB%84%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%B8%B8%E6%A0%87current%E6%96%B9%E6%B3%95/</url>
+    <content><![CDATA[<h1 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h1><h2 id="场景"><a href="#场景" class="headerlink" title="场景"></a>场景</h2><p>获取数组中的第一个元素的值，我们一般都是<code>$array[0]</code>就可以拿到第一个值了。</p>
+<p>可如果数组是这样的呢？</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$arr = <span class="keyword">array</span>(</span><br><span class="line">    <span class="string">"a"</span> =&gt;<span class="string">"nekom.cc"</span>,</span><br><span class="line">    <span class="string">'bb'</span>=&gt;<span class="string">"www.baidu.com"</span>,</span><br><span class="line">    <span class="string">"c"</span> =&gt;<span class="string">'php'</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<p>这时候你可能会想</p>
+<p>这简单，不就一个循环的事情嘛！</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$tmp = <span class="string">''</span>;</span><br><span class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item)&#123;</span><br><span class="line">	$tmp = $item;</span><br><span class="line">	<span class="keyword">break</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>然后如果这种需求多了的话~</p>
+<p>…</p>
+<p>大概有经验的猿都会去封装一个方法吧~</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">one</span><span class="params">($arr)</span></span>&#123;</span><br><span class="line">    <span class="keyword">foreach</span>($arr <span class="keyword">as</span> $item)&#123;</span><br><span class="line">        <span class="keyword">return</span> $item</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Php中隐藏在角落的current-方法"><a href="#Php中隐藏在角落的current-方法" class="headerlink" title="Php中隐藏在角落的current()方法"></a>Php中隐藏在角落的current()方法</h2><p><code>current()</code>函数返回数组中的当前元素</p>
+<p>每个数组中都有一个内部的指针指向它“当前的”元素，初始指向插入到数组中的第一个元素。</p>
+<p><code>current()</code> 函数返回当前被内部指针指向的数组元素的值，并不移动指针。如果内部指针指向超出了单元列表的末端，<code>current()</code> 返回 FALSE。</p>
+<p>如果有空的元素，或元素没有值，该函数也返回 FALSE。</p>
+<p><strong>该函数不会移动内部指针。</strong></p>
+<p>还是上面的例子，如果用它就可以这样了~</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$item = current($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的兄-next"><a href="#current-方法的兄-next" class="headerlink" title="current()方法的兄 - next()"></a>current()方法的兄 - next()</h2><p><code>next()</code>返回数组内部指针指向的下一个单元的值，或当没有更多单元时返回FALSE。 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$item = next($arr);<span class="comment">// "www.baidu.com"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的弟-prev"><a href="#current-方法的弟-prev" class="headerlink" title="current()方法的弟 - prev()"></a>current()方法的弟 - prev()</h2><p><code>prev()</code>返回数组内部指针指向的前一个单元的值，或当没有更多单元时返回FALSE。 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$item = prev($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的姐-end"><a href="#current-方法的姐-end" class="headerlink" title="current()方法的姐 - end()"></a>current()方法的姐 - end()</h2><p><code>end()</code>将array的内部指针移动到最后一个单元并返回其值。 </p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$item = end($arr);<span class="comment">// "php"</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="current-方法的姐-reset"><a href="#current-方法的姐-reset" class="headerlink" title="current()方法的姐 - reset()"></a>current()方法的姐 - reset()</h2><p><code>reset()</code> 将array的内部指针倒回到第一个单元并返回第一个数组单元的值，如果数组为空则返回FALSE。</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$item = reset($arr);<span class="comment">// "nekom.cc"</span></span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
+    <url>/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
+    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
+<p>如图↑</p>
+<p>翻译如下↓</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
+<p>第二行可以看出有多少次失败了</p>
+<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>养鸡赚后端经验总结</title>
+    <url>/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="设计高性能的接口的时候要考虑的问题"><a href="#设计高性能的接口的时候要考虑的问题" class="headerlink" title="设计高性能的接口的时候要考虑的问题"></a>设计高性能的接口的时候要考虑的问题</h2><ol>
+<li>尽量减少Sql处理，特别是能加索引的地方一定要加。</li>
+<li>需要做<strong>运算</strong>的操作，可以<strong>适当</strong>的交给<strong>前端来做</strong>。并不是所有东西都必须后端计算好。尽量把<strong>处理时间长的逻辑</strong>放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。</li>
+<li>Sql尽量别做<strong>聚合操作</strong>，比如<code>sum</code> <code>add</code> <code>group</code> 之类的，这种的搞不好就会<strong>不走索引</strong></li>
+<li>需要展示的数据尽量不要做<strong>验证逻辑</strong></li>
+<li>字符串里没有变量的话必须用<code>&#39;&#39;</code> 而不是<code>&quot;&quot;</code></li>
+<li>用<code>group</code> <code>order</code> 的时候一定要注意索引问题，否则会<strong>导致数据库cpu飙升</strong></li>
+<li>不一定非得是索引才会导致数据库<strong>cpu飙升</strong> <code>sending data</code> 也要注意</li>
+</ol>
+<h2 id="养鸡赚中的设计模式"><a href="#养鸡赚中的设计模式" class="headerlink" title="养鸡赚中的设计模式"></a>养鸡赚中的设计模式</h2><blockquote>
+<p>策略模式</p>
+</blockquote>
+<p>用在添加鸡的时候。因为在用户45元以前，到45元以后每一元都有一个算法去计算鸡蛋，时间，种鸡的次数，等等条件！</p>
+<p>主要解决的问题是：<strong>超级多的<code>if else</code>在一个方法中</strong>把他们封装成类后面也好维护一些</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-859.html">php后台接口在自己公司项目中的设计模式之策略模式的实战应用与心得</a></p>
+<h2 id="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"><a href="#安卓养鸡和小程序养鸡的后端逻辑不同之登录分享" class="headerlink" title="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"></a>安卓养鸡和小程序养鸡的后端逻辑不同之登录分享</h2><h2 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h2><p>做小程序后端的时候需要判断很多逻辑，其中有一个就是找第一条数据和第二条数据，研究了一下</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-863.html">Php中的数组操作之游标操作 current()与其兄弟姐妹prev(),next(),end(),reset()的个人理解实践</a></p>
+<h2 id="Php时间是可以直接比大小的"><a href="#Php时间是可以直接比大小的" class="headerlink" title="Php时间是可以直接比大小的"></a>Php时间是可以直接比大小的</h2><p>比如</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'11:00'</span> &gt; <span class="string">'11:05'</span> ? <span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="string">'2019/11/20'</span> &gt; <span class="string">'2019/10/20'</span>?<span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="并发消峰问题，领取提现次数"><a href="#并发消峰问题，领取提现次数" class="headerlink" title="并发消峰问题，领取提现次数"></a>并发消峰问题，领取提现次数</h2><h2 id="如果mysql自增id到头了怎么办"><a href="#如果mysql自增id到头了怎么办" class="headerlink" title="如果mysql自增id到头了怎么办"></a>如果mysql自增id到头了怎么办</h2><blockquote>
+<p>面试官:”那自增主键达到最大值了，用完了怎么办？”</p>
+<p>我:”这问题没遇到过，因为自增主键我们用int类型，一般达不到最大值，我们就分库分表了，所以不曾遇见过！”</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_35393693/article/details/100059966" target="_blank" rel="noopener">mysql中主键用完了怎么办</a></p>
+<h2 id="数据库表中随机取一条数据"><a href="#数据库表中随机取一条数据" class="headerlink" title="数据库表中随机取一条数据"></a>数据库表中随机取一条数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT column FROM table  ORDER BY RAND() LIMIT 1</span><br></pre></td></tr></table></figure>
+
+<p>↑适合表中数量不多的情况</p>
+<p><a href="https://www.jianshu.com/p/aba6fc58a219" target="_blank" rel="noopener">适合一些表里数据特别多的情况</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>qq小程序提现问题</title>
+    <url>/2020/04/17/qq%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="qq小程序SYSTEMERROR-错误的原因"><a href="#qq小程序SYSTEMERROR-错误的原因" class="headerlink" title="qq小程序SYSTEMERROR 错误的原因"></a>qq小程序SYSTEMERROR 错误的原因</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-18-104703.png?x-oss-process=style/shuiyin" alt="image-20191118184702213"></p>
+<p>如图所示，可能是操作员不存在</p>
+<p>配上操作员可能报</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-18-110648.png?x-oss-process=style/shuiyin" alt="image-20191118190648075"></p>
+<p>配上权限即可</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于服务器被扫描攻击这件事我的应对措施</title>
+    <url>/2020/04/17/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
+    <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
+<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/9mpoz.png" alt="image-20190928205811239"></p>
+<p>该怎么说？这种现象其实很早就有了，猫也懒得管这件事，因为这种扫描..感觉很弱智啊！</p>
+<p>首先给那些脚本脚本小子建议：</p>
+<p>1.麻烦那些脚本小子升级一下爆破库在来扫啦！</p>
+<p>2.我这个小破站经不起这么高频的请求啦！</p>
+<p>3.请大佬高抬贵手放过这只残破的猫窝吧！</p>
+<p>说起来…我这个小破站至于吗？（手动滑稽）</p>
+<p>##ip访问限制方法</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span> default;</span><br><span class="line">  <span class="attribute">server_name</span> _;</span><br><span class="line">  <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/weifeng1463/p/9197971.html" target="_blank" rel="noopener">nginx只允许域名访问，禁止ip访问</a></p>
+<h2 id="ip请求频率限制方法"><a href="#ip请求频率限制方法" class="headerlink" title="ip请求频率限制方法"></a>ip请求频率限制方法</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line"><span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=allips:<span class="number">10m</span> rate=1r/s;</span><br><span class="line">server&#123;</span><br><span class="line">		...</span><br><span class="line">    <span class="comment"># 加这一行调用</span></span><br><span class="line">    <span class="attribute">limit_req</span> zone=allips burst=<span class="number">5</span> nodelay;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
+<h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>cocos js 与iOS 交互</title>
+    <url>/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
+    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>养鸡赚添加鸡的逻辑设计模式</title>
+    <url>/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E6%B7%BB%E5%8A%A0%E9%B8%A1%E7%9A%84%E9%80%BB%E8%BE%91%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/</url>
+    <content><![CDATA[<h1 id="策略模式实战应用"><a href="#策略模式实战应用" class="headerlink" title="策略模式实战应用"></a>策略模式实战应用</h1><h2 id="准备"><a href="#准备" class="headerlink" title="准备"></a>准备</h2><p>现在有一个接口，要求根据不同规则，更新到数据库，不同的规则已经多到需要一两百行的<code>if else</code>来判断规则。</p>
+<p>这篇文章不会告诉你<strong>策略模式是什么</strong>，它只是个人的一些实战心得总结并告诉你如何运用。</p>
+<h2 id="食材"><a href="#食材" class="headerlink" title="食材"></a>食材</h2><p>策略模式是个啥：</p>
+<p><a href="https://www.runoob.com/design-pattern/strategy-pattern.html" target="_blank" rel="noopener">「PHP」策略模式</a></p>
+<p> <a href="https://www.cnblogs.com/houdabao/p/9546871.html" target="_blank" rel="noopener"> 菜鸟教程之策略模式 </a></p>
+<p> <a href="https://www.baidu.com/s?ie=UTF-8&wd=策略模式" target="_blank" rel="noopener">百度策略模式</a></p>
+<h2 id="逻辑"><a href="#逻辑" class="headerlink" title="逻辑"></a>逻辑</h2><p>下看看都定义了那些文件吧~</p>
+<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/vjdii.png?x-oss-process=style/shuiyin" alt="image-20191015161759250"></p>
+<blockquote>
+<p>敲黑板：注意啦<del>这里最重要的无非就是接口定义和用来管控的那个玩意，这两个东西一个关系着你写的策略模式的质量，弄不好还会白花时间的</del>甚至会出现一些奇奇怪怪的bug</p>
+</blockquote>
+<h2 id="一些要点"><a href="#一些要点" class="headerlink" title="一些要点"></a>一些要点</h2><h3 id="要做什么"><a href="#要做什么" class="headerlink" title="要做什么"></a>要做什么</h3><p>这里我需要根据<strong>id</strong>和<strong>余额</strong>的不同进行不同的<strong>逻辑</strong>，并且最重要的是判断条件太多啦！！！！而且返回的都是差不多的数据……</p>
+<p>所以考虑用策略模式减少代码量……</p>
+<p>太多if else真的看着很头疼！</p>
+<h3 id="接口的定义"><a href="#接口的定义" class="headerlink" title="接口的定义"></a>接口的定义</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 抽象鸡算法类</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">ChickenStrategyAbstract</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * 具体算法方法</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $id</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@return</span> array</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">abstract</span> <span class="function"><span class="keyword">function</span> <span class="title">doAction</span><span class="params">($id)</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>定义一个接口，所有策略都去实现它</p>
+<h3 id="接口返回"><a href="#接口返回" class="headerlink" title="接口返回"></a>接口返回</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fortyEightStrategy</span> <span class="keyword">extends</span> <span class="title">ChickenStrategyAbstract</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">doAction</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $num = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 当为48元的时候</span></span><br><span class="line">        <span class="keyword">switch</span> ($id) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">1</span>:<span class="comment">// id是1和2的鸡</span></span><br><span class="line">            <span class="keyword">case</span> <span class="number">2</span>:</span><br><span class="line">                $time = <span class="number">60</span> * <span class="number">60</span> * <span class="number">8</span>;<span class="comment">//5小时</span></span><br><span class="line"></span><br><span class="line">                $kill_egg      = <span class="number">4</span>;<span class="comment">// 鸡蛋</span></span><br><span class="line">                $land_multiple = <span class="number">5</span>;<span class="comment">//倍数</span></span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">3</span>:<span class="comment">// id是3的鸡</span></span><br><span class="line">                $time = <span class="number">60</span> * <span class="number">60</span> * <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line">                $kill_egg      = <span class="number">5</span>;</span><br><span class="line">                $land_multiple = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">4</span>:<span class="comment">// id是4的鸡</span></span><br><span class="line">                $time = <span class="number">60</span> * <span class="number">60</span> * <span class="number">12</span>;</span><br><span class="line"></span><br><span class="line">                $kill_egg      = <span class="number">6</span>;</span><br><span class="line">                $land_multiple = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">5</span>:<span class="comment">// id是5的鸡</span></span><br><span class="line">                $time = <span class="number">60</span> * <span class="number">60</span> * <span class="number">15</span>;</span><br><span class="line"></span><br><span class="line">                $kill_egg      = <span class="number">8</span>;</span><br><span class="line">                $land_multiple = <span class="number">5</span>;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:</span><br><span class="line">                <span class="keyword">return</span> [];<span class="comment">// 已售完</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'time'</span>     =&gt; $time,</span><br><span class="line">            <span class="string">'egg'</span>      =&gt; $kill_egg,</span><br><span class="line">            <span class="string">'num'</span>      =&gt; $num,</span><br><span class="line">            <span class="string">'multiple'</span> =&gt; $land_multiple</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>敲黑板：因为我的需求是需要用<code>$id</code>根据<strong>不同算法</strong>得到<strong>4个值</strong>所以用一个数组进行返回,并约定:如果都不符合条件则返回一个空数组。<strong>这里其实定义一个类作为model返回最好，但我偷懒了~</strong></p>
+</blockquote>
+<h4 id="比如这样"><a href="#比如这样" class="headerlink" title="比如这样"></a>比如这样</h4><p>再建一个文件<code>InfoModel.php</code></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">InfoModel</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $time = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $egg = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $num = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">public</span> $mutiple = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h4 id="返回的时候"><a href="#返回的时候" class="headerlink" title="返回的时候"></a>返回的时候</h4><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 策略算法</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> $id</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span> InfoModel</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">doAction</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function">...</span></span><br><span class="line">$obj = new InfoModel();</span><br><span class="line">$obj-&gt;time = $time;</span><br><span class="line">$obj-&gt;egg = $kill_egg;</span><br><span class="line">$obj-&gt;num = $num;</span><br><span class="line">$obj-&gt;mutiple = $land_multiple</span><br><span class="line"><span class="keyword">return</span> $obj;</span><br></pre></td></tr></table></figure>
+
+<h4 id="这样做的好处"><a href="#这样做的好处" class="headerlink" title="这样做的好处"></a>这样做的好处</h4><p>排除了数组的<strong>不确定性</strong>因为你取值可能是这样<code>$info[&quot;egg&quot;]</code>后面如果没有<code>egg</code>这个key你就会报错。</p>
+<p>因为数组是keyvalue结构，很有可能在上面判断的时候哪一步少了一个key，或者少了一个value，导致报错。</p>
+<p>或者后期可能需要多加一个条件判断，然后不好维护，每个地方都要修改数组。有一个改错调起来就很麻烦了。</p>
+<h3 id="实现策略"><a href="#实现策略" class="headerlink" title="实现策略"></a>实现策略</h3><p>没什么好说了，根据自己定的规则实现里面的逻辑就行了，比如上面代码的方法体里面就是<strong>策略</strong></p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">fortyEightStrategy</span> <span class="keyword">extends</span> <span class="title">ChickenStrategyAbstract</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">doAction</span><span class="params">($id)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">       	... 这里都是策略的逻辑</span><br><span class="line">        <span class="keyword">return</span> [</span><br><span class="line">            <span class="string">'time'</span>     =&gt; $time,</span><br><span class="line">            <span class="string">'egg'</span>      =&gt; $kill_egg,</span><br><span class="line">            <span class="string">'num'</span>      =&gt; $num,</span><br><span class="line">            <span class="string">'multiple'</span> =&gt; $land_multiple</span><br><span class="line">        ];</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>敲黑板：这里并不是必须只有一个<code>doAction</code>你甚至可以在<strong>接口</strong>里定义<code>doAction1</code> <code>doAction2</code> <code>doAction3</code>每个对应同一个策略的不同逻辑，一个策略可以有多个不同的逻辑去处理</p>
+</blockquote>
+<p>我的设计是这样的：接口定义是金额策略分别是45元的策略，46元的策略。。49元的策略，每个策略（这里的45元策略就是每个像是<code>fortyEightStrategy</code>的类）的逻辑不一样，但返回的东西一样。</p>
+<h3 id="管控策略"><a href="#管控策略" class="headerlink" title="管控策略"></a>管控策略</h3><p>这里主要是对策略模式的二次封装，比如我的代码是这样的</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ChickenStrategyFind</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> ChickenStrategyAbstract</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> $obj = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="keyword">private</span> $small_obj = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * ChickenStrategyFind constructor.</span></span><br><span class="line"><span class="comment">     *</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@param</span> $price float 传余额</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">($price)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">// 如果是小于45的话使用的策略</span></span><br><span class="line">        <span class="keyword">if</span> ($price &lt; <span class="number">45</span>) &#123;</span><br><span class="line">            <span class="keyword">self</span>::$small_obj = <span class="keyword">new</span> baseChickenStrategy();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 大于45的话使用的策略</span></span><br><span class="line">        <span class="keyword">switch</span> (floor($price)) &#123;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">45</span>:<span class="comment">// 45元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortyFiveStrategy();;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">46</span>:<span class="comment">// 46元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortySixStrategy();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">47</span>:<span class="comment">// 47元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortySevenStrategy();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">48</span>:<span class="comment">// 48元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortyEightStrategy();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">case</span> <span class="number">49</span>:<span class="comment">// 49元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortyNineStrategy();</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            <span class="keyword">default</span>:<span class="comment">// 50以上元时策略</span></span><br><span class="line">                <span class="keyword">self</span>::$obj = <span class="keyword">new</span> fortyNineStrategy();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">	<span class="comment">// 获取策略的结果</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getInfo</span><span class="params">($id, $count)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>::$small_obj) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">self</span>::$small_obj-&gt;doBaseAction($id, $count);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">self</span>::$obj-&gt;doAction($id);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>我是通过这个类与策略模式进行交互的，首先new一个<code>ChickenStrategyFind</code>类然后调用它的的<code>getInfo</code>方法就行</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 传入一个30元，返回策略模式计算的结果</span></span><br><span class="line">$chicken_obj = <span class="keyword">new</span> ChickenStrategyFind(<span class="number">30</span>);</span><br><span class="line">$chicken_condition = $chicken_obj-&gt;getInfo($chicken_id,$today_chicken_count);</span><br><span class="line">var_dump($chicken_condition);<span class="keyword">die</span>;</span><br></pre></td></tr></table></figure>
+
+<h3 id="我的观点（本文最核心的地方）"><a href="#我的观点（本文最核心的地方）" class="headerlink" title="我的观点（本文最核心的地方）"></a>我的观点（本文最核心的地方）</h3><p>策略模式最重要的是定义好要对什么<strong>地方</strong>做<strong>策略</strong></p>
+<p>比如：每天的<strong>某个小时</strong>提醒自己<strong>喝水</strong>，后台可能有<strong>n种方法</strong>去判断<strong>某个小时</strong>而结果只有，<strong>时间到</strong>与<strong>时间没到</strong>，中间的<strong>n种方法</strong>就是策略每个方法是一种策略</p>
+<p>想明白为什么这里可以用策略模式，能得到什么好处。</p>
+<p>如果用一个设计模式都不知道能带来什么的话~</p>
+<p>还是别用了吧……</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>iOS 13 present 问题</title>
+    <url>/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="present-vc-之后"><a href="#present-vc-之后" class="headerlink" title="present(vc) 之后"></a>present(vc) 之后</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-074911.png?x-oss-process=style/shuiyin" alt="image-20200317154909698"></p>
+<p>网上查90的博客都是一句话就完事了，不告诉你加在哪。</p>
+<p><code>vc.modalPresentationStyle = .fullScreen</code></p>
+<p>这样没问题，真的相信我。</p>
+<p>你们加上了还是没有效果的原因是因为你们是可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<p>可能是两边都加</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 但这样都是<strong>不行的</strong>因为我试过……</p>
+</blockquote>
+<p>但正确做法是这样</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line">vc.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-075658.png?x-oss-process=style/shuiyin" alt="image-20200317155657412"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>果园</title>
+    <url>/2020/04/17/%E6%9E%9C%E5%9B%AD/</url>
+    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 树的状态</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 小树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Middlie</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Big</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树开花</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">15</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树长🍎</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">30</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>消息推送</title>
+    <url>/2020/04/17/%E6%B6%88%E6%81%AF%E6%8E%A8%E9%80%81/</url>
+    <content><![CDATA[<p>app:</p>
+<p>1.链接-定时刷新/socket方案/友盟信鸽之类的第三方</p>
+<p>2.通知-后台存活的情况下推送消息</p>
+<p>3.记录-记录所有的汇报，保存在数据库中，每次app打开的时候提示</p>
+<p>4.图表-用图显示汇报</p>
+<p>server:</p>
+<p>1.存储记录</p>
+<p>2.转发信息</p>
+<p>3.被动收集信息</p>
+<p>4.主动收集信息</p>
+<p>延伸：某些记录过多则报异常-根据异常等级 通知</p>
+<p>sdk:</p>
+<p>1.发送信息到server</p>
+<p>server:</p>
+<p>记录表</p>
+<p>Id，类型，产生时间，标题，内容，来自哪里</p>
+<p>服务端：</p>
+<p>sdk:</p>
+<p>推送消息，需要各种message类。</p>
+<p>iOS端：</p>
+<p>sdk：</p>
+<blockquote>
+<p>信息包括</p>
+</blockquote>
+<p>每小时多少条各种类型的数据</p>
+<p>当前n分钟内，那种类型的数据最多</p>
+<p>每个类型的数据，每小时条数表格</p>
+<p>警告级别的数据展示</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>mysql5.7分组group by 查询报错only_full_group_by</title>
+    <url>/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
+    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>破解idea系列</title>
+    <url>/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/</url>
+    <content><![CDATA[<p><a href="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-27-jetbrains-agent.jar.zip" target="_blank" rel="noopener">破解文件</a></p>
+<p>编辑： Edit Custom VM Options</p>
+<p>添加：</p>
+<p>-javaagent:/Applications/PhpStorm.app/Contents/bin/jetbrains-agent.jar</p>
+<p>激活框里输入</p>
+<p><a href="http://jetbrains-license-server" target="_blank" rel="noopener">http://jetbrains-license-server</a></p>
+<p>将下载的激活用的jar包jetbrains-agent.jar移动到PhpStorm安装目录下的bin/文件夹下，目的是为了保存，不会被误删。<br>在第一步中已经打开了PhpStorm，并建立了一个项目，现在执行菜单”Help”-&gt;“Edit Custom VM Options…”，打开文件后在末尾添加一行参数，指向激活用的jar包的绝对地址。<br>这里指向的是你自己系统中的绝对地址，注意看一下是否准确（虽然Mac系统基本一样）。</p>
+<p>-javaagent:/Applications/PhpStorm.app/Contents/bin/jetbrains-agent.jar</p>
+<p>添加完后记得保存，然后退出重启PhpStorm。</p>
+<p>重启完成后，执行菜单”Help”-&gt;“Register”，打开注册框，选择”License server”方式，默认会自动填充”License server address:“文本框，如果没有自动填充，可以手动输入值为”<a href="http://jetbrains-license-server”，然后点击&quot;Activate&quot;完成激活。" target="_blank" rel="noopener">http://jetbrains-license-server”，然后点击&quot;Activate&quot;完成激活。</a></p>
+<p>激活完成后，可以执行菜单”PhpStorm”-&gt;”About PhpStorm”来查看激活情况。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>经验总结</title>
+    <url>/2020/04/17/%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h2 id="关于tp框架的事务"><a href="#关于tp框架的事务" class="headerlink" title="关于tp框架的事务"></a>关于tp框架的事务</h2><ol>
+<li>在可能的情况下，尽量在一个方法内开启事务，并在退出方法前一定要rollback或者commit</li>
+</ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>随公司所驱</title>
+    <url>/2020/04/17/%E9%9A%8F%E5%85%AC%E5%8F%B8%E6%89%80%E9%A9%B1/</url>
+    <content><![CDATA[<blockquote>
+<p>provider 翻译过来是服务者，提供者。</p>
+</blockquote>
+<p>这是TP框架里我认为很少有人注意的东西。</p>
+<blockquote>
+<p>我以前如何用TP框架写一个接口？</p>
+</blockquote>
+<p><code>路由文件加上路由-&gt;控制器里写个方法-&gt;处理-&gt;返回数据。</code></p>
+<p>这样一个接口就好了。</p>
+<p>这是我认为很多用TP框架的人最习惯的手法。</p>
+<p>好了，这时候我们有一些场景，判断一下这种手法还能不能适用。</p>
+<blockquote>
+<p>场景1</p>
+</blockquote>
+<ol>
+<li>公司给了一个项目有功能a，功能b,功能c，这3个功能都依赖一个功能d。功能abcd合起来你可能3天就写完了。</li>
+<li>这里我猜一下你可能会怎么写，先整个Controller，写好功能，写个路由。然后功能abcd的代码不是混在一起，就是分成了几个控制器，或者几个类，或者几个方法。</li>
+<li>时间线往后拖。</li>
+<li>这时候你在解决完无数个bug，交完工了。</li>
+<li>放心我不会说什么，有需求要改。面对改需求都不能坦然应对的程序员不是合格的程序员。</li>
+<li>这时候，公司又给了一个项目。其中功能a，功能b是一样的，只是依赖的功能d可能要换一下。</li>
+<li>考虑一下你会怎么做？</li>
+<li>你可能会想，功能a，和功能b，基本上就是换个皮，我得想办法把他抽出来。</li>
+<li>结果打开项目一看，复制到新项目各种藕断丝连。bug不断。</li>
+</ol>
+<blockquote>
+<p>provider 本文的主题</p>
+</blockquote>
+<p>这是个什么东西，它是TP框架里的”容器”，容器又是个啥？我对它的定义是功能。一个功能既是一个容器，一个容器里包含一个功能。容器保证了功能的绝对独立。</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>设计模式的应用场景</title>
+    <url>/2020/04/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><blockquote>
+<p>需求:用户表有余额字段，当余额到达45,46,47,48,49,50,50以上时，分别用不同的算法得出应加的虚拟货币数量。</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>配置Xcode在build时cocos的技巧</title>
+    <url>/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
+
+<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>面向对象思想</title>
+    <url>/2020/04/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</url>
+    <content><![CDATA[<p>关于我</p>
+<p>值得提的:</p>
+<ol>
+<li><p>面向对象的逻辑</p>
+<p>例子：</p>
+<p>需求，有一颗树，树的状态有，小树，大树，开花，长苹果，到变成发财树。</p>
+<p>其中每个状态有不同的功能，如所有树都需要浇水。</p>
+<p>每种树的浇水次数不一样，当用户的余额到不同阶段如，30元，40元，需要的浇水数量也不一样。并且可配。</p>
+<p>苹果树上会有苹果可以领取。</p>
+<p>发财树上会有不定数量的各种类型的东西需要完成任务才能领取。</p>
+</li>
+</ol>
+<p>   分析：</p>
+<p>   抽离出“树”，抽离出“树的状态”，抽离出“策略”，抽离出“用户”，抽离出“配置”</p>
+<p>   抽离出的接口</p>
+<p>   树：树管理着树的所有状态，从小树到大树的切换，对树的所有操作都得通过这个树的类。</p>
+<p>   树的状态：每个状态下树会有不同的操作，如浇水，领取苹果。基类下可能只有个浇水。子类会有不同的操作。用策略模式去获得相应状态的对象。</p>
+<p>   策略：配置获得的苹果数，树需要的水滴。根据余额获得策略对象，根据策略对象获得需要的配置。</p>
+<p>   用户：</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>我如何获取mac上微信聊天记录并使用python3.7生成词云作为给自己女友礼物的</title>
+    <url>/2020/04/17/%E6%88%91%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96mac%E4%B8%8A%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%BD%BF%E7%94%A8python3.7%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91%E4%BD%9C%E4%B8%BA%E7%BB%99%E8%87%AA%E5%B7%B1%E5%A5%B3%E5%8F%8B%E7%A4%BC%E7%89%A9%E7%9A%84/</url>
+    <content><![CDATA[<h2 id="首先是如何获取微信的聊天记录信息"><a href="#首先是如何获取微信的聊天记录信息" class="headerlink" title="首先是如何获取微信的聊天记录信息"></a>首先是如何获取微信的聊天记录信息</h2><h2 id="如何把每一句话转换为一个个词的"><a href="#如何把每一句话转换为一个个词的" class="headerlink" title="如何把每一句话转换为一个个词的"></a>如何把每一句话转换为一个个词的</h2><h2 id="如何用这些词生成词云"><a href="#如何用这些词生成词云" class="headerlink" title="如何用这些词生成词云"></a>如何用这些词生成词云</h2><h2 id="如何写脚本的"><a href="#如何写脚本的" class="headerlink" title="如何写脚本的"></a>如何写脚本的</h2><p><a href="https://blog.csdn.net/fly910905/article/details/77763086" target="_blank" rel="noopener">https://blog.csdn.net/fly910905/article/details/77763086</a></p>
+<p><a href="https://www.jianshu.com/p/28718ba04bc9?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/28718ba04bc9?from=groupmessage</a></p>
+<p><a href="https://www.cnblogs.com/littlebob/p/9427896.html" target="_blank" rel="noopener">https://www.cnblogs.com/littlebob/p/9427896.html</a></p>
+<p><a href="https://www.cnblogs.com/Keys819/p/9326575.html" target="_blank" rel="noopener">https://www.cnblogs.com/Keys819/p/9326575.html</a></p>
+<p><a href="https://www.jianshu.com/p/615c9d285c54" target="_blank" rel="noopener">https://www.jianshu.com/p/615c9d285c54</a></p>
+<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
+<p><a href="https://blog.csdn.net/swinfans/article/details/88712593" target="_blank" rel="noopener">https://blog.csdn.net/swinfans/article/details/88712593</a></p>
+<p><a href="https://www.jianshu.com/p/40554c323089" target="_blank" rel="noopener">https://www.jianshu.com/p/40554c323089</a></p>
+<p><a href="https://blog.csdn.net/iamcxl369/article/details/80671428" target="_blank" rel="noopener">https://blog.csdn.net/iamcxl369/article/details/80671428</a></p>
+<p><a href="https://www.jianshu.com/p/90224ab9cdf2" target="_blank" rel="noopener">https://www.jianshu.com/p/90224ab9cdf2</a></p>
+<p><a href="https://www.zetetic.net/sqlcipher/sqlcipher-api/#key" target="_blank" rel="noopener">https://www.zetetic.net/sqlcipher/sqlcipher-api/#key</a></p>
+<p><a href="https://www.jianshu.com/p/68e9f22f9680" target="_blank" rel="noopener">https://www.jianshu.com/p/68e9f22f9680</a></p>
+<p><a href="https://blog.naaln.com/2016/11/wechat-data-structure/" target="_blank" rel="noopener">https://blog.naaln.com/2016/11/wechat-data-structure/</a></p>
+<p>Db类，循环获取信息，输出接口，</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>alfred_wokflow_doc/alfred_workflow_NkJekins</title>
+    <url>/2020/04/17/alfred_wokflow_doc/alfred_workflow_NkJekins/</url>
+    <content><![CDATA[<h1 id="NkJekins-1-0-0"><a href="#NkJekins-1-0-0" class="headerlink" title="NkJekins 1.0.0"></a>NkJekins 1.0.0</h1><blockquote>
+<p>Usage</p>
+</blockquote>
+<ol>
+<li>Open the Alfred</li>
+<li>Enter the “jk”</li>
+<li>Select and press enter</li>
+</ol>
+<blockquote>
+<p>Example</p>
+</blockquote>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-123729.png?x-oss-process=style/shuiyin" alt="image-20200415203729394"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-130720.png?x-oss-process=style/shuiyin" alt="image-20200415203747986"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-124044.png?x-oss-process=style/shuiyin" alt="image-20200415204044673"></p>
+<h2 id="添加"><a href="#添加" class="headerlink" title="添加"></a>添加</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-124557.png?x-oss-process=style/shuiyin" alt="image-20200415204556988"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-124721.png?x-oss-process=style/shuiyin" alt="image-20200415204720826"></p>
+<ol>
+<li>build “jekins project name”  “git branch eg:origin/master” “env eg:test/prod”</li>
+</ol>
+<blockquote>
+<p>Download</p>
+</blockquote>
+<p><a href="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-jekins.alfredworkflow" target="_blank" rel="noopener">https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-15-jekins.alfredworkflow</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>alfred_wokflow_doc/vscode</title>
+    <url>/2020/04/17/alfred_wokflow_doc/vscode/</url>
+    <content><![CDATA[<blockquote>
+<p>第一步</p>
+</blockquote>
+<p>首先打开vscode软件。</p>
+<p>同时按住<code>shift + command + P</code>打开命令面板。</p>
+<p>找到<code>Install ‘code&#39; command in PATH</code>，并执行。</p>
+<blockquote>
+<p>第二步</p>
+</blockquote>
+<p>alfred eg: vs 文件路径</p>
+]]></content>
+  </entry>
 </search>
