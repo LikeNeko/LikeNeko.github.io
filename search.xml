@@ -1,13 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Mac外接固态</title>
-    <url>/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/</url>
-    <content><![CDATA[<p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
-<p>steam的流式传输</p>
-]]></content>
-  </entry>
-  <entry>
     <title>Ios中下拉刷新整个视图都会卡顿</title>
     <url>/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/</url>
     <content><![CDATA[<h2 id="造成卡顿的原因"><a href="#造成卡顿的原因" class="headerlink" title="造成卡顿的原因"></a>造成卡顿的原因</h2><ol>
@@ -28,12 +21,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>QQ小程序提现工具类文档</title>
-    <url>/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/</url>
-    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>composer require nekom/qq-wallet-money:dev-master</code></p>
-<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$key  = <span class="keyword">__DIR__</span>.<span class="string">'/cert/key.pem'</span>;</span><br><span class="line">$cert = <span class="keyword">__DIR__</span>.<span class="string">'/cert/cert.pem'</span>;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> \QQ\QQPay([</span><br><span class="line">    <span class="string">'momo'</span>           =&gt; <span class="string">'提现啦！'</span>,</span><br><span class="line">    <span class="string">'appid'</span>          =&gt; <span class="string">'小程序appid'</span>,</span><br><span class="line">    <span class="string">'mch_id'</span>         =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_id'</span>     =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_passwd'</span> =&gt; md5(<span class="string">''</span>)</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 设置好商户的key</span></span><br><span class="line">$obj-&gt;setKey(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// 设置key.pem证书路径</span></span><br><span class="line">$obj-&gt;setKeyPath($key);</span><br><span class="line"><span class="comment">// 设置cert.pem证书路径</span></span><br><span class="line">$obj-&gt;setCertPath($cert);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置打款金额 单位元</span></span><br><span class="line">$obj-&gt;price(<span class="number">1.00</span>);</span><br><span class="line"><span class="comment">// 设置打款金额的另一种写法，和文档需要的数值同步</span></span><br><span class="line">$obj-&gt;priceTo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">$obj-&gt;openid(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line">$out = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置成功时的回调</span></span><br><span class="line">$obj-&gt;success(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line">$obj-&gt;error(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line">$success = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line">$error = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样也是可以的</span></span><br><span class="line">$obj-&gt;success($success);</span><br><span class="line">$obj-&gt;error($error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你还可以这样写</span></span><br><span class="line">$status = $obj-&gt;send($success,$error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只监听成功的回调</span></span><br><span class="line">$status = $obj-&gt;send(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
-  </entry>
-  <entry>
     <title>Laravel</title>
     <url>/2020/04/17/Laravel/</url>
     <content><![CDATA[<p>请求的生命周期:</p>
@@ -42,21 +29,28 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/04/16/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <title>Mac外接固态</title>
+    <url>/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/</url>
+    <content><![CDATA[<p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
+<p>steam的流式传输</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>QQ小程序提现工具类文档</title>
+    <url>/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/</url>
+    <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>composer require nekom/qq-wallet-money:dev-master</code></p>
+<h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$key  = <span class="keyword">__DIR__</span>.<span class="string">'/cert/key.pem'</span>;</span><br><span class="line">$cert = <span class="keyword">__DIR__</span>.<span class="string">'/cert/cert.pem'</span>;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> \QQ\QQPay([</span><br><span class="line">    <span class="string">'momo'</span>           =&gt; <span class="string">'提现啦！'</span>,</span><br><span class="line">    <span class="string">'appid'</span>          =&gt; <span class="string">'小程序appid'</span>,</span><br><span class="line">    <span class="string">'mch_id'</span>         =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_id'</span>     =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_passwd'</span> =&gt; md5(<span class="string">''</span>)</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 设置好商户的key</span></span><br><span class="line">$obj-&gt;setKey(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// 设置key.pem证书路径</span></span><br><span class="line">$obj-&gt;setKeyPath($key);</span><br><span class="line"><span class="comment">// 设置cert.pem证书路径</span></span><br><span class="line">$obj-&gt;setCertPath($cert);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置打款金额 单位元</span></span><br><span class="line">$obj-&gt;price(<span class="number">1.00</span>);</span><br><span class="line"><span class="comment">// 设置打款金额的另一种写法，和文档需要的数值同步</span></span><br><span class="line">$obj-&gt;priceTo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">$obj-&gt;openid(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line">$out = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置成功时的回调</span></span><br><span class="line">$obj-&gt;success(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line">$obj-&gt;error(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line">$success = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line">$error = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样也是可以的</span></span><br><span class="line">$obj-&gt;success($success);</span><br><span class="line">$obj-&gt;error($error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你还可以这样写</span></span><br><span class="line">$status = $obj-&gt;send($success,$error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只监听成功的回调</span></span><br><span class="line">$status = $obj-&gt;send(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>cocos js 与iOS 交互</title>
+    <url>/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
+    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
 ]]></content>
   </entry>
   <entry>
@@ -149,29 +143,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>cocos js 与iOS 交互</title>
-    <url>/2020/04/17/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
-    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
-<p>涉及到 .m和.mm的区别。</p>
-<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
-<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
-<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
-<h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
-<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>mysql5.7分组group by 查询报错only_full_group_by</title>
-    <url>/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
-    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>mac拖动应用程序秒切</title>
     <url>/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/</url>
     <content><![CDATA[<p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
@@ -229,18 +200,14 @@
 ]]></content>
   </entry>
   <entry>
-    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
-    <url>/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
-    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
-<p>如图↑</p>
-<p>翻译如下↓</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+    <title>mysql5.7分组group by 查询报错only_full_group_by</title>
+    <url>/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
+    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
 
-<blockquote>
-<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
-<p>第二行可以看出有多少次失败了</p>
-<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
-</blockquote>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -310,6 +277,74 @@
 
 <p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
 <h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
+    <url>/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
+    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
+<p>如图↑</p>
+<p>翻译如下↓</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
+<p>第二行可以看出有多少次失败了</p>
+<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>养鸡赚后端经验总结</title>
+    <url>/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
+    <content><![CDATA[<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="设计高性能的接口的时候要考虑的问题"><a href="#设计高性能的接口的时候要考虑的问题" class="headerlink" title="设计高性能的接口的时候要考虑的问题"></a>设计高性能的接口的时候要考虑的问题</h2><ol>
+<li>尽量减少Sql处理，特别是能加索引的地方一定要加。</li>
+<li>需要做<strong>运算</strong>的操作，可以<strong>适当</strong>的交给<strong>前端来做</strong>。并不是所有东西都必须后端计算好。尽量把<strong>处理时间长的逻辑</strong>放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。</li>
+<li>Sql尽量别做<strong>聚合操作</strong>，比如<code>sum</code> <code>add</code> <code>group</code> 之类的，这种的搞不好就会<strong>不走索引</strong></li>
+<li>需要展示的数据尽量不要做<strong>验证逻辑</strong></li>
+<li>字符串里没有变量的话必须用<code>&#39;&#39;</code> 而不是<code>&quot;&quot;</code></li>
+<li>用<code>group</code> <code>order</code> 的时候一定要注意索引问题，否则会<strong>导致数据库cpu飙升</strong></li>
+<li>不一定非得是索引才会导致数据库<strong>cpu飙升</strong> <code>sending data</code> 也要注意</li>
+</ol>
+<h2 id="养鸡赚中的设计模式"><a href="#养鸡赚中的设计模式" class="headerlink" title="养鸡赚中的设计模式"></a>养鸡赚中的设计模式</h2><blockquote>
+<p>策略模式</p>
+</blockquote>
+<p>用在添加鸡的时候。因为在用户45元以前，到45元以后每一元都有一个算法去计算鸡蛋，时间，种鸡的次数，等等条件！</p>
+<p>主要解决的问题是：<strong>超级多的<code>if else</code>在一个方法中</strong>把他们封装成类后面也好维护一些</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-859.html">php后台接口在自己公司项目中的设计模式之策略模式的实战应用与心得</a></p>
+<h2 id="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"><a href="#安卓养鸡和小程序养鸡的后端逻辑不同之登录分享" class="headerlink" title="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"></a>安卓养鸡和小程序养鸡的后端逻辑不同之登录分享</h2><h2 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h2><p>做小程序后端的时候需要判断很多逻辑，其中有一个就是找第一条数据和第二条数据，研究了一下</p>
+<p>我的方案:<a href="https://i.nekom.cc/post-863.html">Php中的数组操作之游标操作 current()与其兄弟姐妹prev(),next(),end(),reset()的个人理解实践</a></p>
+<h2 id="Php时间是可以直接比大小的"><a href="#Php时间是可以直接比大小的" class="headerlink" title="Php时间是可以直接比大小的"></a>Php时间是可以直接比大小的</h2><p>比如</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'11:00'</span> &gt; <span class="string">'11:05'</span> ? <span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="string">'2019/11/20'</span> &gt; <span class="string">'2019/10/20'</span>?<span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="并发消峰问题，领取提现次数"><a href="#并发消峰问题，领取提现次数" class="headerlink" title="并发消峰问题，领取提现次数"></a>并发消峰问题，领取提现次数</h2><h2 id="如果mysql自增id到头了怎么办"><a href="#如果mysql自增id到头了怎么办" class="headerlink" title="如果mysql自增id到头了怎么办"></a>如果mysql自增id到头了怎么办</h2><blockquote>
+<p>面试官:”那自增主键达到最大值了，用完了怎么办？”</p>
+<p>我:”这问题没遇到过，因为自增主键我们用int类型，一般达不到最大值，我们就分库分表了，所以不曾遇见过！”</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/qq_35393693/article/details/100059966" target="_blank" rel="noopener">mysql中主键用完了怎么办</a></p>
+<h2 id="数据库表中随机取一条数据"><a href="#数据库表中随机取一条数据" class="headerlink" title="数据库表中随机取一条数据"></a>数据库表中随机取一条数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT column FROM table  ORDER BY RAND() LIMIT 1</span><br></pre></td></tr></table></figure>
+
+<p>↑适合表中数量不多的情况</p>
+<p><a href="https://www.jianshu.com/p/aba6fc58a219" target="_blank" rel="noopener">适合一些表里数据特别多的情况</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>我如何获取mac上微信聊天记录并使用python3.7生成词云作为给自己女友礼物的</title>
+    <url>/2020/04/17/%E6%88%91%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96mac%E4%B8%8A%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%BD%BF%E7%94%A8python3.7%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91%E4%BD%9C%E4%B8%BA%E7%BB%99%E8%87%AA%E5%B7%B1%E5%A5%B3%E5%8F%8B%E7%A4%BC%E7%89%A9%E7%9A%84/</url>
+    <content><![CDATA[<h2 id="首先是如何获取微信的聊天记录信息"><a href="#首先是如何获取微信的聊天记录信息" class="headerlink" title="首先是如何获取微信的聊天记录信息"></a>首先是如何获取微信的聊天记录信息</h2><h2 id="如何把每一句话转换为一个个词的"><a href="#如何把每一句话转换为一个个词的" class="headerlink" title="如何把每一句话转换为一个个词的"></a>如何把每一句话转换为一个个词的</h2><h2 id="如何用这些词生成词云"><a href="#如何用这些词生成词云" class="headerlink" title="如何用这些词生成词云"></a>如何用这些词生成词云</h2><h2 id="如何写脚本的"><a href="#如何写脚本的" class="headerlink" title="如何写脚本的"></a>如何写脚本的</h2><p><a href="https://blog.csdn.net/fly910905/article/details/77763086" target="_blank" rel="noopener">https://blog.csdn.net/fly910905/article/details/77763086</a></p>
+<p><a href="https://www.jianshu.com/p/28718ba04bc9?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/28718ba04bc9?from=groupmessage</a></p>
+<p><a href="https://www.cnblogs.com/littlebob/p/9427896.html" target="_blank" rel="noopener">https://www.cnblogs.com/littlebob/p/9427896.html</a></p>
+<p><a href="https://www.cnblogs.com/Keys819/p/9326575.html" target="_blank" rel="noopener">https://www.cnblogs.com/Keys819/p/9326575.html</a></p>
+<p><a href="https://www.jianshu.com/p/615c9d285c54" target="_blank" rel="noopener">https://www.jianshu.com/p/615c9d285c54</a></p>
+<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
+<p><a href="https://blog.csdn.net/swinfans/article/details/88712593" target="_blank" rel="noopener">https://blog.csdn.net/swinfans/article/details/88712593</a></p>
+<p><a href="https://www.jianshu.com/p/40554c323089" target="_blank" rel="noopener">https://www.jianshu.com/p/40554c323089</a></p>
+<p><a href="https://blog.csdn.net/iamcxl369/article/details/80671428" target="_blank" rel="noopener">https://blog.csdn.net/iamcxl369/article/details/80671428</a></p>
+<p><a href="https://www.jianshu.com/p/90224ab9cdf2" target="_blank" rel="noopener">https://www.jianshu.com/p/90224ab9cdf2</a></p>
+<p><a href="https://www.zetetic.net/sqlcipher/sqlcipher-api/#key" target="_blank" rel="noopener">https://www.zetetic.net/sqlcipher/sqlcipher-api/#key</a></p>
+<p><a href="https://www.jianshu.com/p/68e9f22f9680" target="_blank" rel="noopener">https://www.jianshu.com/p/68e9f22f9680</a></p>
+<p><a href="https://blog.naaln.com/2016/11/wechat-data-structure/" target="_blank" rel="noopener">https://blog.naaln.com/2016/11/wechat-data-structure/</a></p>
+<p>Db类，循环获取信息，输出接口，</p>
 ]]></content>
   </entry>
   <entry>
@@ -418,40 +453,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>养鸡赚后端经验总结</title>
-    <url>/2020/04/17/%E5%85%BB%E9%B8%A1%E8%B5%9A%E5%90%8E%E7%AB%AF%E7%BB%8F%E9%AA%8C%E6%80%BB%E7%BB%93/</url>
-    <content><![CDATA[<h1 id="经验总结"><a href="#经验总结" class="headerlink" title="经验总结"></a>经验总结</h1><h2 id="设计高性能的接口的时候要考虑的问题"><a href="#设计高性能的接口的时候要考虑的问题" class="headerlink" title="设计高性能的接口的时候要考虑的问题"></a>设计高性能的接口的时候要考虑的问题</h2><ol>
-<li>尽量减少Sql处理，特别是能加索引的地方一定要加。</li>
-<li>需要做<strong>运算</strong>的操作，可以<strong>适当</strong>的交给<strong>前端来做</strong>。并不是所有东西都必须后端计算好。尽量把<strong>处理时间长的逻辑</strong>放到其他地方（比如需要验证的逻辑，可以放在领取的时候），而不是放在需要提高性能的接口里。</li>
-<li>Sql尽量别做<strong>聚合操作</strong>，比如<code>sum</code> <code>add</code> <code>group</code> 之类的，这种的搞不好就会<strong>不走索引</strong></li>
-<li>需要展示的数据尽量不要做<strong>验证逻辑</strong></li>
-<li>字符串里没有变量的话必须用<code>&#39;&#39;</code> 而不是<code>&quot;&quot;</code></li>
-<li>用<code>group</code> <code>order</code> 的时候一定要注意索引问题，否则会<strong>导致数据库cpu飙升</strong></li>
-<li>不一定非得是索引才会导致数据库<strong>cpu飙升</strong> <code>sending data</code> 也要注意</li>
-</ol>
-<h2 id="养鸡赚中的设计模式"><a href="#养鸡赚中的设计模式" class="headerlink" title="养鸡赚中的设计模式"></a>养鸡赚中的设计模式</h2><blockquote>
-<p>策略模式</p>
-</blockquote>
-<p>用在添加鸡的时候。因为在用户45元以前，到45元以后每一元都有一个算法去计算鸡蛋，时间，种鸡的次数，等等条件！</p>
-<p>主要解决的问题是：<strong>超级多的<code>if else</code>在一个方法中</strong>把他们封装成类后面也好维护一些</p>
-<p>我的方案:<a href="https://i.nekom.cc/post-859.html">php后台接口在自己公司项目中的设计模式之策略模式的实战应用与心得</a></p>
-<h2 id="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"><a href="#安卓养鸡和小程序养鸡的后端逻辑不同之登录分享" class="headerlink" title="安卓养鸡和小程序养鸡的后端逻辑不同之登录分享"></a>安卓养鸡和小程序养鸡的后端逻辑不同之登录分享</h2><h2 id="Php中的数组操作之游标操作"><a href="#Php中的数组操作之游标操作" class="headerlink" title="Php中的数组操作之游标操作"></a>Php中的数组操作之游标操作</h2><p>做小程序后端的时候需要判断很多逻辑，其中有一个就是找第一条数据和第二条数据，研究了一下</p>
-<p>我的方案:<a href="https://i.nekom.cc/post-863.html">Php中的数组操作之游标操作 current()与其兄弟姐妹prev(),next(),end(),reset()的个人理解实践</a></p>
-<h2 id="Php时间是可以直接比大小的"><a href="#Php时间是可以直接比大小的" class="headerlink" title="Php时间是可以直接比大小的"></a>Php时间是可以直接比大小的</h2><p>比如</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="string">'11:00'</span> &gt; <span class="string">'11:05'</span> ? <span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// false</span></span><br><span class="line"><span class="string">'2019/11/20'</span> &gt; <span class="string">'2019/10/20'</span>?<span class="keyword">true</span>:<span class="keyword">false</span>; <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="并发消峰问题，领取提现次数"><a href="#并发消峰问题，领取提现次数" class="headerlink" title="并发消峰问题，领取提现次数"></a>并发消峰问题，领取提现次数</h2><h2 id="如果mysql自增id到头了怎么办"><a href="#如果mysql自增id到头了怎么办" class="headerlink" title="如果mysql自增id到头了怎么办"></a>如果mysql自增id到头了怎么办</h2><blockquote>
-<p>面试官:”那自增主键达到最大值了，用完了怎么办？”</p>
-<p>我:”这问题没遇到过，因为自增主键我们用int类型，一般达不到最大值，我们就分库分表了，所以不曾遇见过！”</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/qq_35393693/article/details/100059966" target="_blank" rel="noopener">mysql中主键用完了怎么办</a></p>
-<h2 id="数据库表中随机取一条数据"><a href="#数据库表中随机取一条数据" class="headerlink" title="数据库表中随机取一条数据"></a>数据库表中随机取一条数据</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SELECT column FROM table  ORDER BY RAND() LIMIT 1</span><br></pre></td></tr></table></figure>
-
-<p>↑适合表中数量不多的情况</p>
-<p><a href="https://www.jianshu.com/p/aba6fc58a219" target="_blank" rel="noopener">适合一些表里数据特别多的情况</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>破解idea系列</title>
     <url>/2020/04/17/%E7%A0%B4%E8%A7%A3idea%E7%B3%BB%E5%88%97/</url>
     <content><![CDATA[<p><a href="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2019-11-27-jetbrains-agent.jar.zip" target="_blank" rel="noopener">破解文件</a></p>
@@ -473,6 +474,22 @@
     <content><![CDATA[<h2 id="关于tp框架的事务"><a href="#关于tp框架的事务" class="headerlink" title="关于tp框架的事务"></a>关于tp框架的事务</h2><ol>
 <li>在可能的情况下，尽量在一个方法内开启事务，并在退出方法前一定要rollback或者commit</li>
 </ol>
+]]></content>
+  </entry>
+  <entry>
+    <title>配置Xcode在build时cocos的技巧</title>
+    <url>/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
+
+<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>设计模式的应用场景</title>
+    <url>/2020/04/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
+    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><blockquote>
+<p>需求:用户表有余额字段，当余额到达45,46,47,48,49,50,50以上时，分别用不同的算法得出应加的虚拟货币数量。</p>
+</blockquote>
 ]]></content>
   </entry>
   <entry>
@@ -510,25 +527,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>我如何获取mac上微信聊天记录并使用python3.7生成词云作为给自己女友礼物的</title>
-    <url>/2020/04/17/%E6%88%91%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96mac%E4%B8%8A%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%BD%BF%E7%94%A8python3.7%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91%E4%BD%9C%E4%B8%BA%E7%BB%99%E8%87%AA%E5%B7%B1%E5%A5%B3%E5%8F%8B%E7%A4%BC%E7%89%A9%E7%9A%84/</url>
-    <content><![CDATA[<h2 id="首先是如何获取微信的聊天记录信息"><a href="#首先是如何获取微信的聊天记录信息" class="headerlink" title="首先是如何获取微信的聊天记录信息"></a>首先是如何获取微信的聊天记录信息</h2><h2 id="如何把每一句话转换为一个个词的"><a href="#如何把每一句话转换为一个个词的" class="headerlink" title="如何把每一句话转换为一个个词的"></a>如何把每一句话转换为一个个词的</h2><h2 id="如何用这些词生成词云"><a href="#如何用这些词生成词云" class="headerlink" title="如何用这些词生成词云"></a>如何用这些词生成词云</h2><h2 id="如何写脚本的"><a href="#如何写脚本的" class="headerlink" title="如何写脚本的"></a>如何写脚本的</h2><p><a href="https://blog.csdn.net/fly910905/article/details/77763086" target="_blank" rel="noopener">https://blog.csdn.net/fly910905/article/details/77763086</a></p>
-<p><a href="https://www.jianshu.com/p/28718ba04bc9?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/28718ba04bc9?from=groupmessage</a></p>
-<p><a href="https://www.cnblogs.com/littlebob/p/9427896.html" target="_blank" rel="noopener">https://www.cnblogs.com/littlebob/p/9427896.html</a></p>
-<p><a href="https://www.cnblogs.com/Keys819/p/9326575.html" target="_blank" rel="noopener">https://www.cnblogs.com/Keys819/p/9326575.html</a></p>
-<p><a href="https://www.jianshu.com/p/615c9d285c54" target="_blank" rel="noopener">https://www.jianshu.com/p/615c9d285c54</a></p>
-<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
-<p><a href="https://blog.csdn.net/swinfans/article/details/88712593" target="_blank" rel="noopener">https://blog.csdn.net/swinfans/article/details/88712593</a></p>
-<p><a href="https://www.jianshu.com/p/40554c323089" target="_blank" rel="noopener">https://www.jianshu.com/p/40554c323089</a></p>
-<p><a href="https://blog.csdn.net/iamcxl369/article/details/80671428" target="_blank" rel="noopener">https://blog.csdn.net/iamcxl369/article/details/80671428</a></p>
-<p><a href="https://www.jianshu.com/p/90224ab9cdf2" target="_blank" rel="noopener">https://www.jianshu.com/p/90224ab9cdf2</a></p>
-<p><a href="https://www.zetetic.net/sqlcipher/sqlcipher-api/#key" target="_blank" rel="noopener">https://www.zetetic.net/sqlcipher/sqlcipher-api/#key</a></p>
-<p><a href="https://www.jianshu.com/p/68e9f22f9680" target="_blank" rel="noopener">https://www.jianshu.com/p/68e9f22f9680</a></p>
-<p><a href="https://blog.naaln.com/2016/11/wechat-data-structure/" target="_blank" rel="noopener">https://blog.naaln.com/2016/11/wechat-data-structure/</a></p>
-<p>Db类，循环获取信息，输出接口，</p>
-]]></content>
-  </entry>
-  <entry>
     <title>面向对象思想</title>
     <url>/2020/04/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</url>
     <content><![CDATA[<p>关于我</p>
@@ -553,19 +551,21 @@
 ]]></content>
   </entry>
   <entry>
-    <title>设计模式的应用场景</title>
-    <url>/2020/04/17/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF/</url>
-    <content><![CDATA[<h2 id="策略模式"><a href="#策略模式" class="headerlink" title="策略模式"></a>策略模式</h2><blockquote>
-<p>需求:用户表有余额字段，当余额到达45,46,47,48,49,50,50以上时，分别用不同的算法得出应加的虚拟货币数量。</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>配置Xcode在build时cocos的技巧</title>
-    <url>/2020/04/17/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
+    <title>Hello World</title>
+    <url>/2020/04/16/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 
-<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -577,7 +577,10 @@
 <ol>
 <li>Open the Alfred</li>
 <li>Enter the “jk”</li>
-<li>Select and press enter</li>
+<li>Select and press enter<a id="more"></a>
+
+
+</li>
 </ol>
 <blockquote>
 <p>Example</p>
