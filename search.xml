@@ -1,26 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Ios中下拉刷新整个视图都会卡顿</title>
-    <url>/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/</url>
-    <content><![CDATA[<h2 id="造成卡顿的原因"><a href="#造成卡顿的原因" class="headerlink" title="造成卡顿的原因"></a>造成卡顿的原因</h2><ol>
-<li><strong>动画</strong>:使用的是uiview中的动画，然后<strong>递归</strong>调用。任何一个使用递归的地方都应该<strong>谨慎</strong>。</li>
-<li><strong>广告</strong>:非必要情况下，下拉<strong>重新加载</strong>也会导致卡顿。</li>
-</ol>
-<h2 id="其他原因卡顿"><a href="#其他原因卡顿" class="headerlink" title="其他原因卡顿"></a>其他原因卡顿</h2><p>并非由下拉造成的，可能是滚动时触发的卡顿。</p>
-<ol>
-<li>滚动时触发了某些ui的刷新。提示，滚动并不像看上去滚了一下。实际上滚动时触发的事件有超多次。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 造成闪烁的原因，主要是因为CALayer有一个隐式动画，只要在调用reloadData刷新时，关闭隐式动画就可以避免了</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">[self.collectionView reloadData];</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-<p><a href="https://www.jianshu.com/p/cdd4a0a3968a" target="_blank" rel="noopener">UICollectionView刷新时页面会有闪烁问题的解决</a></p>
-]]></content>
-  </entry>
-  <entry>
     <title>Laravel</title>
     <url>/2020/04/17/Laravel/</url>
     <content><![CDATA[<p>请求的生命周期:</p>
@@ -29,17 +9,28 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Mac外接固态</title>
-    <url>/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/</url>
-    <content><![CDATA[<p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
-<p>steam的流式传输</p>
-]]></content>
-  </entry>
-  <entry>
     <title>QQ小程序提现工具类文档</title>
     <url>/2020/04/17/QQ%E5%B0%8F%E7%A8%8B%E5%BA%8F%E6%8F%90%E7%8E%B0%E5%B7%A5%E5%85%B7%E7%B1%BB%E6%96%87%E6%A1%A3/</url>
     <content><![CDATA[<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><p><code>composer require nekom/qq-wallet-money:dev-master</code></p>
 <h2 id="Demo"><a href="#Demo" class="headerlink" title="Demo"></a>Demo</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line">$key  = <span class="keyword">__DIR__</span>.<span class="string">'/cert/key.pem'</span>;</span><br><span class="line">$cert = <span class="keyword">__DIR__</span>.<span class="string">'/cert/cert.pem'</span>;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> \QQ\QQPay([</span><br><span class="line">    <span class="string">'momo'</span>           =&gt; <span class="string">'提现啦！'</span>,</span><br><span class="line">    <span class="string">'appid'</span>          =&gt; <span class="string">'小程序appid'</span>,</span><br><span class="line">    <span class="string">'mch_id'</span>         =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_id'</span>     =&gt; <span class="string">''</span>,</span><br><span class="line">    <span class="string">'op_user_passwd'</span> =&gt; md5(<span class="string">''</span>)</span><br><span class="line">]);</span><br><span class="line"><span class="comment">// 设置好商户的key</span></span><br><span class="line">$obj-&gt;setKey(<span class="string">''</span>);</span><br><span class="line"><span class="comment">// 设置key.pem证书路径</span></span><br><span class="line">$obj-&gt;setKeyPath($key);</span><br><span class="line"><span class="comment">// 设置cert.pem证书路径</span></span><br><span class="line">$obj-&gt;setCertPath($cert);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置打款金额 单位元</span></span><br><span class="line">$obj-&gt;price(<span class="number">1.00</span>);</span><br><span class="line"><span class="comment">// 设置打款金额的另一种写法，和文档需要的数值同步</span></span><br><span class="line">$obj-&gt;priceTo(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">$obj-&gt;openid(<span class="string">'123'</span>);</span><br><span class="line"></span><br><span class="line">$out = <span class="number">123</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 设置成功时的回调</span></span><br><span class="line">$obj-&gt;success(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line">$obj-&gt;error(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 另一种写法</span></span><br><span class="line">$success = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line">$error = <span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款失败时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款失败的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这样也是可以的</span></span><br><span class="line">$obj-&gt;success($success);</span><br><span class="line">$obj-&gt;error($error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 你还可以这样写</span></span><br><span class="line">$status = $obj-&gt;send($success,$error);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 只监听成功的回调</span></span><br><span class="line">$status = $obj-&gt;send(<span class="function"><span class="keyword">function</span> <span class="params">($info)</span> <span class="title">use</span> <span class="params">($out)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 打款成功时会走这里</span></span><br><span class="line">    var_dump($info);</span><br><span class="line">    <span class="comment">// $info 是qq打款成功的返回结果</span></span><br><span class="line">    <span class="comment">// $out 是外部的参数，可以传进来</span></span><br><span class="line">    var_dump($out);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/04/16/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
   </entry>
   <entry>
     <title>cocos js 与iOS 交互</title>
@@ -51,6 +42,33 @@
 <p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
 <h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
 <p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>iOS 13 present 问题</title>
+    <url>/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<h2 id="present-vc-之后"><a href="#present-vc-之后" class="headerlink" title="present(vc) 之后"></a>present(vc) 之后</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-074911.png?x-oss-process=style/shuiyin" alt="image-20200317154909698"></p>
+<p>网上查90的博客都是一句话就完事了，不告诉你加在哪。</p>
+<p><code>vc.modalPresentationStyle = .fullScreen</code></p>
+<p>这样没问题，真的相信我。</p>
+<p>你们加上了还是没有效果的原因是因为你们是可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<p>可能是两边都加</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 但这样都是<strong>不行的</strong>因为我试过……</p>
+</blockquote>
+<p>但正确做法是这样</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line">vc.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-075658.png?x-oss-process=style/shuiyin" alt="image-20200317155657412"></p>
 ]]></content>
   </entry>
   <entry>
@@ -116,33 +134,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>iOS 13 present 问题</title>
-    <url>/2020/04/17/iOS%2013%20present%20%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<h2 id="present-vc-之后"><a href="#present-vc-之后" class="headerlink" title="present(vc) 之后"></a>present(vc) 之后</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-074911.png?x-oss-process=style/shuiyin" alt="image-20200317154909698"></p>
-<p>网上查90的博客都是一句话就完事了，不告诉你加在哪。</p>
-<p><code>vc.modalPresentationStyle = .fullScreen</code></p>
-<p>这样没问题，真的相信我。</p>
-<p>你们加上了还是没有效果的原因是因为你们是可能是这样用的</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
-
-<p>可能是这样用的</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
-
-<p>可能是两边都加</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 但这样都是<strong>不行的</strong>因为我试过……</p>
-</blockquote>
-<p>但正确做法是这样</p>
-<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line">vc.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
-
-
-
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-075658.png?x-oss-process=style/shuiyin" alt="image-20200317155657412"></p>
-]]></content>
-  </entry>
-  <entry>
     <title>mac拖动应用程序秒切</title>
     <url>/2020/04/17/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/</url>
     <content><![CDATA[<p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
@@ -155,6 +146,17 @@
 
 <p>如果你想还原成原样，也很简单，再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults delete com.apple.dock workspaces-edge-delay;killall Dock</span><br></pre></td></tr></table></figure>]]></content>
+  </entry>
+  <entry>
+    <title>mysql5.7分组group by 查询报错only_full_group_by</title>
+    <url>/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
+    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
+]]></content>
   </entry>
   <entry>
     <title>php中的class类里的class与self与this与static</title>
@@ -197,17 +199,6 @@
 
 
 
-]]></content>
-  </entry>
-  <entry>
-    <title>mysql5.7分组group by 查询报错only_full_group_by</title>
-    <url>/2020/04/17/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
-    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
 ]]></content>
   </entry>
   <entry>
@@ -259,6 +250,21 @@
 ]]></content>
   </entry>
   <entry>
+    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
+    <url>/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
+    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
+<p>如图↑</p>
+<p>翻译如下↓</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
+<p>第二行可以看出有多少次失败了</p>
+<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
     <title>关于服务器被扫描攻击这件事我的应对措施</title>
     <url>/2020/04/17/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
     <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
@@ -277,21 +283,6 @@
 
 <p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
 <h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
-    <url>/2020/04/17/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
-    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
-<p>如图↑</p>
-<p>翻译如下↓</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
-<p>第二行可以看出有多少次失败了</p>
-<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
-</blockquote>
 ]]></content>
   </entry>
   <entry>
@@ -326,25 +317,6 @@
 
 <p>↑适合表中数量不多的情况</p>
 <p><a href="https://www.jianshu.com/p/aba6fc58a219" target="_blank" rel="noopener">适合一些表里数据特别多的情况</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>我如何获取mac上微信聊天记录并使用python3.7生成词云作为给自己女友礼物的</title>
-    <url>/2020/04/17/%E6%88%91%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96mac%E4%B8%8A%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%BD%BF%E7%94%A8python3.7%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91%E4%BD%9C%E4%B8%BA%E7%BB%99%E8%87%AA%E5%B7%B1%E5%A5%B3%E5%8F%8B%E7%A4%BC%E7%89%A9%E7%9A%84/</url>
-    <content><![CDATA[<h2 id="首先是如何获取微信的聊天记录信息"><a href="#首先是如何获取微信的聊天记录信息" class="headerlink" title="首先是如何获取微信的聊天记录信息"></a>首先是如何获取微信的聊天记录信息</h2><h2 id="如何把每一句话转换为一个个词的"><a href="#如何把每一句话转换为一个个词的" class="headerlink" title="如何把每一句话转换为一个个词的"></a>如何把每一句话转换为一个个词的</h2><h2 id="如何用这些词生成词云"><a href="#如何用这些词生成词云" class="headerlink" title="如何用这些词生成词云"></a>如何用这些词生成词云</h2><h2 id="如何写脚本的"><a href="#如何写脚本的" class="headerlink" title="如何写脚本的"></a>如何写脚本的</h2><p><a href="https://blog.csdn.net/fly910905/article/details/77763086" target="_blank" rel="noopener">https://blog.csdn.net/fly910905/article/details/77763086</a></p>
-<p><a href="https://www.jianshu.com/p/28718ba04bc9?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/28718ba04bc9?from=groupmessage</a></p>
-<p><a href="https://www.cnblogs.com/littlebob/p/9427896.html" target="_blank" rel="noopener">https://www.cnblogs.com/littlebob/p/9427896.html</a></p>
-<p><a href="https://www.cnblogs.com/Keys819/p/9326575.html" target="_blank" rel="noopener">https://www.cnblogs.com/Keys819/p/9326575.html</a></p>
-<p><a href="https://www.jianshu.com/p/615c9d285c54" target="_blank" rel="noopener">https://www.jianshu.com/p/615c9d285c54</a></p>
-<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
-<p><a href="https://blog.csdn.net/swinfans/article/details/88712593" target="_blank" rel="noopener">https://blog.csdn.net/swinfans/article/details/88712593</a></p>
-<p><a href="https://www.jianshu.com/p/40554c323089" target="_blank" rel="noopener">https://www.jianshu.com/p/40554c323089</a></p>
-<p><a href="https://blog.csdn.net/iamcxl369/article/details/80671428" target="_blank" rel="noopener">https://blog.csdn.net/iamcxl369/article/details/80671428</a></p>
-<p><a href="https://www.jianshu.com/p/90224ab9cdf2" target="_blank" rel="noopener">https://www.jianshu.com/p/90224ab9cdf2</a></p>
-<p><a href="https://www.zetetic.net/sqlcipher/sqlcipher-api/#key" target="_blank" rel="noopener">https://www.zetetic.net/sqlcipher/sqlcipher-api/#key</a></p>
-<p><a href="https://www.jianshu.com/p/68e9f22f9680" target="_blank" rel="noopener">https://www.jianshu.com/p/68e9f22f9680</a></p>
-<p><a href="https://blog.naaln.com/2016/11/wechat-data-structure/" target="_blank" rel="noopener">https://blog.naaln.com/2016/11/wechat-data-structure/</a></p>
-<p>Db类，循环获取信息，输出接口，</p>
 ]]></content>
   </entry>
   <entry>
@@ -405,18 +377,22 @@
 ]]></content>
   </entry>
   <entry>
-    <title>果园</title>
-    <url>/2020/04/17/%E6%9E%9C%E5%9B%AD/</url>
-    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 树的状态</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 小树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Middlie</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Big</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树开花</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">15</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树长🍎</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">30</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
+    <title>我如何获取mac上微信聊天记录并使用python3.7生成词云作为给自己女友礼物的</title>
+    <url>/2020/04/17/%E6%88%91%E5%A6%82%E4%BD%95%E8%8E%B7%E5%8F%96mac%E4%B8%8A%E5%BE%AE%E4%BF%A1%E8%81%8A%E5%A4%A9%E8%AE%B0%E5%BD%95%E5%B9%B6%E4%BD%BF%E7%94%A8python3.7%E7%94%9F%E6%88%90%E8%AF%8D%E4%BA%91%E4%BD%9C%E4%B8%BA%E7%BB%99%E8%87%AA%E5%B7%B1%E5%A5%B3%E5%8F%8B%E7%A4%BC%E7%89%A9%E7%9A%84/</url>
+    <content><![CDATA[<h2 id="首先是如何获取微信的聊天记录信息"><a href="#首先是如何获取微信的聊天记录信息" class="headerlink" title="首先是如何获取微信的聊天记录信息"></a>首先是如何获取微信的聊天记录信息</h2><h2 id="如何把每一句话转换为一个个词的"><a href="#如何把每一句话转换为一个个词的" class="headerlink" title="如何把每一句话转换为一个个词的"></a>如何把每一句话转换为一个个词的</h2><h2 id="如何用这些词生成词云"><a href="#如何用这些词生成词云" class="headerlink" title="如何用这些词生成词云"></a>如何用这些词生成词云</h2><h2 id="如何写脚本的"><a href="#如何写脚本的" class="headerlink" title="如何写脚本的"></a>如何写脚本的</h2><p><a href="https://blog.csdn.net/fly910905/article/details/77763086" target="_blank" rel="noopener">https://blog.csdn.net/fly910905/article/details/77763086</a></p>
+<p><a href="https://www.jianshu.com/p/28718ba04bc9?from=groupmessage" target="_blank" rel="noopener">https://www.jianshu.com/p/28718ba04bc9?from=groupmessage</a></p>
+<p><a href="https://www.cnblogs.com/littlebob/p/9427896.html" target="_blank" rel="noopener">https://www.cnblogs.com/littlebob/p/9427896.html</a></p>
+<p><a href="https://www.cnblogs.com/Keys819/p/9326575.html" target="_blank" rel="noopener">https://www.cnblogs.com/Keys819/p/9326575.html</a></p>
+<p><a href="https://www.jianshu.com/p/615c9d285c54" target="_blank" rel="noopener">https://www.jianshu.com/p/615c9d285c54</a></p>
+<p><a href="https://sqlitebrowser.org/dl/" target="_blank" rel="noopener">https://sqlitebrowser.org/dl/</a></p>
+<p><a href="https://blog.csdn.net/swinfans/article/details/88712593" target="_blank" rel="noopener">https://blog.csdn.net/swinfans/article/details/88712593</a></p>
+<p><a href="https://www.jianshu.com/p/40554c323089" target="_blank" rel="noopener">https://www.jianshu.com/p/40554c323089</a></p>
+<p><a href="https://blog.csdn.net/iamcxl369/article/details/80671428" target="_blank" rel="noopener">https://blog.csdn.net/iamcxl369/article/details/80671428</a></p>
+<p><a href="https://www.jianshu.com/p/90224ab9cdf2" target="_blank" rel="noopener">https://www.jianshu.com/p/90224ab9cdf2</a></p>
+<p><a href="https://www.zetetic.net/sqlcipher/sqlcipher-api/#key" target="_blank" rel="noopener">https://www.zetetic.net/sqlcipher/sqlcipher-api/#key</a></p>
+<p><a href="https://www.jianshu.com/p/68e9f22f9680" target="_blank" rel="noopener">https://www.jianshu.com/p/68e9f22f9680</a></p>
+<p><a href="https://blog.naaln.com/2016/11/wechat-data-structure/" target="_blank" rel="noopener">https://blog.naaln.com/2016/11/wechat-data-structure/</a></p>
+<p>Db类，循环获取信息，输出接口，</p>
 ]]></content>
   </entry>
   <entry>
@@ -450,6 +426,21 @@
 <p>当前n分钟内，那种类型的数据最多</p>
 <p>每个类型的数据，每小时条数表格</p>
 <p>警告级别的数据展示</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>果园</title>
+    <url>/2020/04/17/%E6%9E%9C%E5%9B%AD/</url>
+    <content><![CDATA[<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 树的状态</span></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 小树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Middlie</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Big</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">2</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树开花</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">15</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">3</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 大树长🍎</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">BigBloom</span> <span class="keyword">implements</span> <span class="title">TreeState</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">// 成长需要的水滴</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">willDropsWater</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">30</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="comment">// 树的类型</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">type</span><span class="params">()</span></span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">4</span>;</span><br><span class="line">    &#125;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 ]]></content>
   </entry>
   <entry>
@@ -493,6 +484,30 @@
 ]]></content>
   </entry>
   <entry>
+    <title>面向对象思想</title>
+    <url>/2020/04/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</url>
+    <content><![CDATA[<p>关于我</p>
+<p>值得提的:</p>
+<ol>
+<li><p>面向对象的逻辑</p>
+<p>例子：</p>
+<p>需求，有一颗树，树的状态有，小树，大树，开花，长苹果，到变成发财树。</p>
+<p>其中每个状态有不同的功能，如所有树都需要浇水。</p>
+<p>每种树的浇水次数不一样，当用户的余额到不同阶段如，30元，40元，需要的浇水数量也不一样。并且可配。</p>
+<p>苹果树上会有苹果可以领取。</p>
+<p>发财树上会有不定数量的各种类型的东西需要完成任务才能领取。</p>
+</li>
+</ol>
+<p>   分析：</p>
+<p>   抽离出“树”，抽离出“树的状态”，抽离出“策略”，抽离出“用户”，抽离出“配置”</p>
+<p>   抽离出的接口</p>
+<p>   树：树管理着树的所有状态，从小树到大树的切换，对树的所有操作都得通过这个树的类。</p>
+<p>   树的状态：每个状态下树会有不同的操作，如浇水，领取苹果。基类下可能只有个浇水。子类会有不同的操作。用策略模式去获得相应状态的对象。</p>
+<p>   策略：配置获得的苹果数，树需要的水滴。根据余额获得策略对象，根据策略对象获得需要的配置。</p>
+<p>   用户：</p>
+]]></content>
+  </entry>
+  <entry>
     <title>随公司所驱</title>
     <url>/2020/04/17/%E9%9A%8F%E5%85%AC%E5%8F%B8%E6%89%80%E9%A9%B1/</url>
     <content><![CDATA[<blockquote>
@@ -527,45 +542,30 @@
 ]]></content>
   </entry>
   <entry>
-    <title>面向对象思想</title>
-    <url>/2020/04/17/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E6%80%9D%E6%83%B3/</url>
-    <content><![CDATA[<p>关于我</p>
-<p>值得提的:</p>
-<ol>
-<li><p>面向对象的逻辑</p>
-<p>例子：</p>
-<p>需求，有一颗树，树的状态有，小树，大树，开花，长苹果，到变成发财树。</p>
-<p>其中每个状态有不同的功能，如所有树都需要浇水。</p>
-<p>每种树的浇水次数不一样，当用户的余额到不同阶段如，30元，40元，需要的浇水数量也不一样。并且可配。</p>
-<p>苹果树上会有苹果可以领取。</p>
-<p>发财树上会有不定数量的各种类型的东西需要完成任务才能领取。</p>
-</li>
+    <title>Ios中下拉刷新整个视图都会卡顿</title>
+    <url>/2020/04/17/Ios%E4%B8%AD%E4%B8%8B%E6%8B%89%E5%88%B7%E6%96%B0%E6%95%B4%E4%B8%AA%E8%A7%86%E5%9B%BE%E9%83%BD%E4%BC%9A%E5%8D%A1%E9%A1%BF/</url>
+    <content><![CDATA[<h2 id="造成卡顿的原因"><a href="#造成卡顿的原因" class="headerlink" title="造成卡顿的原因"></a>造成卡顿的原因</h2><ol>
+<li><strong>动画</strong>:使用的是uiview中的动画，然后<strong>递归</strong>调用。任何一个使用递归的地方都应该<strong>谨慎</strong>。</li>
+<li><strong>广告</strong>:非必要情况下，下拉<strong>重新加载</strong>也会导致卡顿。</li>
 </ol>
-<p>   分析：</p>
-<p>   抽离出“树”，抽离出“树的状态”，抽离出“策略”，抽离出“用户”，抽离出“配置”</p>
-<p>   抽离出的接口</p>
-<p>   树：树管理着树的所有状态，从小树到大树的切换，对树的所有操作都得通过这个树的类。</p>
-<p>   树的状态：每个状态下树会有不同的操作，如浇水，领取苹果。基类下可能只有个浇水。子类会有不同的操作。用策略模式去获得相应状态的对象。</p>
-<p>   策略：配置获得的苹果数，树需要的水滴。根据余额获得策略对象，根据策略对象获得需要的配置。</p>
-<p>   用户：</p>
+<h2 id="其他原因卡顿"><a href="#其他原因卡顿" class="headerlink" title="其他原因卡顿"></a>其他原因卡顿</h2><p>并非由下拉造成的，可能是滚动时触发的卡顿。</p>
+<ol>
+<li>滚动时触发了某些ui的刷新。提示，滚动并不像看上去滚了一下。实际上滚动时触发的事件有超多次。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 造成闪烁的原因，主要是因为CALayer有一个隐式动画，只要在调用reloadData刷新时，关闭隐式动画就可以避免了</span><br><span class="line">[CATransaction setDisableActions:YES];</span><br><span class="line">[self.collectionView reloadData];</span><br><span class="line">[CATransaction commit];</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<p><a href="https://www.jianshu.com/p/cdd4a0a3968a" target="_blank" rel="noopener">UICollectionView刷新时页面会有闪烁问题的解决</a></p>
 ]]></content>
   </entry>
   <entry>
-    <title>Hello World</title>
-    <url>/2020/04/16/hello-world/</url>
-    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+    <title>Mac外接固态</title>
+    <url>/2020/04/17/Mac%E5%A4%96%E6%8E%A5%E5%9B%BA%E6%80%81/</url>
+    <content><![CDATA[<p><a href="https://www.crystalidea.com/macs-fan-control/download" target="_blank" rel="noopener">风扇控制</a></p>
+<p>steam的流式传输</p>
 ]]></content>
   </entry>
   <entry>
