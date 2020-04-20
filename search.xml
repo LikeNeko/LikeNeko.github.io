@@ -614,4 +614,28 @@
 <p>alfred eg: vs 文件路径</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>php生成邀请码的方案</title>
+    <url>/2020/04/20/test/</url>
+    <content><![CDATA[<p>总结一下创建一个邀请码的方案</p>
+<a id="more"></a>
+
+
+
+<blockquote>
+<p>方案1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function createCode($userId)</span><br><span class="line">&#123;</span><br><span class="line">    static $sourceString &#x3D; [</span><br><span class="line">              0,1,2,3,4,5,6,7,8,9,10,</span><br><span class="line">              &#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;,</span><br><span class="line">              &#39;g&#39;,&#39;h&#39;,&#39;i&#39;,&#39;j&#39;,&#39;k&#39;,&#39;l&#39;,</span><br><span class="line">              &#39;m&#39;,&#39;n&#39;,&#39;o&#39;,&#39;p&#39;,&#39;q&#39;,&#39;r&#39;,</span><br><span class="line">              &#39;s&#39;,&#39;t&#39;,&#39;u&#39;,&#39;v&#39;,&#39;w&#39;,&#39;x&#39;,</span><br><span class="line">              &#39;y&#39;,&#39;z&#39;</span><br><span class="line">            ];</span><br><span class="line"> </span><br><span class="line">    $num &#x3D; $userId;</span><br><span class="line">    $code &#x3D; &#39;&#39;;</span><br><span class="line">    while($num)</span><br><span class="line">    &#123;</span><br><span class="line">        $mod &#x3D; $num % 36;</span><br><span class="line">        $num &#x3D; (int)($num &#x2F; 36);</span><br><span class="line">        $code &#x3D; &quot;&#123;$sourceString[$mod]&#125;&#123;$code&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;判断code的长度</span><br><span class="line">    if( empty($code[4]))</span><br><span class="line">        str_pad($code,5,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"> </span><br><span class="line">    return $code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来自:<a href="https://blog.csdn.net/qq_33563706/java/article/details/51897558" target="_blank" rel="noopener">csdn的博客</a></p>
+<blockquote>
+<p>方案1的升级版</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static function encode($user_id) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        $num &#x3D; $user_id;</span><br><span class="line"></span><br><span class="line">        $code &#x3D; &#39;&#39;;</span><br><span class="line"></span><br><span class="line">        while ( $num &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            $mod &#x3D; $num % 35;</span><br><span class="line"></span><br><span class="line">            $num &#x3D; ($num - $mod) &#x2F; 35;</span><br><span class="line"></span><br><span class="line">            $code &#x3D; $source_string[$mod].$code;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(empty($code[3]))</span><br><span class="line"></span><br><span class="line">            $code &#x3D; str_pad($code,4,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"></span><br><span class="line">        return $code;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    static function decode($code) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        if (strrpos($code, &#39;0&#39;) !&#x3D;&#x3D; false)</span><br><span class="line"></span><br><span class="line">            $code &#x3D; substr($code, strrpos($code, &#39;0&#39;)+1);</span><br><span class="line"></span><br><span class="line">        $len &#x3D; strlen($code);</span><br><span class="line"></span><br><span class="line">        $code &#x3D; strrev($code);</span><br><span class="line"></span><br><span class="line">        $num &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        for ($i&#x3D;0; $i &lt; $len; $i++) &#123;</span><br><span class="line"></span><br><span class="line">            $num +&#x3D; strpos($source_string, $code[$i]) * pow(35, $i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return $num;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>php 邀请码 方案</tag>
+      </tags>
+  </entry>
 </search>
