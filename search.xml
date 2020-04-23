@@ -311,4 +311,33 @@
 <p>还是别用了吧……</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>ios 13 present vc 出模态状态的问题</title>
+    <url>/2020/04/23/iOS%2013%20present%20%E9%97%AE%E9%A2%98%5Bok%5D/</url>
+    <content><![CDATA[<h2 id="present-vc-之后"><a href="#present-vc-之后" class="headerlink" title="present(vc) 之后"></a>present(vc) 之后</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-074911.png?x-oss-process=style/shuiyin" alt="image-20200317154909698"></p>
+<p>网上查90的博客都是一句话就完事了，不告诉你加在哪。</p>
+<a id="more"></a>
+
+<p><code>vc.modalPresentationStyle = .fullScreen</code></p>
+<p>这样没问题，真的相信我。</p>
+<p>你们加上了还是没有效果的原因是因为你们是可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+<p>可能是这样用的</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<p>可能是两边都加</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// b页面里的代码</span></span><br><span class="line"><span class="keyword">self</span>.view.modalPresentationStyle = .fullScreen</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p> 但这样都是<strong>不行的</strong>因为我试过……</p>
+</blockquote>
+<p>但正确做法是这样</p>
+<figure class="highlight swift"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 假设这里self是A页面</span></span><br><span class="line"><span class="keyword">let</span> vc = <span class="type">BPageController</span>()</span><br><span class="line">vc.modalPresentationStyle = .fullScreen</span><br><span class="line"><span class="keyword">self</span>.present(vc, animated: <span class="literal">true</span>, completion: <span class="literal">nil</span>)</span><br></pre></td></tr></table></figure>
+
+
+
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-03-17-075658.png?x-oss-process=style/shuiyin" alt="image-20200317155657412"></p>
+]]></content>
+  </entry>
 </search>
