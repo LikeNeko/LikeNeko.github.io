@@ -302,7 +302,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/04/23/Cocos%20Creater%E5%88%B0Xcode%E9%85%8D%E7%BD%AEpods/" class="post-title-link" itemprop="url">Cocos Creater到Xcode配置pods</a>
+            <a href="/2020/04/23/Cocos%20Creater%E5%88%B0Xcode%E9%85%8D%E7%BD%AEpods/" class="post-title-link" itemprop="url">CocosCreater到Xcode Pods</a>
         </h2>
 
         <div class="post-meta">
@@ -311,12 +311,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-23 18:02:02" itemprop="dateCreated datePublished" datetime="2020-04-23T18:02:02+08:00">2020-04-23</time>
+              <time title="创建时间：2020-04-23 18:02:02 / 修改时间：18:07:10" itemprop="dateCreated datePublished" datetime="2020-04-23T18:02:02+08:00">2020-04-23</time>
             </span>
 
           
-            <span id="/2020/04/23/Cocos%20Creater%E5%88%B0Xcode%E9%85%8D%E7%BD%AEpods/" class="post-meta-item leancloud_visitors" data-flag-title="Cocos Creater到Xcode配置pods" title="阅读次数">
+            <span id="/2020/04/23/Cocos%20Creater%E5%88%B0Xcode%E9%85%8D%E7%BD%AEpods/" class="post-meta-item leancloud_visitors" data-flag-title="CocosCreater到Xcode Pods" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -342,7 +343,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>68</span>
+              <span>10</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -361,12 +362,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <hr>
-<p>title: CocosCreater到Xcode Pods</p>
-<p>date: 2020-04-20 14:58:14</p>
-<p>tags: </p>
-<p>-–</p>
-<p>#配置项目</p>
+          <p>#配置项目</p>
 <p><a href="http://www.code2048.net/552.html" target="_blank" rel="noopener">参考链接1</a></p>
 
       
@@ -410,8 +406,9 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-04-23 18:02:02" itemprop="dateCreated datePublished" datetime="2020-04-23T18:02:02+08:00">2020-04-23</time>
+              <time title="创建时间：2020-04-23 18:02:02 / 修改时间：18:07:10" itemprop="dateCreated datePublished" datetime="2020-04-23T18:02:02+08:00">2020-04-23</time>
             </span>
 
           
@@ -460,13 +457,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>错误示范</p>
+          <blockquote>
+<p>错误示范</p>
+</blockquote>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，但报错，找不到that.tj2</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>正确示范</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">	<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，that得放在if里面</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/04/23/Cocos%20Creater%20jsb%E8%B0%83%E7%94%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%96%B9%E6%B3%95%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -1354,7 +1356,7 @@
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>

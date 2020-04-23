@@ -40,7 +40,7 @@
 <p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
 <p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
 <p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
-<h3 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a><code>.m</code> 要调用混合的怎么办？</h3><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
 <p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
 ]]></content>
   </entry>
@@ -638,11 +638,18 @@
   <entry>
     <title>CocosCreater中iOS端调用js端报找不到方法的error</title>
     <url>/2020/04/23/Cocos%20Creater%20jsb%E8%B0%83%E7%94%A8%E6%89%BE%E4%B8%8D%E5%88%B0%E6%96%B9%E6%B3%95%E7%9A%84%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<p>错误示范</p>
+    <content><![CDATA[<blockquote>
+<p>错误示范</p>
+</blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，但报错，找不到that.tj2</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+<a id="more"></a>
+
+
+<blockquote>
 <p>正确示范</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">	<span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，that得放在if里面</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">    <span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，that得放在if里面</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 ]]></content>
       <tags>
@@ -650,16 +657,14 @@
       </tags>
   </entry>
   <entry>
-    <title>Cocos Creater到Xcode配置pods</title>
+    <title>CocosCreater到Xcode Pods</title>
     <url>/2020/04/23/Cocos%20Creater%E5%88%B0Xcode%E9%85%8D%E7%BD%AEpods/</url>
-    <content><![CDATA[<hr>
-<p>title: CocosCreater到Xcode Pods</p>
-<p>date: 2020-04-20 14:58:14</p>
-<p>tags: </p>
-<p>-–</p>
-<p>#配置项目</p>
+    <content><![CDATA[<p>#配置项目</p>
 <p><a href="http://www.code2048.net/552.html" target="_blank" rel="noopener">参考链接1</a></p>
 ]]></content>
+      <tags>
+        <tag>CocosCreater</tag>
+      </tags>
   </entry>
   <entry>
     <title>Php生成邀请码方案思路</title>
