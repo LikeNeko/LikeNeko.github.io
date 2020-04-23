@@ -643,7 +643,11 @@
 </blockquote>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line"><span class="keyword">var</span> that = <span class="keyword">this</span>;</span><br><span class="line"><span class="keyword">if</span> (cc.sys.isNative &amp;&amp; cc.sys.os == cc.sys.OS_IOS) &#123;</span><br><span class="line">    jsb.reflection.callStaticMethod(<span class="string">"ADVideo"</span>, <span class="string">"loadAdWithType:"</span>, <span class="string">"2"</span>);</span><br><span class="line">    <span class="comment">// ios端回调走这个方法，但报错，找不到that.tj2</span></span><br><span class="line">    cc.jsVideoDidClick2 = <span class="function"><span class="keyword">function</span> (<span class="params">type</span>) </span>&#123;</span><br><span class="line">        inter.tonji(<span class="number">2</span>, that, that.tj2);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+
+
 <a id="more"></a>
+
+
 
 
 <blockquote>
