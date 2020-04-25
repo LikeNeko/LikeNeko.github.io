@@ -346,6 +346,8 @@
     <content><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在调用TD的包初始化的时候会报一个下面这样的错↓</p>
 <p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/2044509974.png" alt="截图"></p>
 <p>Argument passd to call that takes no arguments</p>
+<a id="more"></a>
+
 <p>当时我就在想，参数有啊？明明在哪写着呢，为什么会报没有参数呢？</p>
 <h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>TD扩展是用OC写的，打开<code>TalkingDataAppCpa.h</code>发现他的oc方法是这样写的</p>
 <p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/486616889.png" alt="截图"></p>
