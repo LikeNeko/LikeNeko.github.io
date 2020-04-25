@@ -341,7 +341,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Swift 5 对接 OC的 TalkingDataAppCpa.h初始化时报错[ok]</title>
+    <title>Swift 5 对接 OC的 TalkingDataAppCpa.h初始化时报错，参数不存在Argument passd to call that takes no arguments</title>
     <url>/2020/04/25/Swift%205%20%E5%AF%B9%E6%8E%A5%20OC%E7%9A%84%20TalkingDataAppCpa.h%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%8A%A5%E9%94%99%5Bok%5D/</url>
     <content><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在调用TD的包初始化的时候会报一个下面这样的错↓</p>
 <p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/2044509974.png" alt="截图"></p>
@@ -354,10 +354,10 @@
 <blockquote>
 <p>以上只是猜测，没有细究这块的东西，毕竟swift我认为还是少和oc打交道比较好。</p>
 </blockquote>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>解决方案很简单，项目里新建个oc文件，自己定义一个类在里面继承一下TalkingDataAppCpa.h，把那个init方法名重构一下就行了，比如改成initAppid:，然后用你自己定义的类初始化</p>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决方案很简单，项目里新建个oc文件，自己定义一个类在里面继承一下TalkingDataAppCpa.h，把那个init方法名重构一下就行了，比如改成initAppid:，然后用你自己定义的类初始化</p>
 ]]></content>
+      <tags>
+        <tag>swift5</tag>
+      </tags>
   </entry>
 </search>
