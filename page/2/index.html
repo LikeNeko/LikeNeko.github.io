@@ -183,6 +183,105 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/23/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92[ok]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/04/23/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92%5Bok%5D/" class="post-title-link" itemprop="url">cocosjs 与ios交互的知识点</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-04-23 18:52:17" itemprop="dateCreated datePublished" datetime="2020-04-23T18:52:17+08:00">2020-04-23</time>
+            </span>
+
+          
+            <span id="/2020/04/23/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92%5Bok%5D/" class="post-meta-item leancloud_visitors" data-flag-title="cocosjs 与ios交互的知识点" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/04/23/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92%5Bok%5D/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/23/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92%5Bok%5D/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>215</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/23/ios%E5%AE%A1%E6%A0%B8[ok]/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -573,7 +672,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">13</span>
+          <span class="site-state-item-count">14</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

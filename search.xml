@@ -365,4 +365,20 @@
         <tag>swift5</tag>
       </tags>
   </entry>
+  <entry>
+    <title>ios 轻微震动 震动反馈 方案</title>
+    <url>/2020/04/28/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88%5Bok%5D/</url>
+    <content><![CDATA[<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Peek 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1519</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Pop 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1520</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>ios</tag>
+      </tags>
+  </entry>
 </search>
