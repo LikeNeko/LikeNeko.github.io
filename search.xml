@@ -376,9 +376,24 @@
 
 <figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
 
+<p><a href="https://www.jianshu.com/p/d4567dbd7dde" target="_blank" rel="noopener">参考</a></p>
 ]]></content>
       <tags>
         <tag>ios</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>ios 本地静默推送到iwatch上</title>
+    <url>/2020/04/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch%5Bok%5D/</url>
+    <content><![CDATA[<p><a href="https://stackoverrun.com/cn/q/10244757" target="_blank" rel="noopener">参考</a></p>
+<p>简单来说就是不设置参数</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-29-081417.png?x-oss-process=style/shuiyin" alt="image-20200429161417535"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>高德地图的坑</title>
+    <url>/2020/04/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91%5Bok%5D/</url>
+    <content><![CDATA[<h2 id="获取不到reGeocode"><a href="#获取不到reGeocode" class="headerlink" title="获取不到reGeocode"></a>获取不到reGeocode</h2><p>原因可能是高德官网包名不对</p>
+]]></content>
   </entry>
 </search>
