@@ -183,6 +183,103 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/05/09/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0[ok]/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/05/09/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0%5Bok%5D/" class="post-title-link" itemprop="url">一个有趣的php单例实现方法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-05-09 16:18:13" itemprop="dateCreated datePublished" datetime="2020-05-09T16:18:13+08:00">2020-05-09</time>
+            </span>
+
+          
+            <span id="/2020/05/09/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0%5Bok%5D/" class="post-meta-item leancloud_visitors" data-flag-title="一个有趣的php单例实现方法" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2020/05/09/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0%5Bok%5D/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2020/05/09/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0%5Bok%5D/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>810</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <blockquote>
+<p>它利用的是php中的trait特性</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">trait</span> Singleton</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> $instance;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">getInstance</span><span class="params">(...$args)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(!<span class="keyword">isset</span>(<span class="keyword">self</span>::$instance))&#123;</span><br><span class="line">            <span class="comment">// 这段代码的有趣之处在于这个static</span></span><br><span class="line">            <span class="keyword">self</span>::$instance = <span class="keyword">new</span> <span class="keyword">static</span>(...$args);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">self</span>::$instance;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Singleton</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var_dump(<span class="string">'a'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = A::getInstance();</span><br><span class="line">$obj-&gt;show();</span><br><span class="line"><span class="comment">// string(1) "a"</span></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="comment">// use Singleton;</span></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">parent</span>::show();</span><br><span class="line">        var_dump(<span class="string">'b'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$obj = B::getInstance();</span><br><span class="line">$obj-&gt;show();</span><br><span class="line"><span class="comment">// string(1) "a" </span></span><br><span class="line"><span class="comment">// 这里没有走B的show()方法,说明拿到的是A的实例化对象</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">use</span> <span class="title">Singleton</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">parent</span>::show();</span><br><span class="line">        var_dump(<span class="string">'c'</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$obj = C::getInstance();</span><br><span class="line"></span><br><span class="line">$obj-&gt;show();</span><br><span class="line"><span class="comment">// string(1) "a"</span></span><br><span class="line"><span class="comment">// string(1) "c"</span></span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91[ok]/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1146,104 +1243,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2020/04/23/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by[ok]/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
-      <meta itemprop="name" content="花猫">
-      <meta itemprop="description" content="喵喵喵">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neko的技术书库">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020/04/23/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by%5Bok%5D/" class="post-title-link" itemprop="url">mysql 5.7 分组group by 查询报错 only_full_group_by</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2020-04-23 18:52:17" itemprop="dateCreated datePublished" datetime="2020-04-23T18:52:17+08:00">2020-04-23</time>
-            </span>
-
-          
-            <span id="/2020/04/23/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by%5Bok%5D/" class="post-meta-item leancloud_visitors" data-flag-title="mysql 5.7 分组group by 查询报错 only_full_group_by" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2020/04/23/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by%5Bok%5D/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2020/04/23/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by%5Bok%5D/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>904</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1315,7 +1314,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">16</span>
+          <span class="site-state-item-count">17</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1364,12 +1363,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">11k</span>
+    <span title="站点总字数">12k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">10 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
