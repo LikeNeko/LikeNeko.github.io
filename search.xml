@@ -132,6 +132,7 @@
 <h1 id="方案13"><a href="#方案13" class="headerlink" title="方案13"></a>方案13</h1><p>被卡了不要慌，基本上卡你的都是机审，发现1-2天卡着的话，自己撤回，改代码也好，改逻辑也好，改完再提。还是卡就是你改的不对。</p>
 <h1 id="方案14"><a href="#方案14" class="headerlink" title="方案14"></a>方案14</h1><p>没用的图片一定要去掉，比如带提现，红包，现金，等字眼的图。</p>
 <h1 id="方案15"><a href="#方案15" class="headerlink" title="方案15"></a>方案15</h1><p>游戏框架里的webview之类的没用到一定不要引入。</p>
+<p>cocoscreater js  webview 全局搜索一共671为正常</p>
 ]]></content>
   </entry>
   <entry>
@@ -442,6 +443,14 @@
 <p>其核心在于找到文章的整个大页面</p>
 <p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-12-122022.png?x-oss-process=style/shuiyin" alt="image-20200512202022094"></p>
 <p>比如csdn的在这</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>依赖注入的花销外表下的实质[ok]</title>
+    <url>/2020/05/21/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E8%8A%B1%E9%94%80%E5%A4%96%E8%A1%A8%E4%B8%8B%E7%9A%84%E5%AE%9E%E8%B4%A8%5Bok%5D/</url>
+    <content><![CDATA[<blockquote>
+<p> 类的依赖通过构造函数，或者某些情况下通过 「setter」 方法 「注入」到类中。</p>
+</blockquote>
 ]]></content>
   </entry>
 </search>
