@@ -197,7 +197,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2020/05/22/mac%20os%20crontab%5Bok%5D/" class="post-title-link" itemprop="url">mac os crontab 不执行的问题</a>
+            <a href="/2020/05/22/mac%20os%20crontab%5Bok%5D/" class="post-title-link" itemprop="url">mac os crontab[ok]</a>
         </h2>
 
         <div class="post-meta">
@@ -206,12 +206,13 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
+              
 
-              <time title="创建时间：2020-05-22 10:07:52" itemprop="dateCreated datePublished" datetime="2020-05-22T10:07:52+08:00">2020-05-22</time>
+              <time title="创建时间：2020-05-22 10:07:52 / 修改时间：11:21:14" itemprop="dateCreated datePublished" datetime="2020-05-22T10:07:52+08:00">2020-05-22</time>
             </span>
 
           
-            <span id="/2020/05/22/mac%20os%20crontab%5Bok%5D/" class="post-meta-item leancloud_visitors" data-flag-title="mac os crontab 不执行的问题" title="阅读次数">
+            <span id="/2020/05/22/mac%20os%20crontab%5Bok%5D/" class="post-meta-item leancloud_visitors" data-flag-title="mac os crontab[ok]" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -237,7 +238,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>29</span>
+              <span>266</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -256,10 +257,20 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="对于新版本mac-os系统"><a href="#对于新版本mac-os系统" class="headerlink" title="对于新版本mac os系统"></a>对于新版本mac os系统</h2><p><a href="https://blog.csdn.net/yao1500/article/details/106163422" target="_blank" rel="noopener">地址</a></p>
+          <p>title: mac os crontab 不执行的问题</p>
+<h2 id="对于新版本mac-os系统"><a href="#对于新版本mac-os系统" class="headerlink" title="对于新版本mac os系统"></a>对于新版本mac os系统</h2><p><a href="https://blog.csdn.net/yao1500/article/details/106163422" target="_blank" rel="noopener">地址</a></p>
 <p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020554.png?x-oss-process=style/shuiyin" alt="image-20200522100554540"></p>
 <h2 id="crontab-未启用的问题"><a href="#crontab-未启用的问题" class="headerlink" title="crontab 未启用的问题"></a>crontab 未启用的问题</h2><p><a href="https://blog.csdn.net/sanbingyutuoniao123/article/details/70599086?locationNum=4%20fps=1" target="_blank" rel="noopener">地址</a></p>
 <p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020659.png?x-oss-process=style/shuiyin" alt="image-20200522100658711"></p>
+<h2 id="脚本的环境变量"><a href="#脚本的环境变量" class="headerlink" title="脚本的环境变量"></a>脚本的环境变量</h2><p>实际也很简单，我们手动执行某个脚本时，是在当前shell环境下进行的，程序能找到环境变量；而系统自动执行任务调度时，除了默认的环境，是不会加载任何其他环境变量的。因此就需要在crontab文件中指定任务运行所需的所有环境变量。</p>
+<p>修改你的脚本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#! /bin/sh </span></span><br><span class="line"><span class="built_in">source</span> /etc/profile   //添加这句，</span><br><span class="line">//其他脚本</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>tips:/usr/lib/cron/tabs 是你执行 crontab -e 添加的任务目录</p>
+</blockquote>
 
       
     </div>
@@ -1293,12 +1304,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">13k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">11 分钟</span>
+    <span title="站点阅读时长">12 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
