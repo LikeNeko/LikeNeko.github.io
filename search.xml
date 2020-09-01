@@ -575,4 +575,60 @@
 <h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>工程文件中选择Build Setting，在”Other Linker Flags”中加入”-ObjC”   ,问题就解决了,注意大小写</p>
 ]]></content>
   </entry>
+  <entry>
+    <title>ios上架[ok]</title>
+    <url>/2020/09/01/ios%E4%B8%8A%E6%9E%B6%5Bok%5D/</url>
+    <content><![CDATA[<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ol>
+<li>环境问题，开发按正常开发就行。</li>
+<li>ios端给unity的接口部分：<ol>
+<li>ios里原生代码，重写。</li>
+<li>加简单的混淆。比如之前培训提到的，宏定义混淆。</li>
+</ol>
+</li>
+<li>unity端：<ol>
+<li>注意所有敏感图片，比如和钱有关的。敏感字符串。</li>
+</ol>
+</li>
+<li>测试：<ol>
+<li>别用自己的电脑打包了。感觉会出问题。这块ios这边注意就行，unity该怎么开发怎么开发。</li>
+<li>打包的时候用虚拟机打包。</li>
+</ol>
+</li>
+<li>后端：<ol>
+<li>接口：打算返回的json串加密。这块我感觉苹果没理由去拒审，接口这东西就是商业机密型的东西其实。没理由让苹果看的。</li>
+</ol>
+</li>
+</ol>
+<h2 id="提审"><a href="#提审" class="headerlink" title="提审"></a>提审</h2><ol>
+<li>uiwebview问题，记得别有</li>
+<li>提审的文案备注之类的写详细，app怎么玩的之类的。</li>
+<li>账号授权，appid账号，敏感的账号就别授权了。</li>
+</ol>
+<h2 id="部署虚拟机"><a href="#部署虚拟机" class="headerlink" title="部署虚拟机"></a>部署虚拟机</h2><p><a href="https://www.guofenchaxun.com/" target="_blank" rel="noopener">苹果设备查询网站</a></p>
+<p><a href="http://showdoc.litemob.com/web/#/page/840" target="_blank" rel="noopener">生成的mac信息</a></p>
+<ul>
+<li>虚拟机加黑苹果系统搭建好，装上xcode做个初始版本</li>
+</ul>
+]]></content>
+  </entry>
+  <entry>
+    <title>php里一个safe_call的必要性[ok]</title>
+    <url>/2020/08/17/php%E9%87%8C%E4%B8%80%E4%B8%AAsafe_call%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7%5Bok%5D/</url>
+    <content><![CDATA[<hr>
+<p>title:php里一个safe_call的必要性<br>tag:php</p>
+<hr>
+<h1 id="safe-call-是个啥"><a href="#safe-call-是个啥" class="headerlink" title="safe_call 是个啥"></a>safe_call 是个啥</h1><h2 id="php里的异常"><a href="#php里的异常" class="headerlink" title="php里的异常"></a>php里的异常</h2><p>首先在说<code>safe_call</code>之前，先说一下<code>异常 Exception</code>。</p>
+<p><code>异常</code>顾名思义，异常的情况，在PHP中出现异常会导致程序终止，而与<code>Java</code>这种类型的编译型语言不一样，PHP中出现异常是<strong>只针对当前的一次请求</strong>的。而<code>Java</code>中出现，不做处理会导致整个服务出现问题。</p>
+<h2 id="解决痛点"><a href="#解决痛点" class="headerlink" title="解决痛点"></a>解决痛点</h2><p>上面说了异常，这里说一下<code>safe_call</code>所解决的痛点。</p>
+<p>众所周知，一个新功能的迭代很有可能是建立在老功能的基础上的。比如A功能写完了，后面可能要加个新的东西，然后你不得不在老功能上做一些改动的时候。</p>
+<p>这时候想必你也是<strong>心惊胆战</strong>的，毕竟你也<strong>不知道</strong>你加的或改的这段代码<strong>会不会对线上</strong>有什么影响。</p>
+<h2 id="问题抛出如何解决"><a href="#问题抛出如何解决" class="headerlink" title="问题抛出如何解决"></a>问题抛出如何解决</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'safe_call'</span>))&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">safe_call</span><span class="params">($callback,$tag=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            $callback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $exception) &#123;</span><br><span class="line">            <span class="comment">/// 自己的异常处理，比如记录日志，比如发送报警新加的东西出现问题了</span></span><br><span class="line">            <span class="keyword">return</span> $msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">safe_call(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    FenHongCatDot::init()-&gt;setInClick()-&gt;save();</span><br><span class="line">&#125;,<span class="string">'fenhongcat_dot_in_click'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在你不确定那地方会出现问题的地方加上这么个方法去嵌套一下</p>
+<h2 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h2><p>本质上，其实只是新的东西入口的地方一定要做好<code>try catch</code></p>
+]]></content>
+  </entry>
 </search>
