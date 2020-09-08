@@ -330,6 +330,7 @@
 <li>提审的文案备注之类的写详细，app怎么玩的之类的。</li>
 <li>账号授权，appid账号，敏感的账号就别授权了。</li>
 </ol>
+<h2 id="审核状态"><a href="#审核状态" class="headerlink" title="审核状态"></a>审核状态</h2><p><a href="https://www.jianshu.com/p/0c6864055703" target="_blank" rel="noopener">用博客页面的参数</a></p>
 <h2 id="部署虚拟机"><a href="#部署虚拟机" class="headerlink" title="部署虚拟机"></a>部署虚拟机</h2><p><a href="https://www.guofenchaxun.com/" target="_blank" rel="noopener">苹果设备查询网站</a></p>
 <p><a href="http://showdoc.litemob.com/web/#/page/840" target="_blank" rel="noopener">生成的mac信息</a></p>
 <ul>
@@ -630,5 +631,12 @@
       <tags>
         <tag>网络攻击</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>docker apt-get 太慢的换源方案</title>
+    <url>/2020/09/08/docker%20apt-get%20%E5%A4%AA%E6%85%A2%E7%9A%84%E6%8D%A2%E6%BA%90%E6%96%B9%E6%A1%88%5Bok%5D/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line">    </span><br><span class="line">sed -i s@/&#123;替换掉原本的域名&#125;/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+]]></content>
   </entry>
 </search>
