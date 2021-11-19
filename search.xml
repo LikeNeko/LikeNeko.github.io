@@ -66,7 +66,7 @@
 <p>解决方案</p>
 </blockquote>
 <p>宿主机加swap内存</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#bin/bash!</span></span><br><span class="line">/bin/dd <span class="keyword">if</span>=/dev/zero of=/var/swap.1 bs=1M count=1024</span><br><span class="line">/sbin/mkswap /var/swap.1</span><br><span class="line">/sbin/swapon /var/swap.1</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一行：创建一个 1G 大小的文件</span></span><br><span class="line"><span class="comment">#第二行：格式化该文件</span></span><br><span class="line"><span class="comment">#第三行：将该文件挂载至文件系统中</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#bin/bash!</span></span><br><span class="line">/bin/dd <span class="keyword">if</span>=/dev/zero of=/var/swap.2 bs=1M count=1024</span><br><span class="line">/sbin/mkswap /var/swap.2</span><br><span class="line">/sbin/swapon /var/swap.2</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一行：创建一个 1G 大小的文件</span></span><br><span class="line"><span class="comment">#第二行：格式化该文件</span></span><br><span class="line"><span class="comment">#第三行：将该文件挂载至文件系统中</span></span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
 
 ]]></content>
   </entry>
@@ -637,6 +637,55 @@
 ]]></content>
       <tags>
         <tag>ios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>nohup的应用[ok]</title>
+    <url>/2020/10/16/nohup%E7%9A%84%E5%BA%94%E7%94%A8%5Bok%5D/</url>
+    <content><![CDATA[<hr>
+<h2 id="title-nohup-的应用"><a href="#title-nohup-的应用" class="headerlink" title="title:nohup 的应用"></a>title:nohup 的应用</h2><h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><blockquote>
+<p>nohup php /var/www/html/cmd/mq_worker.php &gt;./test 2&gt;&amp;1  &amp;</p>
+</blockquote>
+<p>拆分 </p>
+<blockquote>
+<p>nohup command &gt;./test 2&gt;&amp;1 &amp; </p>
+</blockquote>
+<p>代表按下回车之后整个command都是后台运行的</p>
+<blockquote>
+<p><code>php /var/www/html/cmd/mq_worker.php</code></p>
+</blockquote>
+<p>command 部分</p>
+<blockquote>
+<p>将command命令产生的输出 重定向到<code>&gt;./test</code>文件 并且将错误输出<code>2&gt;&amp;1</code> 也重定向到 <code>&gt;./test</code></p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>Docker 命令手记</title>
+    <url>/2020/11/12/docker%20%E5%91%BD%E4%BB%A4%E6%89%8B%E8%AE%B0%5Bok%5D/</url>
+    <content><![CDATA[<blockquote>
+<p>docker apt-get 太慢的换源方案</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line">    </span><br><span class="line">sed -i s@/&#123;替换掉原本的域名&#125;/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>docker 安装php扩展</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">docker-php-ext-install 扩展名</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
+    <title>排查问题的方法 如swoole线程内部报错</title>
+    <url>/2020/11/12/%E6%8E%92%E6%9F%A5swoole%E7%AD%89%E5%B8%B8%E9%A9%BB%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98%5Bok%5D/</url>
+    <content><![CDATA[<blockquote>
+<p>yum install valgrind -y</p>
+<p>USE_ZEND_ALLOC=0 valgrind COMMAND</p>
+</blockquote>
+<p>这个东西可以查看内存级的一些信息，比如执行c语言里的那些方法，便于排查一些应用级不会显示的错误</p>
+]]></content>
+      <tags>
+        <tag>swoole 内存 线程 进程 linux 排查</tag>
       </tags>
   </entry>
 </search>
