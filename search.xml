@@ -26,6 +26,18 @@
       </tags>
   </entry>
   <entry>
+    <title>Mysql中的Int(11)能不能用于存储手机号</title>
+    <url>/2021/11/29/Mysql%E4%B8%AD%E7%9A%84Int(11)%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E5%AD%98%E5%82%A8%E6%89%8B%E6%9C%BA%E5%8F%B7/</url>
+    <content><![CDATA[<blockquote>
+<p>答案是不能</p>
+</blockquote>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-23-075754.png?x-oss-process=style/shuiyin" alt="47561590219909_.pic_hd"></p>
+<p>从表里可以看出，int最小值和最大值</p>
+<p>int(10)和int(11)其实没多大区别的，只是mysql存储的时候位数不足10的时候给你在前面补个0。</p>
+<p><a href="https://www.cnblogs.com/funsion/p/4093816.html" target="_blank" rel="noopener">参考</a></p>
+]]></content>
+  </entry>
+  <entry>
     <title>Docker 里laravel 框架composer报错 kill</title>
     <url>/2021/11/29/Docker%20%E9%87%8Claravel%20%E6%A1%86%E6%9E%B6composer%E6%8A%A5%E9%94%99%20kill/</url>
     <content><![CDATA[<hr>
@@ -40,6 +52,43 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment">#bin/bash!</span></span><br><span class="line">/bin/dd <span class="keyword">if</span>=/dev/zero of=/var/swap.2 bs=1M count=1024</span><br><span class="line">/sbin/mkswap /var/swap.2</span><br><span class="line">/sbin/swapon /var/swap.2</span><br><span class="line"></span><br><span class="line"><span class="comment">#第一行：创建一个 1G 大小的文件</span></span><br><span class="line"><span class="comment">#第二行：格式化该文件</span></span><br><span class="line"><span class="comment">#第三行：将该文件挂载至文件系统中</span></span><br><span class="line">composer install</span><br></pre></td></tr></table></figure>
 
 ]]></content>
+  </entry>
+  <entry>
+    <title>Swift 5 对接 OC的 TalkingDataAppCpa.h初始化时报错，参数不存在Argument passd to call that takes no arguments</title>
+    <url>/2021/11/29/Swift%205%20%E5%AF%B9%E6%8E%A5%20OC%E7%9A%84%20TalkingDataAppCpa.h%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%8A%A5%E9%94%99/</url>
+    <content><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在调用TD的包初始化的时候会报一个下面这样的错↓</p>
+<p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/2044509974.png" alt="截图"></p>
+<p>Argument passd to call that takes no arguments</p>
+<a id="more"></a>
+
+<p>当时我就在想，参数有啊？明明在哪写着呢，为什么会报没有参数呢？</p>
+<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>TD扩展是用OC写的，打开<code>TalkingDataAppCpa.h</code>发现他的oc方法是这样写的</p>
+<p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/486616889.png" alt="截图"></p>
+<p>我的理解是，在swift中init属于swift语言中的初始化方法，但oc中的init↑如上面这张图所示，init在oc的含义应该是”初始化操作”，而在swift里应该是”初始化对象”</p>
+<p>上面的oc里的初始化方法更像是一个普通的方法做了初始化操作。而swift编译器把这个方法作为初始化方法去编译，而swift做初始化操作的时候，因为oc里的那个没有做初始化一个类应有的操作，导致里面的类成员没有被初始化，然后报错，没有参数。</p>
+<blockquote>
+<p>以上只是猜测，没有细究这块的东西，毕竟swift我认为还是少和oc打交道比较好。</p>
+</blockquote>
+<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决方案很简单，项目里新建个oc文件，自己定义一个类在里面继承一下TalkingDataAppCpa.h，把那个init方法名重构一下就行了，比如改成initAppid:，然后用你自己定义的类初始化</p>
+]]></content>
+      <tags>
+        <tag>swift5</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>cocosjs 与ios交互的知识点</title>
+    <url>/2021/11/29/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
+    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+]]></content>
+      <tags>
+        <tag>ios</tag>
+      </tags>
   </entry>
   <entry>
     <title>php生成邀请码的方案</title>
@@ -63,55 +112,6 @@
 ]]></content>
       <tags>
         <tag>php</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Mysql中的Int(11)能不能用于存储手机号</title>
-    <url>/2021/11/29/Mysql%E4%B8%AD%E7%9A%84Int(11)%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E5%AD%98%E5%82%A8%E6%89%8B%E6%9C%BA%E5%8F%B7/</url>
-    <content><![CDATA[<blockquote>
-<p>答案是不能</p>
-</blockquote>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-23-075754.png?x-oss-process=style/shuiyin" alt="47561590219909_.pic_hd"></p>
-<p>从表里可以看出，int最小值和最大值</p>
-<p>int(10)和int(11)其实没多大区别的，只是mysql存储的时候位数不足10的时候给你在前面补个0。</p>
-<p><a href="https://www.cnblogs.com/funsion/p/4093816.html" target="_blank" rel="noopener">参考</a></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>cocosjs 与ios交互的知识点</title>
-    <url>/2021/11/29/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
-    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
-<p>涉及到 .m和.mm的区别。</p>
-<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
-<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
-<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
-<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
-<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
-]]></content>
-      <tags>
-        <tag>ios</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>Swift 5 对接 OC的 TalkingDataAppCpa.h初始化时报错，参数不存在Argument passd to call that takes no arguments</title>
-    <url>/2021/11/29/Swift%205%20%E5%AF%B9%E6%8E%A5%20OC%E7%9A%84%20TalkingDataAppCpa.h%E5%88%9D%E5%A7%8B%E5%8C%96%E6%97%B6%E6%8A%A5%E9%94%99/</url>
-    <content><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>在调用TD的包初始化的时候会报一个下面这样的错↓</p>
-<p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/2044509974.png" alt="截图"></p>
-<p>Argument passd to call that takes no arguments</p>
-<a id="more"></a>
-
-<p>当时我就在想，参数有啊？明明在哪写着呢，为什么会报没有参数呢？</p>
-<h2 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h2><p>TD扩展是用OC写的，打开<code>TalkingDataAppCpa.h</code>发现他的oc方法是这样写的</p>
-<p><img data-src="https://i.nekom.cc/usr/uploads/2019/09/486616889.png" alt="截图"></p>
-<p>我的理解是，在swift中init属于swift语言中的初始化方法，但oc中的init↑如上面这张图所示，init在oc的含义应该是”初始化操作”，而在swift里应该是”初始化对象”</p>
-<p>上面的oc里的初始化方法更像是一个普通的方法做了初始化操作。而swift编译器把这个方法作为初始化方法去编译，而swift做初始化操作的时候，因为oc里的那个没有做初始化一个类应有的操作，导致里面的类成员没有被初始化，然后报错，没有参数。</p>
-<blockquote>
-<p>以上只是猜测，没有细究这块的东西，毕竟swift我认为还是少和oc打交道比较好。</p>
-</blockquote>
-<h2 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h2><p>解决方案很简单，项目里新建个oc文件，自己定义一个类在里面继承一下TalkingDataAppCpa.h，把那个init方法名重构一下就行了，比如改成initAppid:，然后用你自己定义的类初始化</p>
-]]></content>
-      <tags>
-        <tag>swift5</tag>
       </tags>
   </entry>
   <entry>
@@ -196,7 +196,7 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ios上架</title>
+    <title>ios</title>
     <url>/2021/11/29/ios%E4%B8%8A%E6%9E%B6/</url>
     <content><![CDATA[<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ol>
 <li>环境问题，开发按正常开发就行。</li>
@@ -233,6 +233,14 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ios 本地静默推送到iwatch上</title>
+    <url>/2021/11/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch/</url>
+    <content><![CDATA[<p><a href="https://stackoverrun.com/cn/q/10244757" target="_blank" rel="noopener">参考</a></p>
+<p>简单来说就是不设置参数</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-29-081417.png?x-oss-process=style/shuiyin" alt="image-20200429161417535"></p>
+]]></content>
+  </entry>
+  <entry>
     <title>ios 轻微震动 震动反馈 方案</title>
     <url>/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
@@ -248,14 +256,6 @@
       <tags>
         <tag>ios</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>ios 本地静默推送到iwatch上</title>
-    <url>/2021/11/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch/</url>
-    <content><![CDATA[<p><a href="https://stackoverrun.com/cn/q/10244757" target="_blank" rel="noopener">参考</a></p>
-<p>简单来说就是不设置参数</p>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-29-081417.png?x-oss-process=style/shuiyin" alt="image-20200429161417535"></p>
-]]></content>
   </entry>
   <entry>
     <title>高德地图的坑</title>
@@ -314,6 +314,13 @@
       </tags>
   </entry>
   <entry>
+    <title>docker apt-get 太慢的换源方案</title>
+    <url>/2020/09/08/docker%20apt-get%20%E5%A4%AA%E6%85%A2%E7%9A%84%E6%8D%A2%E6%BA%90%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line">    </span><br><span class="line">sed -i s@/&#123;替换掉原本的域名&#125;/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+]]></content>
+  </entry>
+  <entry>
     <title>nohup的应用</title>
     <url>/2021/11/29/nohup%E7%9A%84%E5%BA%94%E7%94%A8/</url>
     <content><![CDATA[<hr>
@@ -335,13 +342,6 @@
 ]]></content>
   </entry>
   <entry>
-    <title>docker apt-get 太慢的换源方案</title>
-    <url>/2020/09/08/docker%20apt-get%20%E5%A4%AA%E6%85%A2%E7%9A%84%E6%8D%A2%E6%BA%90%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line">    </span><br><span class="line">sed -i s@/&#123;替换掉原本的域名&#125;/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
-
-]]></content>
-  </entry>
-  <entry>
     <title>执行think run 报错 image not found</title>
     <url>/2021/11/29/php%20image%20notfount/</url>
     <content><![CDATA[<h2 id="执行think-run-报错-image-not-found"><a href="#执行think-run-报错-image-not-found" class="headerlink" title="执行think run 报错 image not found"></a>执行think run 报错 image not found</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-07-07-023621.jpg?x-oss-process=style/shuiyin" alt="56741594089171_.pic"></p>
@@ -353,6 +353,58 @@
 
 <p>更新一下icu4c</p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>php的优化方案</title>
+    <url>/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<h2 id="php-fpm-配置线程数"><a href="#php-fpm-配置线程数" class="headerlink" title="php-fpm 配置线程数"></a>php-fpm 配置线程数</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;php-fpm.d&#x2F;www.conf</span><br><span class="line">;vi 找到 </span><br><span class="line">pm.max_children &#x3D; 10</span><br><span class="line">;修改线程数</span><br><span class="line">pm &#x3D; static</span><br><span class="line">;设置静态</span><br></pre></td></tr></table></figure>
+
+<h2 id="php-ini-amp-开启opcache"><a href="#php-ini-amp-开启opcache" class="headerlink" title="php.ini &amp; 开启opcache"></a>php.ini &amp; 开启opcache</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">zend_extension&#x3D;opcache.so</span><br><span class="line">[opcache]</span><br><span class="line">;1开启0关闭</span><br><span class="line">opcache.enable&#x3D;1</span><br><span class="line">;命令行的开关0开1闭</span><br><span class="line">;opcache.enable_cli&#x3D;0</span><br><span class="line"></span><br><span class="line">opcache.memory_consumption&#x3D;64</span><br><span class="line">opcache.interned_strings_buffer&#x3D;4</span><br><span class="line">opcache.max_accelerated_files&#x3D;100000</span><br><span class="line">opcache.validate_timestamps&#x3D;0</span><br><span class="line">opcache.revalidate_freq&#x3D;10</span><br><span class="line">opcache.save_comments&#x3D;1</span><br><span class="line">opcache.fast_shutdown&#x3D;0</span><br><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br><span class="line">opcache.huge_code_pages&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="centos-6-开启huge-page"><a href="#centos-6-开启huge-page" class="headerlink" title="centos 6 - 开启huge - page"></a>centos 6 - 开启huge - page</h3><p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo sysctl vm.nr_hugepages=512</span><br></pre></td></tr></table></figure>
+
+<p>修改php.ini</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">opcache.huge_code_pages=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Opcache-file-cache"><a href="#Opcache-file-cache" class="headerlink" title="Opcache file cache"></a>Opcache file cache</h3><p>开启Opcache File Cache(实验性), 通过开启这个, 我们可以让Opcache把opcode缓存缓存到外部文件中, 对于一些脚本, 会有很明显的性能提升.<br>在php.ini中加入:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<p>这样PHP就会在/tmp目录下Cache一些Opcode的二进制导出文件, 可以跨PHP生命周期存在.</p>
+<h2 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">opcache.validate_timestamps&#96; 默认是&#96;OFF</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>OPcache 会每隔 opcache.revalidate_freq 设定的秒数 检查脚本是否更新。 如果禁用此选项，你必须使用 opcache_reset() 或者 opcache_invalidate() 函数来手动重置 OPcache，也可以 通过重启 Web 服务器来使文件系统更改生效。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">opcache.revalidate_freq&#96; 单位 &#96;秒&#96; 默认为 &#96;2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>检查脚本时间戳是否有更新的周期，以秒为单位。 设置为 0 会导致针对每个请求， OPcache 都会检查脚本更新。</li>
+</ul>
+<p>从官方文档来看：<br>将 <code>opcache.validate_timestamps</code> 设置为 <code>True</code><br>将 <code>opcache.revalidate_freq</code> 设置为一个适当的值，如<code>30</code> 这个时间根据服务器压力灵活调整。</p>
+<p>上面设置后，最差情况代码更新30秒后会生效，最快立即生效。</p>
+<p>记得清理文件缓存</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># 清理这个目录下的文件</span><br><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;?php opcache_reset();?&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="php-composer-install-内存超出"><a href="#php-composer-install-内存超出" class="headerlink" title="php composer install 内存超出"></a>php composer install 内存超出</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">php -d memory_limit=-1 /usr/bin/composer update</span><br></pre></td></tr></table></figure>
+
+<h2 id="composer-只require不update"><a href="#composer-只require不update" class="headerlink" title="composer 只require不update"></a>composer 只require不update</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">php -d memory_limit&#x3D;-1 &#x2F;usr&#x2F;bin&#x2F;composer require neko&#x2F;wall --ignore-platform-reqs --no-update</span><br></pre></td></tr></table></figure>
+
+
+
+<p>git push origin develop:master -f</p>
+<p>把本地的 develop 分支强制(-f)推送到远程 master</p>
+]]></content>
+      <tags>
+        <tag>php-fpm</tag>
+      </tags>
   </entry>
   <entry>
     <title>php中的$this深入理解</title>
@@ -370,6 +422,16 @@
 <h3 id="总结-Closure-中的call与bindTo应用"><a href="#总结-Closure-中的call与bindTo应用" class="headerlink" title="总结 \Closure 中的call与bindTo应用"></a>总结 \Closure 中的call与bindTo应用</h3>]]></content>
   </entry>
   <entry>
+    <title>xcode ios 编译运行后崩溃</title>
+    <url>/2021/11/29/xcodeios%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%96%E8%AF%91%E5%AE%8C%E6%88%90%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B4%A9%E6%BA%83/</url>
+    <content><![CDATA[<h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><p>穿山甲sdk</p>
+<p>unity2018</p>
+<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2020-06-16 11:08:06.863865+0800 unicursal[10039:4045359] -[__NSCFConstantString bu_CachePath]: unrecognized selector sent to instance 0x1049ef1c0</span><br><span class="line">2020-06-16 11:08:06.864450+0800 unicursal[10039:4045359] *** Terminating app due to uncaught exception &#39;NSInvalidArgumentException&#39;, reason: &#39;-[__NSCFConstantString bu_CachePath]: unrecognized selector sent to instance 0x1049ef1c0&#39;</span><br><span class="line">*** First throw call stack:</span><br><span class="line">(0x1bdf3aa48 0x1bdc61fa4 0x1bde3e5a8 0x1bdf3eaf4 0x1bdf40a7c 0x103c5caf8 0x1bdc07184 0x1bdbae9a4 0x103c5cac8 0x1bdc69e78 0x1030520d4 0x1030615b8 0x103060334 0x1030603fc 0x103055894 0x10305c3c0 0x1bdd40460 0x1bdf416e0 0x1bde68e80 0x1be22c3bc 0x102eefd54 0x102eefdfc 0x1bdd3c360)</span><br><span class="line">libc++abi.dylib: terminating with uncaught exception of type NSException</span><br><span class="line">(lldb)</span><br></pre></td></tr></table></figure>
+
+<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>工程文件中选择Build Setting，在”Other Linker Flags”中加入”-ObjC”   ,问题就解决了,注意大小写</p>
+]]></content>
+  </entry>
+  <entry>
     <title>一个有趣的php单例实现方法</title>
     <url>/2021/11/29/%E4%B8%80%E4%B8%AA%E6%9C%89%E8%B6%A3%E7%9A%84php%E5%8D%95%E4%BE%8B%E5%AE%9E%E7%8E%B0/</url>
     <content><![CDATA[<blockquote>
@@ -383,16 +445,6 @@
       </tags>
   </entry>
   <entry>
-    <title>xcode ios 编译运行后崩溃</title>
-    <url>/2021/11/29/xcodeios%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%96%E8%AF%91%E5%AE%8C%E6%88%90%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B4%A9%E6%BA%83/</url>
-    <content><![CDATA[<h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><p>穿山甲sdk</p>
-<p>unity2018</p>
-<h2 id="报错："><a href="#报错：" class="headerlink" title="报错："></a>报错：</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">2020-06-16 11:08:06.863865+0800 unicursal[10039:4045359] -[__NSCFConstantString bu_CachePath]: unrecognized selector sent to instance 0x1049ef1c0</span><br><span class="line">2020-06-16 11:08:06.864450+0800 unicursal[10039:4045359] *** Terminating app due to uncaught exception &#39;NSInvalidArgumentException&#39;, reason: &#39;-[__NSCFConstantString bu_CachePath]: unrecognized selector sent to instance 0x1049ef1c0&#39;</span><br><span class="line">*** First throw call stack:</span><br><span class="line">(0x1bdf3aa48 0x1bdc61fa4 0x1bde3e5a8 0x1bdf3eaf4 0x1bdf40a7c 0x103c5caf8 0x1bdc07184 0x1bdbae9a4 0x103c5cac8 0x1bdc69e78 0x1030520d4 0x1030615b8 0x103060334 0x1030603fc 0x103055894 0x10305c3c0 0x1bdd40460 0x1bdf416e0 0x1bde68e80 0x1be22c3bc 0x102eefd54 0x102eefdfc 0x1bdd3c360)</span><br><span class="line">libc++abi.dylib: terminating with uncaught exception of type NSException</span><br><span class="line">(lldb)</span><br></pre></td></tr></table></figure>
-
-<h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><p>工程文件中选择Build Setting，在”Other Linker Flags”中加入”-ObjC”   ,问题就解决了,注意大小写</p>
-]]></content>
-  </entry>
-  <entry>
     <title>依赖注入的花销外表下的实质</title>
     <url>/2021/11/29/%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E7%9A%84%E8%8A%B1%E9%94%80%E5%A4%96%E8%A1%A8%E4%B8%8B%E7%9A%84%E5%AE%9E%E8%B4%A8/</url>
     <content><![CDATA[<blockquote>
@@ -401,52 +453,22 @@
 ]]></content>
   </entry>
   <entry>
-    <title>关于服务器被扫描攻击这件事我的应对措施</title>
-    <url>/2021/11/29/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
-    <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
-<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/9mpoz.png" alt="image-20190928205811239"></p>
-<a id="more"></a>
+    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
+    <url>/2021/11/29/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
+    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
+<p>如图↑</p>
+<p>翻译如下↓</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
 
-
-
-<p>该怎么说？这种现象其实很早就有了，猫也懒得管这件事，因为这种扫描..感觉很弱智啊！</p>
-<p>首先给那些脚本脚本小子建议：</p>
-<p>1.麻烦那些脚本小子升级一下爆破库在来扫啦！</p>
-<p>2.我这个小破站经不起这么高频的请求啦！</p>
-<p>3.请大佬高抬贵手放过这只残破的猫窝吧！</p>
-<p>说起来…我这个小破站至于吗？（手动滑稽）</p>
-<p>##ip访问限制方法</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span> default;</span><br><span class="line">  <span class="attribute">server_name</span> _;</span><br><span class="line">  <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="https://www.cnblogs.com/weifeng1463/p/9197971.html" target="_blank" rel="noopener">nginx只允许域名访问，禁止ip访问</a></p>
-<h2 id="ip请求频率限制方法"><a href="#ip请求频率限制方法" class="headerlink" title="ip请求频率限制方法"></a>ip请求频率限制方法</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line"><span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=allips:<span class="number">10m</span> rate=1r/s;</span><br><span class="line">server&#123;</span><br><span class="line">		...</span><br><span class="line">    <span class="comment"># 加这一行调用</span></span><br><span class="line">    <span class="attribute">limit_req</span> zone=allips burst=<span class="number">5</span> nodelay;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
-<h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
+<blockquote>
+<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
+<p>第二行可以看出有多少次失败了</p>
+<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
+</blockquote>
 ]]></content>
       <tags>
-        <tag>网络攻击</tag>
+        <tag>ssh</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>php里一个safe_call的必要性</title>
-    <url>/2021/11/29/php%E9%87%8C%E4%B8%80%E4%B8%AAsafe_call%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/</url>
-    <content><![CDATA[<hr>
-<p>title:php里一个safe_call的必要性<br>tag:php</p>
-<hr>
-<h1 id="safe-call-是个啥"><a href="#safe-call-是个啥" class="headerlink" title="safe_call 是个啥"></a>safe_call 是个啥</h1><h2 id="php里的异常"><a href="#php里的异常" class="headerlink" title="php里的异常"></a>php里的异常</h2><p>首先在说<code>safe_call</code>之前，先说一下<code>异常 Exception</code>。</p>
-<p><code>异常</code>顾名思义，异常的情况，在PHP中出现异常会导致程序终止，而与<code>Java</code>这种类型的编译型语言不一样，PHP中出现异常是<strong>只针对当前的一次请求</strong>的。而<code>Java</code>中出现，不做处理会导致整个服务出现问题。</p>
-<h2 id="解决痛点"><a href="#解决痛点" class="headerlink" title="解决痛点"></a>解决痛点</h2><p>上面说了异常，这里说一下<code>safe_call</code>所解决的痛点。</p>
-<p>众所周知，一个新功能的迭代很有可能是建立在老功能的基础上的。比如A功能写完了，后面可能要加个新的东西，然后你不得不在老功能上做一些改动的时候。</p>
-<p>这时候想必你也是<strong>心惊胆战</strong>的，毕竟你也<strong>不知道</strong>你加的或改的这段代码<strong>会不会对线上</strong>有什么影响。</p>
-<h2 id="问题抛出如何解决"><a href="#问题抛出如何解决" class="headerlink" title="问题抛出如何解决"></a>问题抛出如何解决</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'safe_call'</span>))&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">safe_call</span><span class="params">($callback,$tag=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            $callback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $exception) &#123;</span><br><span class="line">            <span class="comment">/// 自己的异常处理，比如记录日志，比如发送报警新加的东西出现问题了</span></span><br><span class="line">            <span class="keyword">return</span> $msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">safe_call(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    FenHongCatDot::init()-&gt;setInClick()-&gt;save();</span><br><span class="line">&#125;,<span class="string">'fenhongcat_dot_in_click'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>在你不确定那地方会出现问题的地方加上这么个方法去嵌套一下</p>
-<h2 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h2><p>本质上，其实只是新的东西入口的地方一定要做好<code>try catch</code></p>
-]]></content>
   </entry>
   <entry>
     <title>策略模式实战应用</title>
@@ -506,34 +528,31 @@
 ]]></content>
   </entry>
   <entry>
-    <title>排查问题的方法 如swoole线程内部报错</title>
-    <url>/2021/11/29/%E6%8E%92%E6%9F%A5swoole%E7%AD%89%E5%B8%B8%E9%A9%BB%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>yum install valgrind -y</p>
-<p>USE_ZEND_ALLOC=0 valgrind COMMAND</p>
-</blockquote>
-<p>这个东西可以查看内存级的一些信息，比如执行c语言里的那些方法，便于排查一些应用级不会显示的错误</p>
-]]></content>
-      <tags>
-        <tag>swoole 内存 线程 进程 linux 排查</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>关于ssh链接服务器之后的提示信息是做什么用的</title>
-    <url>/2021/11/29/%E5%85%B3%E4%BA%8Essh%E9%93%BE%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%99%A8%E4%B9%8B%E5%90%8E%E7%9A%84%E6%8F%90%E7%A4%BA%E4%BF%A1%E6%81%AF%E6%98%AF%E5%81%9A%E4%BB%80%E4%B9%88%E7%94%A8%E7%9A%84/</url>
-    <content><![CDATA[<h1 id="关于ssh链接服务器之后的提示信息是做什么用的"><a href="#关于ssh链接服务器之后的提示信息是做什么用的" class="headerlink" title="关于ssh链接服务器之后的提示信息是做什么用的"></a>关于ssh链接服务器之后的提示信息是做什么用的</h1><p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/842nr.png" alt="image-20191009104243915"></p>
-<p>如图↑</p>
-<p>翻译如下↓</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">上次登录失败:10月9日星期三10:41:57 CST 2019从104.37.169.192 ssh:notty</span><br><span class="line">自上次成功登录以来，共有13次失败的登录尝试。</span><br><span class="line">最后一次登录:2019年10月9日星期三10:34:39，从111.207.253.216</span><br></pre></td></tr></table></figure>
+    <title>关于服务器被扫描攻击这件事我的应对措施</title>
+    <url>/2021/11/29/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
+    <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
+<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/9mpoz.png" alt="image-20190928205811239"></p>
+<a id="more"></a>
 
-<blockquote>
-<p>第一行可以看出上次登录失败的家伙是来自哪个ip，失败的时间</p>
-<p>第二行可以看出有多少次失败了</p>
-<p>第三行最重要，可以看出最后一次登录的时间，如果不是正常的，则说明你的服务器可能被绿了</p>
-</blockquote>
+
+
+<p>该怎么说？这种现象其实很早就有了，猫也懒得管这件事，因为这种扫描..感觉很弱智啊！</p>
+<p>首先给那些脚本脚本小子建议：</p>
+<p>1.麻烦那些脚本小子升级一下爆破库在来扫啦！</p>
+<p>2.我这个小破站经不起这么高频的请求啦！</p>
+<p>3.请大佬高抬贵手放过这只残破的猫窝吧！</p>
+<p>说起来…我这个小破站至于吗？（手动滑稽）</p>
+<p>##ip访问限制方法</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span> default;</span><br><span class="line">  <span class="attribute">server_name</span> _;</span><br><span class="line">  <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/weifeng1463/p/9197971.html" target="_blank" rel="noopener">nginx只允许域名访问，禁止ip访问</a></p>
+<h2 id="ip请求频率限制方法"><a href="#ip请求频率限制方法" class="headerlink" title="ip请求频率限制方法"></a>ip请求频率限制方法</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line"><span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=allips:<span class="number">10m</span> rate=1r/s;</span><br><span class="line">server&#123;</span><br><span class="line">		...</span><br><span class="line">    <span class="comment"># 加这一行调用</span></span><br><span class="line">    <span class="attribute">limit_req</span> zone=allips burst=<span class="number">5</span> nodelay;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
+<h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
 ]]></content>
       <tags>
-        <tag>ssh</tag>
+        <tag>网络攻击</tag>
       </tags>
   </entry>
   <entry>
@@ -573,14 +592,16 @@
       </tags>
   </entry>
   <entry>
-    <title>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</title>
-    <url>/2021/11/29/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
-    <content><![CDATA[<h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
-
-<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+    <title>排查问题的方法 如swoole线程内部报错</title>
+    <url>/2021/11/29/%E6%8E%92%E6%9F%A5swoole%E7%AD%89%E5%B8%B8%E9%A9%BB%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>yum install valgrind -y</p>
+<p>USE_ZEND_ALLOC=0 valgrind COMMAND</p>
+</blockquote>
+<p>这个东西可以查看内存级的一些信息，比如执行c语言里的那些方法，便于排查一些应用级不会显示的错误</p>
 ]]></content>
       <tags>
-        <tag>ios</tag>
+        <tag>swoole 内存 线程 进程 linux 排查</tag>
       </tags>
   </entry>
   <entry>
@@ -615,6 +636,37 @@
 <p>其核心在于找到文章的整个大页面</p>
 <p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-12-122022.png?x-oss-process=style/shuiyin" alt="image-20200512202022094"></p>
 <p>比如csdn的在这</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</title>
+    <url>/2021/11/29/%E9%85%8D%E7%BD%AEXcode%E5%9C%A8build%E6%97%B6cocos%E7%9A%84%E6%8A%80%E5%B7%A7/</url>
+    <content><![CDATA[<h1 id="配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build"><a href="#配置Xcode在build时先去git-pull项目的最新代码-然后-构建cocos-create项目，在build" class="headerlink" title="配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build"></a>配置Xcode在build时先去git pull项目的最新代码 然后 构建cocos create项目，在build</h1><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 拉取最新代码</span></span><br><span class="line">git -C 项目绝对路径 pull</span><br><span class="line"><span class="comment"># 构建而不编译项目</span></span><br><span class="line">/Applications/CocosCreator.app/Contents/MacOS/CocosCreator --path 项目绝对路径 --build <span class="string">"platform=ios;autoCompile=false;"</span></span><br></pre></td></tr></table></figure>
+
+<p>资料:<a href="https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html" target="_blank" rel="noopener">https://docs.cocos.com/creator/manual/zh/publish/publish-in-command-line.html</a></p>
+]]></content>
+      <tags>
+        <tag>ios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>php里一个safe_call的必要性</title>
+    <url>/2021/11/29/php%E9%87%8C%E4%B8%80%E4%B8%AAsafe_call%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/</url>
+    <content><![CDATA[<hr>
+<p>title:php里一个safe_call的必要性<br>tag:php</p>
+<hr>
+<h1 id="safe-call-是个啥"><a href="#safe-call-是个啥" class="headerlink" title="safe_call 是个啥"></a>safe_call 是个啥</h1><h2 id="php里的异常"><a href="#php里的异常" class="headerlink" title="php里的异常"></a>php里的异常</h2><p>首先在说<code>safe_call</code>之前，先说一下<code>异常 Exception</code>。</p>
+<p><code>异常</code>顾名思义，异常的情况，在PHP中出现异常会导致程序终止，而与<code>Java</code>这种类型的编译型语言不一样，PHP中出现异常是<strong>只针对当前的一次请求</strong>的。而<code>Java</code>中出现，不做处理会导致整个服务出现问题。</p>
+<h2 id="解决痛点"><a href="#解决痛点" class="headerlink" title="解决痛点"></a>解决痛点</h2><p>上面说了异常，这里说一下<code>safe_call</code>所解决的痛点。</p>
+<p>众所周知，一个新功能的迭代很有可能是建立在老功能的基础上的。比如A功能写完了，后面可能要加个新的东西，然后你不得不在老功能上做一些改动的时候。</p>
+<p>这时候想必你也是<strong>心惊胆战</strong>的，毕竟你也<strong>不知道</strong>你加的或改的这段代码<strong>会不会对线上</strong>有什么影响。</p>
+<h2 id="问题抛出如何解决"><a href="#问题抛出如何解决" class="headerlink" title="问题抛出如何解决"></a>问题抛出如何解决</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'safe_call'</span>))&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">safe_call</span><span class="params">($callback,$tag=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            $callback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $exception) &#123;</span><br><span class="line">            <span class="comment">/// 自己的异常处理，比如记录日志，比如发送报警新加的东西出现问题了</span></span><br><span class="line">            <span class="keyword">return</span> $msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">safe_call(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    FenHongCatDot::init()-&gt;setInClick()-&gt;save();</span><br><span class="line">&#125;,<span class="string">'fenhongcat_dot_in_click'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在你不确定那地方会出现问题的地方加上这么个方法去嵌套一下</p>
+<h2 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h2><p>本质上，其实只是新的东西入口的地方一定要做好<code>try catch</code></p>
 ]]></content>
   </entry>
 </search>

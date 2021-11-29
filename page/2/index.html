@@ -207,7 +207,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -290,7 +290,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
@@ -304,7 +304,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/" class="post-title-link" itemprop="url">破解"阅读全文"</a>
+            <a href="/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">php的优化方案</a>
         </h2>
 
         <div class="post-meta">
@@ -314,11 +314,11 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
-            <span id="/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/" class="post-meta-item leancloud_visitors" data-flag-title="破解"阅读全文"" title="阅读次数">
+            <span id="/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="php的优化方案" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -333,8 +333,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/php-fpm%E4%BC%98%E5%8C%96%E6%96%B9%E6%A1%88/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -344,7 +344,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>42</span>
+              <span>1.6k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -363,18 +363,251 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <blockquote>
-<p>第一步</p>
-</blockquote>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-12-121019.png?x-oss-process=style/shuiyin" alt="image-20200512201017890"></p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2021/11/29/%E7%A0%B4%E8%A7%A3%22%E9%98%85%E8%AF%BB%E5%85%A8%E6%96%87%22/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h2 id="php-fpm-配置线程数"><a href="#php-fpm-配置线程数" class="headerlink" title="php-fpm 配置线程数"></a>php-fpm 配置线程数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">vi &#x2F;usr&#x2F;local&#x2F;etc&#x2F;php-fpm.d&#x2F;www.conf</span><br><span class="line">;vi 找到 </span><br><span class="line">pm.max_children &#x3D; 10</span><br><span class="line">;修改线程数</span><br><span class="line">pm &#x3D; static</span><br><span class="line">;设置静态</span><br></pre></td></tr></table></figure>
+
+<h2 id="php-ini-amp-开启opcache"><a href="#php-ini-amp-开启opcache" class="headerlink" title="php.ini &amp; 开启opcache"></a>php.ini &amp; 开启opcache</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">zend_extension&#x3D;opcache.so</span><br><span class="line">[opcache]</span><br><span class="line">;1开启0关闭</span><br><span class="line">opcache.enable&#x3D;1</span><br><span class="line">;命令行的开关0开1闭</span><br><span class="line">;opcache.enable_cli&#x3D;0</span><br><span class="line"></span><br><span class="line">opcache.memory_consumption&#x3D;64</span><br><span class="line">opcache.interned_strings_buffer&#x3D;4</span><br><span class="line">opcache.max_accelerated_files&#x3D;100000</span><br><span class="line">opcache.validate_timestamps&#x3D;0</span><br><span class="line">opcache.revalidate_freq&#x3D;10</span><br><span class="line">opcache.save_comments&#x3D;1</span><br><span class="line">opcache.fast_shutdown&#x3D;0</span><br><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br><span class="line">opcache.huge_code_pages&#x3D;1</span><br></pre></td></tr></table></figure>
+
+<h3 id="centos-6-开启huge-page"><a href="#centos-6-开启huge-page" class="headerlink" title="centos 6 - 开启huge - page"></a>centos 6 - 开启huge - page</h3><p>执行命令</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo sysctl vm.nr_hugepages=512</span><br></pre></td></tr></table></figure>
+
+<p>修改php.ini</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opcache.huge_code_pages=<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Opcache-file-cache"><a href="#Opcache-file-cache" class="headerlink" title="Opcache file cache"></a>Opcache file cache</h3><p>开启Opcache File Cache(实验性), 通过开启这个, 我们可以让Opcache把opcode缓存缓存到外部文件中, 对于一些脚本, 会有很明显的性能提升.<br>在php.ini中加入:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<p>这样PHP就会在/tmp目录下Cache一些Opcode的二进制导出文件, 可以跨PHP生命周期存在.</p>
+<h2 id="清理缓存"><a href="#清理缓存" class="headerlink" title="清理缓存"></a>清理缓存</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opcache.validate_timestamps&#96; 默认是&#96;OFF</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>OPcache 会每隔 opcache.revalidate_freq 设定的秒数 检查脚本是否更新。 如果禁用此选项，你必须使用 opcache_reset() 或者 opcache_invalidate() 函数来手动重置 OPcache，也可以 通过重启 Web 服务器来使文件系统更改生效。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">opcache.revalidate_freq&#96; 单位 &#96;秒&#96; 默认为 &#96;2</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>检查脚本时间戳是否有更新的周期，以秒为单位。 设置为 0 会导致针对每个请求， OPcache 都会检查脚本更新。</li>
+</ul>
+<p>从官方文档来看：<br>将 <code>opcache.validate_timestamps</code> 设置为 <code>True</code><br>将 <code>opcache.revalidate_freq</code> 设置为一个适当的值，如<code>30</code> 这个时间根据服务器压力灵活调整。</p>
+<p>上面设置后，最差情况代码更新30秒后会生效，最快立即生效。</p>
+<p>记得清理文件缓存</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 清理这个目录下的文件</span><br><span class="line">opcache.file_cache&#x3D;&#x2F;tmp</span><br></pre></td></tr></table></figure>
+
+<p>执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php opcache_reset();?&gt;</span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="php-composer-install-内存超出"><a href="#php-composer-install-内存超出" class="headerlink" title="php composer install 内存超出"></a>php composer install 内存超出</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -d memory_limit=-1 /usr/bin/composer update</span><br></pre></td></tr></table></figure>
+
+<h2 id="composer-只require不update"><a href="#composer-只require不update" class="headerlink" title="composer 只require不update"></a>composer 只require不update</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php -d memory_limit&#x3D;-1 &#x2F;usr&#x2F;bin&#x2F;composer require neko&#x2F;wall --ignore-platform-reqs --no-update</span><br></pre></td></tr></table></figure>
+
+
+
+<p>git push origin develop:master -f</p>
+<p>把本地的 develop 分支强制(-f)推送到远程 master</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" class="post-title-link" itemprop="url">php中的$this深入理解</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
+            </span>
+
+          
+            <span id="/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" class="post-meta-item leancloud_visitors" data-flag-title="php中的$this深入理解" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>2 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="正常情况"><a href="#正常情况" class="headerlink" title="正常情况"></a>正常情况</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var_dump(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$obj = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"test"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="带闭包的正常用法"><a href="#带闭包的正常用法" class="headerlink" title="带闭包的正常用法"></a>带闭包的正常用法</h2><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $testa=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $obj = <span class="keyword">new</span> B();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;testa);</span><br><span class="line">        &#125;);</span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $testb =<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;testb = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $s = <span class="keyword">$this</span>-&gt;testb;</span><br><span class="line">        $s();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"testa"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">int(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意这里输出，可以看出，<code>$this</code>是<code>A</code>对象实例</p>
+<p>总结：A类里new出来个B类，然后方法传一个闭包，此时闭包内<code>$this</code>指向的A类。</p>
+<h2 id="加亿点点细节"><a href="#加亿点点细节" class="headerlink" title="加亿点点细节"></a>加亿点点细节</h2><h3 id="问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b"><a href="#问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b" class="headerlink" title="问题1 如何在run的闭包里让$this-&gt;test_b成立,并且成功调用到OneClass类里的test_b"></a>问题1 如何在run的闭包里让<code>$this-&gt;test_b</code>成立,并且成功调用到OneClass类里的test_b</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;test_b);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 打印一下OneClass里的test_b</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $test_b = <span class="keyword">$this</span>-&gt;test_b;</span><br><span class="line">        $test_b();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Notice: Undefined property: Controller::$test_b</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="试着理解一下-为什么闭包里-this指向了OneClass"><a href="#试着理解一下-为什么闭包里-this指向了OneClass" class="headerlink" title="试着理解一下 为什么闭包里$this指向了OneClass"></a>试着理解一下 为什么闭包里$this指向了OneClass</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 执行一下run里的闭包</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name-&gt;call(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// class OneClass#2 (1) &#123;</span></span><br><span class="line"><span class="comment">//  public $test_b =&gt;</span></span><br><span class="line"><span class="comment">//  class Closure#3 (1) &#123;</span></span><br><span class="line"><span class="comment">//    public $this =&gt;</span></span><br><span class="line"><span class="comment">//    class Controller#1 (1) &#123;</span></span><br><span class="line"><span class="comment">//      public $test_a =&gt;</span></span><br><span class="line"><span class="comment">//      int(1)</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//  &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-Closure-中的call与bindTo应用"><a href="#总结-Closure-中的call与bindTo应用" class="headerlink" title="总结 \Closure 中的call与bindTo应用"></a>总结 \Closure 中的call与bindTo应用</h3>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
+      <meta itemprop="name" content="花猫">
+      <meta itemprop="description" content="喵喵喵">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Neko的技术书库">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-title-link" itemprop="url">mysql 5.7 分组group by 查询报错 only_full_group_by</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
+            </span>
+
+          
+            <span id="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-meta-item leancloud_visitors" data-flag-title="mysql 5.7 分组group by 查询报错 only_full_group_by" title="阅读次数">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span class="leancloud-visitors-count"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="far fa-comment"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>904</span>
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+              <span>1 分钟</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
+
       
     </div>
 
@@ -417,7 +650,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -525,7 +758,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -601,104 +834,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
-      <meta itemprop="name" content="花猫">
-      <meta itemprop="description" content="喵喵喵">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neko的技术书库">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-title-link" itemprop="url">mysql 5.7 分组group by 查询报错 only_full_group_by</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
-            </span>
-
-          
-            <span id="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" class="post-meta-item leancloud_visitors" data-flag-title="mysql 5.7 分组group by 查询报错 only_full_group_by" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>904</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/mac%20os%20crontab/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -723,7 +858,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -829,7 +964,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -906,107 +1041,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
-      <meta itemprop="name" content="花猫">
-      <meta itemprop="description" content="喵喵喵">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Neko的技术书库">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">ios 轻微震动 震动反馈 方案</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
-            </span>
-
-          
-            <span id="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="ios 轻微震动 震动反馈 方案" title="阅读次数">
-              <span class="post-meta-item-icon">
-                <i class="fa fa-eye"></i>
-              </span>
-              <span class="post-meta-item-text">阅读次数：</span>
-              <span class="leancloud-visitors-count"></span>
-            </span>
-  
-  <span class="post-meta-item">
-    
-      <span class="post-meta-item-icon">
-        <i class="far fa-comment"></i>
-      </span>
-      <span class="post-meta-item-text">Valine：</span>
-    
-    <a title="valine" href="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" itemprop="commentCount"></span>
-    </a>
-  </span>
-  
-  <br>
-            <span class="post-meta-item" title="本文字数">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">本文字数：</span>
-              <span>325</span>
-            </span>
-            <span class="post-meta-item" title="阅读时长">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>1 分钟</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Peek 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1519</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Pop 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1520</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.jianshu.com/p/d4567dbd7dde" target="_blank" rel="noopener">参考</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1031,7 +1065,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
@@ -1102,7 +1136,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/">
+    <link itemprop="mainEntityOfPage" href="https://i.nekom.cc/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="https://secure.gravatar.com/avatar/87eb0d6bffe9d250360e620e7ea1cb1b?d=mp&r=g&s=100">
@@ -1116,7 +1150,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/" class="post-title-link" itemprop="url">高德地图的坑</a>
+            <a href="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" class="post-title-link" itemprop="url">ios 轻微震动 震动反馈 方案</a>
         </h2>
 
         <div class="post-meta">
@@ -1126,11 +1160,11 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2021-11-29 10:59:10" itemprop="dateCreated datePublished" datetime="2021-11-29T10:59:10+08:00">2021-11-29</time>
+              <time title="创建时间：2021-11-29 11:00:38" itemprop="dateCreated datePublished" datetime="2021-11-29T11:00:38+08:00">2021-11-29</time>
             </span>
 
           
-            <span id="/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/" class="post-meta-item leancloud_visitors" data-flag-title="高德地图的坑" title="阅读次数">
+            <span id="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" class="post-meta-item leancloud_visitors" data-flag-title="ios 轻微震动 震动反馈 方案" title="阅读次数">
               <span class="post-meta-item-icon">
                 <i class="fa fa-eye"></i>
               </span>
@@ -1145,8 +1179,8 @@
       </span>
       <span class="post-meta-item-text">Valine：</span>
     
-    <a title="valine" href="/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/#valine-comments" itemprop="discussionUrl">
-      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/" itemprop="commentCount"></span>
+    <a title="valine" href="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/#valine-comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/" itemprop="commentCount"></span>
     </a>
   </span>
   
@@ -1156,7 +1190,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>26</span>
+              <span>325</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
@@ -1175,7 +1209,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h2 id="获取不到reGeocode"><a href="#获取不到reGeocode" class="headerlink" title="获取不到reGeocode"></a>获取不到reGeocode</h2><p>原因可能是高德官网包名不对</p>
+          <figure class="highlight objectivec"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Peek 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1519</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Pop 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1520</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/d4567dbd7dde" target="_blank" rel="noopener">参考</a></p>
 
       
     </div>
@@ -1262,12 +1304,12 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-count">32</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-tags">
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">11</span>
         <span class="site-state-item-name">标签</span>
       </div>
   </nav>
@@ -1311,12 +1353,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="站点总字数">18k</span>
+    <span title="站点总字数">20k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="站点阅读时长">17 分钟</span>
+    <span title="站点阅读时长">18 分钟</span>
 </div>
   <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://mist.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Mist</a> 强力驱动
   </div>
