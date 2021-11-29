@@ -26,6 +26,30 @@
       </tags>
   </entry>
   <entry>
+    <title>php生成邀请码的方案</title>
+    <url>/2020/04/20/Php%E7%94%9F%E6%88%90%E9%82%80%E8%AF%B7%E7%A0%81%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF/</url>
+    <content><![CDATA[<p>总结一下创建一个邀请码的方案</p>
+<a id="more"></a>
+
+
+
+<blockquote>
+<p>方案1</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">function createCode($userId)</span><br><span class="line">&#123;</span><br><span class="line">    static $sourceString &#x3D; [</span><br><span class="line">              0,1,2,3,4,5,6,7,8,9,10,</span><br><span class="line">              &#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;,</span><br><span class="line">              &#39;g&#39;,&#39;h&#39;,&#39;i&#39;,&#39;j&#39;,&#39;k&#39;,&#39;l&#39;,</span><br><span class="line">              &#39;m&#39;,&#39;n&#39;,&#39;o&#39;,&#39;p&#39;,&#39;q&#39;,&#39;r&#39;,</span><br><span class="line">              &#39;s&#39;,&#39;t&#39;,&#39;u&#39;,&#39;v&#39;,&#39;w&#39;,&#39;x&#39;,</span><br><span class="line">              &#39;y&#39;,&#39;z&#39;</span><br><span class="line">            ];</span><br><span class="line"> </span><br><span class="line">    $num &#x3D; $userId;</span><br><span class="line">    $code &#x3D; &#39;&#39;;</span><br><span class="line">    while($num)</span><br><span class="line">    &#123;</span><br><span class="line">        $mod &#x3D; $num % 36;</span><br><span class="line">        $num &#x3D; (int)($num &#x2F; 36);</span><br><span class="line">        $code &#x3D; &quot;&#123;$sourceString[$mod]&#125;&#123;$code&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;判断code的长度</span><br><span class="line">    if( empty($code[4]))</span><br><span class="line">        str_pad($code,5,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"> </span><br><span class="line">    return $code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>来自:<a href="https://blog.csdn.net/qq_33563706/java/article/details/51897558" target="_blank" rel="noopener">csdn的博客</a></p>
+<blockquote>
+<p>方案1的升级版</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static function encode($user_id) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        $num &#x3D; $user_id;</span><br><span class="line"></span><br><span class="line">        $code &#x3D; &#39;&#39;;</span><br><span class="line"></span><br><span class="line">        while ( $num &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            $mod &#x3D; $num % 35;</span><br><span class="line"></span><br><span class="line">            $num &#x3D; ($num - $mod) &#x2F; 35;</span><br><span class="line"></span><br><span class="line">            $code &#x3D; $source_string[$mod].$code;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(empty($code[3]))</span><br><span class="line"></span><br><span class="line">            $code &#x3D; str_pad($code,4,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"></span><br><span class="line">        return $code;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    static function decode($code) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        if (strrpos($code, &#39;0&#39;) !&#x3D;&#x3D; false)</span><br><span class="line"></span><br><span class="line">            $code &#x3D; substr($code, strrpos($code, &#39;0&#39;)+1);</span><br><span class="line"></span><br><span class="line">        $len &#x3D; strlen($code);</span><br><span class="line"></span><br><span class="line">        $code &#x3D; strrev($code);</span><br><span class="line"></span><br><span class="line">        $num &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        for ($i&#x3D;0; $i &lt; $len; $i++) &#123;</span><br><span class="line"></span><br><span class="line">            $num +&#x3D; strpos($source_string, $code[$i]) * pow(35, $i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return $num;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+]]></content>
+      <tags>
+        <tag>php</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Mysql中的Int(11)能不能用于存储手机号</title>
     <url>/2021/11/29/Mysql%E4%B8%AD%E7%9A%84Int(11)%E8%83%BD%E4%B8%8D%E8%83%BD%E7%94%A8%E4%BA%8E%E5%AD%98%E5%82%A8%E6%89%8B%E6%9C%BA%E5%8F%B7/</url>
     <content><![CDATA[<blockquote>
@@ -36,6 +60,21 @@
 <p>int(10)和int(11)其实没多大区别的，只是mysql存储的时候位数不足10的时候给你在前面补个0。</p>
 <p><a href="https://www.cnblogs.com/funsion/p/4093816.html" target="_blank" rel="noopener">参考</a></p>
 ]]></content>
+  </entry>
+  <entry>
+    <title>cocosjs 与ios交互的知识点</title>
+    <url>/2021/11/29/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
+    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
+<p>涉及到 .m和.mm的区别。</p>
+<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
+<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
+<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
+<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
+<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
+]]></content>
+      <tags>
+        <tag>ios</tag>
+      </tags>
   </entry>
   <entry>
     <title>Docker 里laravel 框架composer报错 kill</title>
@@ -73,45 +112,6 @@
 ]]></content>
       <tags>
         <tag>swift5</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>cocosjs 与ios交互的知识点</title>
-    <url>/2021/11/29/cocos%20js%20%E4%B8%8EiOS%20%E4%BA%A4%E4%BA%92/</url>
-    <content><![CDATA[<h2 id="拉起穿山甲"><a href="#拉起穿山甲" class="headerlink" title="拉起穿山甲"></a>拉起穿山甲</h2><p>普通的.h,.m文件是不行能交互到cocos的sdk的。</p>
-<p>涉及到 .m和.mm的区别。</p>
-<p><code>.m</code> 文件是纯 <code>Object-C</code> 文件<br> <code>.mm</code> 是 <code>Object-C</code> 和 <code>C++</code> 混合文件；</p>
-<p><code>.m</code>只能调用纯 <code>Object-C</code> 的类，不能调用混合的</p>
-<p> <code>.mm</code> 可以调用 <code>Object-C</code> 的，也可以调用 <code>C++</code> 的；</p>
-<h2 id="m-要调用混合的怎么办？"><a href="#m-要调用混合的怎么办？" class="headerlink" title=".m 要调用混合的怎么办？"></a>.m 要调用混合的怎么办？</h2><p> 可以解决办法是 <code>.h</code> 用 <code>Object-C</code> 的方式，而具体实现用 <code>.mm</code> 的方式；</p>
-<p>解释一下，就是在.mm文件里你可以用oc的语法也可以用c++的语法</p>
-]]></content>
-      <tags>
-        <tag>ios</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>php生成邀请码的方案</title>
-    <url>/2020/04/20/Php%E7%94%9F%E6%88%90%E9%82%80%E8%AF%B7%E7%A0%81%E6%96%B9%E6%A1%88%E6%80%9D%E8%B7%AF/</url>
-    <content><![CDATA[<p>总结一下创建一个邀请码的方案</p>
-<a id="more"></a>
-
-
-
-<blockquote>
-<p>方案1</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">function createCode($userId)</span><br><span class="line">&#123;</span><br><span class="line">    static $sourceString &#x3D; [</span><br><span class="line">              0,1,2,3,4,5,6,7,8,9,10,</span><br><span class="line">              &#39;a&#39;,&#39;b&#39;,&#39;c&#39;,&#39;d&#39;,&#39;e&#39;,&#39;f&#39;,</span><br><span class="line">              &#39;g&#39;,&#39;h&#39;,&#39;i&#39;,&#39;j&#39;,&#39;k&#39;,&#39;l&#39;,</span><br><span class="line">              &#39;m&#39;,&#39;n&#39;,&#39;o&#39;,&#39;p&#39;,&#39;q&#39;,&#39;r&#39;,</span><br><span class="line">              &#39;s&#39;,&#39;t&#39;,&#39;u&#39;,&#39;v&#39;,&#39;w&#39;,&#39;x&#39;,</span><br><span class="line">              &#39;y&#39;,&#39;z&#39;</span><br><span class="line">            ];</span><br><span class="line"> </span><br><span class="line">    $num &#x3D; $userId;</span><br><span class="line">    $code &#x3D; &#39;&#39;;</span><br><span class="line">    while($num)</span><br><span class="line">    &#123;</span><br><span class="line">        $mod &#x3D; $num % 36;</span><br><span class="line">        $num &#x3D; (int)($num &#x2F; 36);</span><br><span class="line">        $code &#x3D; &quot;&#123;$sourceString[$mod]&#125;&#123;$code&#125;&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    &#x2F;&#x2F;判断code的长度</span><br><span class="line">    if( empty($code[4]))</span><br><span class="line">        str_pad($code,5,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"> </span><br><span class="line">    return $code;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>来自:<a href="https://blog.csdn.net/qq_33563706/java/article/details/51897558" target="_blank" rel="noopener">csdn的博客</a></p>
-<blockquote>
-<p>方案1的升级版</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">static function encode($user_id) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        $num &#x3D; $user_id;</span><br><span class="line"></span><br><span class="line">        $code &#x3D; &#39;&#39;;</span><br><span class="line"></span><br><span class="line">        while ( $num &gt; 0) &#123;</span><br><span class="line"></span><br><span class="line">            $mod &#x3D; $num % 35;</span><br><span class="line"></span><br><span class="line">            $num &#x3D; ($num - $mod) &#x2F; 35;</span><br><span class="line"></span><br><span class="line">            $code &#x3D; $source_string[$mod].$code;</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        if(empty($code[3]))</span><br><span class="line"></span><br><span class="line">            $code &#x3D; str_pad($code,4,&#39;0&#39;,STR_PAD_LEFT);</span><br><span class="line"></span><br><span class="line">        return $code;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    static function decode($code) &#123;</span><br><span class="line"></span><br><span class="line">        static $source_string &#x3D; &#39;E5FCDG3HQA4B1NOPIJ2RSTUV67MWX89KLYZ&#39;;</span><br><span class="line"></span><br><span class="line">        if (strrpos($code, &#39;0&#39;) !&#x3D;&#x3D; false)</span><br><span class="line"></span><br><span class="line">            $code &#x3D; substr($code, strrpos($code, &#39;0&#39;)+1);</span><br><span class="line"></span><br><span class="line">        $len &#x3D; strlen($code);</span><br><span class="line"></span><br><span class="line">        $code &#x3D; strrev($code);</span><br><span class="line"></span><br><span class="line">        $num &#x3D; 0;</span><br><span class="line"></span><br><span class="line">        for ($i&#x3D;0; $i &lt; $len; $i++) &#123;</span><br><span class="line"></span><br><span class="line">            $num +&#x3D; strpos($source_string, $code[$i]) * pow(35, $i);</span><br><span class="line"></span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        return $num;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-
-]]></content>
-      <tags>
-        <tag>php</tag>
       </tags>
   </entry>
   <entry>
@@ -196,6 +196,87 @@
 ]]></content>
   </entry>
   <entry>
+    <title>ios 本地静默推送到iwatch上</title>
+    <url>/2021/11/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch/</url>
+    <content><![CDATA[<p><a href="https://stackoverrun.com/cn/q/10244757" target="_blank" rel="noopener">参考</a></p>
+<p>简单来说就是不设置参数</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-29-081417.png?x-oss-process=style/shuiyin" alt="image-20200429161417535"></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>ios 轻微震动 震动反馈 方案</title>
+    <url>/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/</url>
+    <content><![CDATA[<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Peek 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1519</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Pop 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1520</span>);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.jianshu.com/p/d4567dbd7dde" target="_blank" rel="noopener">参考</a></p>
+]]></content>
+      <tags>
+        <tag>ios</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>高德地图的坑</title>
+    <url>/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/</url>
+    <content><![CDATA[<h2 id="获取不到reGeocode"><a href="#获取不到reGeocode" class="headerlink" title="获取不到reGeocode"></a>获取不到reGeocode</h2><p>原因可能是高德官网包名不对</p>
+]]></content>
+  </entry>
+  <entry>
+    <title>mac 拖动应用程序秒切桌面的方法</title>
+    <url>/2021/11/29/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/</url>
+    <content><![CDATA[<p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
+<p>什么是秒切，就是你拖动窗口到屏幕边缘，无需停留，就自动切到下一桌面空间。</p>
+<p>首先打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>现在大家试一下秒切吧。哈哈。。很爽不。是不是太快了，如果觉得太快，我们还可以在改改设定，我就设定在屏幕边缘停留半秒切换吧。<br>再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0.15;killall Dock</span><br></pre></td></tr></table></figure>
+
+<p>如果你想还原成原样，也很简单，再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults delete com.apple.dock workspaces-edge-delay;killall Dock</span><br></pre></td></tr></table></figure>]]></content>
+      <tags>
+        <tag>技巧</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac os crontab</title>
+    <url>/2021/11/29/mac%20os%20crontab/</url>
+    <content><![CDATA[<p>title: mac os crontab 不执行的问题</p>
+<h2 id="对于新版本mac-os系统"><a href="#对于新版本mac-os系统" class="headerlink" title="对于新版本mac os系统"></a>对于新版本mac os系统</h2><p><a href="https://blog.csdn.net/yao1500/article/details/106163422" target="_blank" rel="noopener">地址</a></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020554.png?x-oss-process=style/shuiyin" alt="image-20200522100554540"></p>
+<h2 id="crontab-未启用的问题"><a href="#crontab-未启用的问题" class="headerlink" title="crontab 未启用的问题"></a>crontab 未启用的问题</h2><p><a href="https://blog.csdn.net/sanbingyutuoniao123/article/details/70599086?locationNum=4%20fps=1" target="_blank" rel="noopener">地址</a></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020659.png?x-oss-process=style/shuiyin" alt="image-20200522100658711"></p>
+<h2 id="脚本的环境变量"><a href="#脚本的环境变量" class="headerlink" title="脚本的环境变量"></a>脚本的环境变量</h2><p>实际也很简单，我们手动执行某个脚本时，是在当前shell环境下进行的，程序能找到环境变量；而系统自动执行任务调度时，除了默认的环境，是不会加载任何其他环境变量的。因此就需要在crontab文件中指定任务运行所需的所有环境变量。</p>
+<p>修改你的脚本</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#! /bin/sh </span></span><br><span class="line"><span class="built_in">source</span> /etc/profile   //添加这句，</span><br><span class="line">//其他脚本</span><br></pre></td></tr></table></figure>
+
+
+
+<blockquote>
+<p>tips:/usr/lib/cron/tabs 是你执行 crontab -e 添加的任务目录</p>
+</blockquote>
+]]></content>
+  </entry>
+  <entry>
+    <title>mysql 5.7 分组group by 查询报错 only_full_group_by</title>
+    <url>/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
+    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
+
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
+
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
+]]></content>
+      <tags>
+        <tag>mysql</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ios</title>
     <url>/2021/11/29/ios%E4%B8%8A%E6%9E%B6/</url>
     <content><![CDATA[<h2 id="开发"><a href="#开发" class="headerlink" title="开发"></a>开发</h2><ol>
@@ -233,91 +314,23 @@
 ]]></content>
   </entry>
   <entry>
-    <title>ios 本地静默推送到iwatch上</title>
-    <url>/2021/11/29/ios%E6%9C%AC%E5%9C%B0%E9%9D%99%E9%BB%98%E6%8E%A8%E9%80%81%E5%88%B0iwatch/</url>
-    <content><![CDATA[<p><a href="https://stackoverrun.com/cn/q/10244757" target="_blank" rel="noopener">参考</a></p>
-<p>简单来说就是不设置参数</p>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-29-081417.png?x-oss-process=style/shuiyin" alt="image-20200429161417535"></p>
-]]></content>
-  </entry>
-  <entry>
-    <title>ios 轻微震动 震动反馈 方案</title>
-    <url>/2021/11/29/ios%E8%BD%BB%E5%BE%AE%E9%9C%87%E5%8A%A8%E7%9A%84%E6%96%B9%E6%A1%88/</url>
-    <content><![CDATA[<figure class="highlight objectivec"><table><tr><td class="code"><pre><span class="line"><span class="built_in">UIImpactFeedbackGenerator</span> *generator = [[<span class="built_in">UIImpactFeedbackGenerator</span> alloc] initWithStyle: <span class="built_in">UIImpactFeedbackStyleLight</span>];</span><br><span class="line">[generator prepare];</span><br><span class="line">[generator impactOccurred];</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Peek 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1519</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 普通短震，3D Touch 中 Pop 震动反馈</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1520</span>);</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 连续三次短震</span></span><br><span class="line">AudioServicesPlaySystemSound(<span class="number">1521</span>);</span><br></pre></td></tr></table></figure>
-
-<p><a href="https://www.jianshu.com/p/d4567dbd7dde" target="_blank" rel="noopener">参考</a></p>
-]]></content>
-      <tags>
-        <tag>ios</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>高德地图的坑</title>
-    <url>/2021/11/29/ios%E9%AB%98%E5%BE%B7%E5%9C%B0%E5%9B%BE%E5%9D%91/</url>
-    <content><![CDATA[<h2 id="获取不到reGeocode"><a href="#获取不到reGeocode" class="headerlink" title="获取不到reGeocode"></a>获取不到reGeocode</h2><p>原因可能是高德官网包名不对</p>
-]]></content>
-  </entry>
-  <entry>
-    <title>mysql 5.7 分组group by 查询报错 only_full_group_by</title>
-    <url>/2021/11/29/mysql5.7%E5%88%86%E7%BB%84group%20by%20%E6%9F%A5%E8%AF%A2%E6%8A%A5%E9%94%99only_full_group_by/</url>
-    <content><![CDATA[<h2 id="实践解决"><a href="#实践解决" class="headerlink" title="实践解决"></a>实践解决</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#x2F;&#x2F; 统计当天综合</span><br><span class="line">$time &#x3D; strtotime(date(&#39;Y-m-d&#39;));</span><br><span class="line">$sql &#x3D; &lt;&lt;&lt;EOT</span><br><span class="line">select </span><br><span class="line">sum(uv) as uv,</span><br><span class="line">sum(accredit) as accredit,</span><br><span class="line">sum(new_video) as new_video,</span><br><span class="line">sum(old_video) as old_video,</span><br><span class="line">sum(share) as share,</span><br><span class="line">sum(day_all_uv) as day_all_uv,</span><br><span class="line">&#96;time&#96;,</span><br><span class="line">any_value(channel_name) as channel_name,</span><br><span class="line">any_value(channel_app) as channel_app,</span><br><span class="line">any_value(channel_id) as channel_id</span><br><span class="line"></span><br><span class="line">from channel.xcx_channel_count</span><br><span class="line">where &#96;time&#96; &#x3D; $time </span><br><span class="line">group by channel_id</span><br><span class="line">EOT;</span><br><span class="line">&#x2F;&#x2F; $obj-&gt;query(&#39;SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,\&#39;ONLY_FULL_GROUP_BY\&#39;,\&#39;\&#39;));&#39;); &#x2F;&#x2F;加上any_value之后不用这句了否则就要加上这句</span><br><span class="line">$info &#x3D; $obj-&gt;query($sql);</span><br></pre></td></tr></table></figure>
-
-<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>1.聚合函数不会触发<code>only_full_group_by</code><br>2.加<code>any_value()</code>的参数不会触发<code>only_full_group_by</code><br>3.Mysql配置文件删除<code>only_full_group_by</code>或者出错代码前执行取消设置</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">SET sql_mode&#x3D;(SELECT REPLACE(@@sql_mode,&#39;ONLY_FULL_GROUP_BY&#39;,&#39;&#39;));</span><br></pre></td></tr></table></figure>
-
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><a href="https://www.cnblogs.com/kenshinobiy/p/9580701.html" target="_blank" rel="noopener">MYSQL5.7版本sql_mode=only_full_group_by问题</a></p>
-]]></content>
-      <tags>
-        <tag>mysql</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>mac os crontab</title>
-    <url>/2021/11/29/mac%20os%20crontab/</url>
-    <content><![CDATA[<p>title: mac os crontab 不执行的问题</p>
-<h2 id="对于新版本mac-os系统"><a href="#对于新版本mac-os系统" class="headerlink" title="对于新版本mac os系统"></a>对于新版本mac os系统</h2><p><a href="https://blog.csdn.net/yao1500/article/details/106163422" target="_blank" rel="noopener">地址</a></p>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020554.png?x-oss-process=style/shuiyin" alt="image-20200522100554540"></p>
-<h2 id="crontab-未启用的问题"><a href="#crontab-未启用的问题" class="headerlink" title="crontab 未启用的问题"></a>crontab 未启用的问题</h2><p><a href="https://blog.csdn.net/sanbingyutuoniao123/article/details/70599086?locationNum=4%20fps=1" target="_blank" rel="noopener">地址</a></p>
-<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-05-22-020659.png?x-oss-process=style/shuiyin" alt="image-20200522100658711"></p>
-<h2 id="脚本的环境变量"><a href="#脚本的环境变量" class="headerlink" title="脚本的环境变量"></a>脚本的环境变量</h2><p>实际也很简单，我们手动执行某个脚本时，是在当前shell环境下进行的，程序能找到环境变量；而系统自动执行任务调度时，除了默认的环境，是不会加载任何其他环境变量的。因此就需要在crontab文件中指定任务运行所需的所有环境变量。</p>
-<p>修改你的脚本</p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line"><span class="meta">#! /bin/sh </span></span><br><span class="line"><span class="built_in">source</span> /etc/profile   //添加这句，</span><br><span class="line">//其他脚本</span><br></pre></td></tr></table></figure>
-
-
-
-<blockquote>
-<p>tips:/usr/lib/cron/tabs 是你执行 crontab -e 添加的任务目录</p>
-</blockquote>
-]]></content>
-  </entry>
-  <entry>
-    <title>mac 拖动应用程序秒切桌面的方法</title>
-    <url>/2021/11/29/mac%E6%8B%96%E5%8A%A8%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F%E7%A7%92%E5%88%87/</url>
-    <content><![CDATA[<p>Mac系统有一大优势，就是在一台电脑上面，可以设定出很多桌面空间使用，这样我们的桌面就不会很凌乱，像MacGG一般都会用到4个桌面空间。在使用桌面空间的时候，大家可能都会用到一个功能，就是我要移动一个窗口到另一个桌面空间，都会把窗口拖到屏幕右边停留几秒，就回自动的切换到下一个桌面空间。今天MacGG给大家介绍一个方法，可以秒切哈。</p>
-<p>什么是秒切，就是你拖动窗口到屏幕边缘，无需停留，就自动切到下一桌面空间。</p>
-<p>首先打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0;killall Dock</span><br></pre></td></tr></table></figure>
-
-<p>现在大家试一下秒切吧。哈哈。。很爽不。是不是太快了，如果觉得太快，我们还可以在改改设定，我就设定在屏幕边缘停留半秒切换吧。<br>再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults write com.apple.dock workspaces-edge-delay -float 0.15;killall Dock</span><br></pre></td></tr></table></figure>
-
-<p>如果你想还原成原样，也很简单，再次打开“终端”（Finder-&gt;应用程序-&gt;实用工具-&gt;终端），并且输入以下命令：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">defaults delete com.apple.dock workspaces-edge-delay;killall Dock</span><br></pre></td></tr></table></figure>]]></content>
-      <tags>
-        <tag>技巧</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>docker apt-get 太慢的换源方案</title>
     <url>/2020/09/08/docker%20apt-get%20%E5%A4%AA%E6%85%A2%E7%9A%84%E6%8D%A2%E6%BA%90%E6%96%B9%E6%A1%88/</url>
     <content><![CDATA[<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sed -i s@/deb.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line"></span><br><span class="line">sed -i s@/security.debian.org/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br><span class="line">    </span><br><span class="line">sed -i s@/&#123;替换掉原本的域名&#125;/@/mirrors.aliyun.com/@g /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
 
+]]></content>
+  </entry>
+  <entry>
+    <title>执行think run 报错 image not found</title>
+    <url>/2021/11/29/php%20image%20notfount/</url>
+    <content><![CDATA[<h2 id="执行think-run-报错-image-not-found"><a href="#执行think-run-报错-image-not-found" class="headerlink" title="执行think run 报错 image not found"></a>执行think run 报错 image not found</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-07-07-023621.jpg?x-oss-process=style/shuiyin" alt="56741594089171_.pic"></p>
+<blockquote>
+<p>解决方案</p>
+</blockquote>
+<p>原因可能是icu4c指向了旧版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew uninstall --ignore-dependencies icu4c</span><br><span class="line">brew cleanup</span><br><span class="line">brew install icu4c</span><br></pre></td></tr></table></figure>
+
+<p>更新一下icu4c</p>
 ]]></content>
   </entry>
   <entry>
@@ -342,16 +355,38 @@
 ]]></content>
   </entry>
   <entry>
-    <title>执行think run 报错 image not found</title>
-    <url>/2021/11/29/php%20image%20notfount/</url>
-    <content><![CDATA[<h2 id="执行think-run-报错-image-not-found"><a href="#执行think-run-报错-image-not-found" class="headerlink" title="执行think run 报错 image not found"></a>执行think run 报错 image not found</h2><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-07-07-023621.jpg?x-oss-process=style/shuiyin" alt="56741594089171_.pic"></p>
-<blockquote>
-<p>解决方案</p>
-</blockquote>
-<p>原因可能是icu4c指向了旧版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew uninstall --ignore-dependencies icu4c</span><br><span class="line">brew cleanup</span><br><span class="line">brew install icu4c</span><br></pre></td></tr></table></figure>
+    <title>php中的$this深入理解</title>
+    <url>/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/</url>
+    <content><![CDATA[<h2 id="正常情况"><a href="#正常情况" class="headerlink" title="正常情况"></a>正常情况</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var_dump(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$obj = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"test"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
-<p>更新一下icu4c</p>
+<h2 id="带闭包的正常用法"><a href="#带闭包的正常用法" class="headerlink" title="带闭包的正常用法"></a>带闭包的正常用法</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $testa=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $obj = <span class="keyword">new</span> B();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;testa);</span><br><span class="line">        &#125;);</span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $testb =<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;testb = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $s = <span class="keyword">$this</span>-&gt;testb;</span><br><span class="line">        $s();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"testa"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">int(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>注意这里输出，可以看出，<code>$this</code>是<code>A</code>对象实例</p>
+<p>总结：A类里new出来个B类，然后方法传一个闭包，此时闭包内<code>$this</code>指向的A类。</p>
+<h2 id="加亿点点细节"><a href="#加亿点点细节" class="headerlink" title="加亿点点细节"></a>加亿点点细节</h2><h3 id="问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b"><a href="#问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b" class="headerlink" title="问题1 如何在run的闭包里让$this-&gt;test_b成立,并且成功调用到OneClass类里的test_b"></a>问题1 如何在run的闭包里让<code>$this-&gt;test_b</code>成立,并且成功调用到OneClass类里的test_b</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;test_b);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 打印一下OneClass里的test_b</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $test_b = <span class="keyword">$this</span>-&gt;test_b;</span><br><span class="line">        $test_b();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Notice: Undefined property: Controller::$test_b</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="试着理解一下-为什么闭包里-this指向了OneClass"><a href="#试着理解一下-为什么闭包里-this指向了OneClass" class="headerlink" title="试着理解一下 为什么闭包里$this指向了OneClass"></a>试着理解一下 为什么闭包里$this指向了OneClass</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 执行一下run里的闭包</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name-&gt;call(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// class OneClass#2 (1) &#123;</span></span><br><span class="line"><span class="comment">//  public $test_b =&gt;</span></span><br><span class="line"><span class="comment">//  class Closure#3 (1) &#123;</span></span><br><span class="line"><span class="comment">//    public $this =&gt;</span></span><br><span class="line"><span class="comment">//    class Controller#1 (1) &#123;</span></span><br><span class="line"><span class="comment">//      public $test_a =&gt;</span></span><br><span class="line"><span class="comment">//      int(1)</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//  &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="总结-Closure-中的call与bindTo应用"><a href="#总结-Closure-中的call与bindTo应用" class="headerlink" title="总结 \Closure 中的call与bindTo应用"></a>总结 \Closure 中的call与bindTo应用</h3>]]></content>
+  </entry>
+  <entry>
+    <title>php里一个safe_call的必要性</title>
+    <url>/2021/11/29/php%E9%87%8C%E4%B8%80%E4%B8%AAsafe_call%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/</url>
+    <content><![CDATA[<hr>
+<p>title:php里一个safe_call的必要性<br>tag:php</p>
+<hr>
+<h1 id="safe-call-是个啥"><a href="#safe-call-是个啥" class="headerlink" title="safe_call 是个啥"></a>safe_call 是个啥</h1><h2 id="php里的异常"><a href="#php里的异常" class="headerlink" title="php里的异常"></a>php里的异常</h2><p>首先在说<code>safe_call</code>之前，先说一下<code>异常 Exception</code>。</p>
+<p><code>异常</code>顾名思义，异常的情况，在PHP中出现异常会导致程序终止，而与<code>Java</code>这种类型的编译型语言不一样，PHP中出现异常是<strong>只针对当前的一次请求</strong>的。而<code>Java</code>中出现，不做处理会导致整个服务出现问题。</p>
+<h2 id="解决痛点"><a href="#解决痛点" class="headerlink" title="解决痛点"></a>解决痛点</h2><p>上面说了异常，这里说一下<code>safe_call</code>所解决的痛点。</p>
+<p>众所周知，一个新功能的迭代很有可能是建立在老功能的基础上的。比如A功能写完了，后面可能要加个新的东西，然后你不得不在老功能上做一些改动的时候。</p>
+<p>这时候想必你也是<strong>心惊胆战</strong>的，毕竟你也<strong>不知道</strong>你加的或改的这段代码<strong>会不会对线上</strong>有什么影响。</p>
+<h2 id="问题抛出如何解决"><a href="#问题抛出如何解决" class="headerlink" title="问题抛出如何解决"></a>问题抛出如何解决</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'safe_call'</span>))&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">safe_call</span><span class="params">($callback,$tag=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            $callback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $exception) &#123;</span><br><span class="line">            <span class="comment">/// 自己的异常处理，比如记录日志，比如发送报警新加的东西出现问题了</span></span><br><span class="line">            <span class="keyword">return</span> $msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>使用</p>
+<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">safe_call(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    FenHongCatDot::init()-&gt;setInClick()-&gt;save();</span><br><span class="line">&#125;,<span class="string">'fenhongcat_dot_in_click'</span>);</span><br></pre></td></tr></table></figure>
+
+<p>在你不确定那地方会出现问题的地方加上这么个方法去嵌套一下</p>
+<h2 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h2><p>本质上，其实只是新的东西入口的地方一定要做好<code>try catch</code></p>
 ]]></content>
   </entry>
   <entry>
@@ -407,21 +442,6 @@
       </tags>
   </entry>
   <entry>
-    <title>php中的$this深入理解</title>
-    <url>/2021/11/29/php%E4%B8%AD%E7%9A%84$this%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/</url>
-    <content><![CDATA[<h2 id="正常情况"><a href="#正常情况" class="headerlink" title="正常情况"></a>正常情况</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        var_dump(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">$obj = <span class="keyword">new</span> A();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"test"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="带闭包的正常用法"><a href="#带闭包的正常用法" class="headerlink" title="带闭包的正常用法"></a>带闭包的正常用法</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $testa=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line"></span><br><span class="line">        $obj = <span class="keyword">new</span> B();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;testa);</span><br><span class="line">        &#125;);</span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $testb =<span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;testb = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $s = <span class="keyword">$this</span>-&gt;testb;</span><br><span class="line">        $s();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line">object(A)<span class="comment">#1 (1) &#123;</span></span><br><span class="line">  [<span class="string">"testa"</span>]=&gt;</span><br><span class="line">  int(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line">int(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-
-<p>注意这里输出，可以看出，<code>$this</code>是<code>A</code>对象实例</p>
-<p>总结：A类里new出来个B类，然后方法传一个闭包，此时闭包内<code>$this</code>指向的A类。</p>
-<h2 id="加亿点点细节"><a href="#加亿点点细节" class="headerlink" title="加亿点点细节"></a>加亿点点细节</h2><h3 id="问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b"><a href="#问题1-如何在run的闭包里让-this-gt-test-b成立-并且成功调用到OneClass类里的test-b" class="headerlink" title="问题1 如何在run的闭包里让$this-&gt;test_b成立,并且成功调用到OneClass类里的test_b"></a>问题1 如何在run的闭包里让<code>$this-&gt;test_b</code>成立,并且成功调用到OneClass类里的test_b</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>-&gt;test_b);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 打印一下OneClass里的test_b</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $test_b = <span class="keyword">$this</span>-&gt;test_b;</span><br><span class="line">        $test_b();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output: Notice: Undefined property: Controller::$test_b</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="试着理解一下-为什么闭包里-this指向了OneClass"><a href="#试着理解一下-为什么闭包里-this指向了OneClass" class="headerlink" title="试着理解一下 为什么闭包里$this指向了OneClass"></a>试着理解一下 为什么闭包里$this指向了OneClass</h3><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Controller</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="keyword">public</span> $test_a = <span class="number">1</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">start</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        $obj = <span class="keyword">new</span> OneClass();</span><br><span class="line">        $obj-&gt;run(<span class="function"><span class="keyword">function</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">            var_dump(<span class="keyword">$this</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="comment">// 执行一下run里的闭包</span></span><br><span class="line">        $obj-&gt;show();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">OneClass</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">     * <span class="doctag">@var</span> Closure</span></span><br><span class="line"><span class="comment">     */</span></span><br><span class="line">    <span class="keyword">public</span> $test_b = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">run</span><span class="params">(\Closure $closure)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b = $closure;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">show</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;test_b();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__call</span><span class="params">($name, $arguments)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">$this</span>-&gt;$name-&gt;call(<span class="keyword">$this</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">$obj = <span class="keyword">new</span> Controller();</span><br><span class="line">$obj-&gt;start();</span><br><span class="line"></span><br><span class="line"><span class="comment">// output:</span></span><br><span class="line"><span class="comment">// class OneClass#2 (1) &#123;</span></span><br><span class="line"><span class="comment">//  public $test_b =&gt;</span></span><br><span class="line"><span class="comment">//  class Closure#3 (1) &#123;</span></span><br><span class="line"><span class="comment">//    public $this =&gt;</span></span><br><span class="line"><span class="comment">//    class Controller#1 (1) &#123;</span></span><br><span class="line"><span class="comment">//      public $test_a =&gt;</span></span><br><span class="line"><span class="comment">//      int(1)</span></span><br><span class="line"><span class="comment">//    &#125;</span></span><br><span class="line"><span class="comment">//  &#125;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure>
-
-<h3 id="总结-Closure-中的call与bindTo应用"><a href="#总结-Closure-中的call与bindTo应用" class="headerlink" title="总结 \Closure 中的call与bindTo应用"></a>总结 \Closure 中的call与bindTo应用</h3>]]></content>
-  </entry>
-  <entry>
     <title>xcode ios 编译运行后崩溃</title>
     <url>/2021/11/29/xcodeios%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%BC%96%E8%AF%91%E5%AE%8C%E6%88%90%E8%BF%90%E8%A1%8C%E6%97%B6%E5%B4%A9%E6%BA%83/</url>
     <content><![CDATA[<h2 id="环境："><a href="#环境：" class="headerlink" title="环境："></a>环境：</h2><p>穿山甲sdk</p>
@@ -468,6 +488,34 @@
 ]]></content>
       <tags>
         <tag>ssh</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>关于服务器被扫描攻击这件事我的应对措施</title>
+    <url>/2021/11/29/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
+    <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
+<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/9mpoz.png" alt="image-20190928205811239"></p>
+<a id="more"></a>
+
+
+
+<p>该怎么说？这种现象其实很早就有了，猫也懒得管这件事，因为这种扫描..感觉很弱智啊！</p>
+<p>首先给那些脚本脚本小子建议：</p>
+<p>1.麻烦那些脚本小子升级一下爆破库在来扫啦！</p>
+<p>2.我这个小破站经不起这么高频的请求啦！</p>
+<p>3.请大佬高抬贵手放过这只残破的猫窝吧！</p>
+<p>说起来…我这个小破站至于吗？（手动滑稽）</p>
+<p>##ip访问限制方法</p>
+<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span> default;</span><br><span class="line">  <span class="attribute">server_name</span> _;</span><br><span class="line">  <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/weifeng1463/p/9197971.html" target="_blank" rel="noopener">nginx只允许域名访问，禁止ip访问</a></p>
+<h2 id="ip请求频率限制方法"><a href="#ip请求频率限制方法" class="headerlink" title="ip请求频率限制方法"></a>ip请求频率限制方法</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line"><span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=allips:<span class="number">10m</span> rate=1r/s;</span><br><span class="line">server&#123;</span><br><span class="line">		...</span><br><span class="line">    <span class="comment"># 加这一行调用</span></span><br><span class="line">    <span class="attribute">limit_req</span> zone=allips burst=<span class="number">5</span> nodelay;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
+<h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
+]]></content>
+      <tags>
+        <tag>网络攻击</tag>
       </tags>
   </entry>
   <entry>
@@ -528,31 +576,16 @@
 ]]></content>
   </entry>
   <entry>
-    <title>关于服务器被扫描攻击这件事我的应对措施</title>
-    <url>/2021/11/29/%E5%85%B3%E4%BA%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E8%A2%AB%E6%89%AB%E6%8F%8F%E6%94%BB%E5%87%BB%E8%BF%99%E4%BB%B6%E4%BA%8B%E6%88%91%E7%9A%84%E5%BA%94%E5%AF%B9%E6%8E%AA%E6%96%BD/</url>
-    <content><![CDATA[<h2 id="关于服务器被扫描攻击这件事我的应对措施"><a href="#关于服务器被扫描攻击这件事我的应对措施" class="headerlink" title="关于服务器被扫描攻击这件事我的应对措施"></a>关于服务器被扫描攻击这件事我的应对措施</h2><p>贴张图吧….</p>
-<p><img data-src="http://nekoya.oss-cn-beijing.aliyuncs.com/blog/9mpoz.png" alt="image-20190928205811239"></p>
-<a id="more"></a>
-
-
-
-<p>该怎么说？这种现象其实很早就有了，猫也懒得管这件事，因为这种扫描..感觉很弱智啊！</p>
-<p>首先给那些脚本脚本小子建议：</p>
-<p>1.麻烦那些脚本小子升级一下爆破库在来扫啦！</p>
-<p>2.我这个小破站经不起这么高频的请求啦！</p>
-<p>3.请大佬高抬贵手放过这只残破的猫窝吧！</p>
-<p>说起来…我这个小破站至于吗？（手动滑稽）</p>
-<p>##ip访问限制方法</p>
-<figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span> default;</span><br><span class="line">  <span class="attribute">server_name</span> _;</span><br><span class="line">  <span class="attribute">return</span> <span class="number">403</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="https://www.cnblogs.com/weifeng1463/p/9197971.html" target="_blank" rel="noopener">nginx只允许域名访问，禁止ip访问</a></p>
-<h2 id="ip请求频率限制方法"><a href="#ip请求频率限制方法" class="headerlink" title="ip请求频率限制方法"></a>ip请求频率限制方法</h2><figure class="highlight nginx"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 设置</span></span><br><span class="line"><span class="attribute">limit_req_zone</span> <span class="variable">$binary_remote_addr</span> zone=allips:<span class="number">10m</span> rate=1r/s;</span><br><span class="line">server&#123;</span><br><span class="line">		...</span><br><span class="line">    <span class="comment"># 加这一行调用</span></span><br><span class="line">    <span class="attribute">limit_req</span> zone=allips burst=<span class="number">5</span> nodelay;</span><br><span class="line">    <span class="attribute">location</span> / &#123;</span><br><span class="line">    ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p> <a href="https://www.cnblogs.com/jnhs/p/10740500.html" target="_blank" rel="noopener">nginx 限制ip的请求频率</a></p>
-<h2 id="禁止ssh账号密码登录开启key登录"><a href="#禁止ssh账号密码登录开启key登录" class="headerlink" title="禁止ssh账号密码登录开启key登录"></a>禁止ssh账号密码登录开启key登录</h2><p><code>[root@neko ~]# ssh-keygen -t rsa</code></p>
+    <title>排查问题的方法 如swoole线程内部报错</title>
+    <url>/2021/11/29/%E6%8E%92%E6%9F%A5swoole%E7%AD%89%E5%B8%B8%E9%A9%BB%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98/</url>
+    <content><![CDATA[<blockquote>
+<p>yum install valgrind -y</p>
+<p>USE_ZEND_ALLOC=0 valgrind COMMAND</p>
+</blockquote>
+<p>这个东西可以查看内存级的一些信息，比如执行c语言里的那些方法，便于排查一些应用级不会显示的错误</p>
 ]]></content>
       <tags>
-        <tag>网络攻击</tag>
+        <tag>swoole 内存 线程 进程 linux 排查</tag>
       </tags>
   </entry>
   <entry>
@@ -589,19 +622,6 @@
 ]]></content>
       <tags>
         <tag>经验</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>排查问题的方法 如swoole线程内部报错</title>
-    <url>/2021/11/29/%E6%8E%92%E6%9F%A5swoole%E7%AD%89%E5%B8%B8%E9%A9%BB%E5%BA%94%E7%94%A8%E9%97%AE%E9%A2%98/</url>
-    <content><![CDATA[<blockquote>
-<p>yum install valgrind -y</p>
-<p>USE_ZEND_ALLOC=0 valgrind COMMAND</p>
-</blockquote>
-<p>这个东西可以查看内存级的一些信息，比如执行c语言里的那些方法，便于排查一些应用级不会显示的错误</p>
-]]></content>
-      <tags>
-        <tag>swoole 内存 线程 进程 linux 排查</tag>
       </tags>
   </entry>
   <entry>
@@ -648,25 +668,5 @@
       <tags>
         <tag>ios</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>php里一个safe_call的必要性</title>
-    <url>/2021/11/29/php%E9%87%8C%E4%B8%80%E4%B8%AAsafe_call%E7%9A%84%E5%BF%85%E8%A6%81%E6%80%A7/</url>
-    <content><![CDATA[<hr>
-<p>title:php里一个safe_call的必要性<br>tag:php</p>
-<hr>
-<h1 id="safe-call-是个啥"><a href="#safe-call-是个啥" class="headerlink" title="safe_call 是个啥"></a>safe_call 是个啥</h1><h2 id="php里的异常"><a href="#php里的异常" class="headerlink" title="php里的异常"></a>php里的异常</h2><p>首先在说<code>safe_call</code>之前，先说一下<code>异常 Exception</code>。</p>
-<p><code>异常</code>顾名思义，异常的情况，在PHP中出现异常会导致程序终止，而与<code>Java</code>这种类型的编译型语言不一样，PHP中出现异常是<strong>只针对当前的一次请求</strong>的。而<code>Java</code>中出现，不做处理会导致整个服务出现问题。</p>
-<h2 id="解决痛点"><a href="#解决痛点" class="headerlink" title="解决痛点"></a>解决痛点</h2><p>上面说了异常，这里说一下<code>safe_call</code>所解决的痛点。</p>
-<p>众所周知，一个新功能的迭代很有可能是建立在老功能的基础上的。比如A功能写完了，后面可能要加个新的东西，然后你不得不在老功能上做一些改动的时候。</p>
-<p>这时候想必你也是<strong>心惊胆战</strong>的，毕竟你也<strong>不知道</strong>你加的或改的这段代码<strong>会不会对线上</strong>有什么影响。</p>
-<h2 id="问题抛出如何解决"><a href="#问题抛出如何解决" class="headerlink" title="问题抛出如何解决"></a>问题抛出如何解决</h2><figure class="highlight php"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> (!function_exists(<span class="string">'safe_call'</span>))&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">safe_call</span><span class="params">($callback,$tag=<span class="string">''</span>)</span></span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            $callback();</span><br><span class="line">        &#125; <span class="keyword">catch</span> (<span class="keyword">Exception</span> $exception) &#123;</span><br><span class="line">            <span class="comment">/// 自己的异常处理，比如记录日志，比如发送报警新加的东西出现问题了</span></span><br><span class="line">            <span class="keyword">return</span> $msg;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>使用</p>
-<figure class="highlight php"><table><tr><td class="code"><pre><span class="line">safe_call(<span class="function"><span class="keyword">function</span> <span class="params">()</span></span>&#123;</span><br><span class="line">    FenHongCatDot::init()-&gt;setInClick()-&gt;save();</span><br><span class="line">&#125;,<span class="string">'fenhongcat_dot_in_click'</span>);</span><br></pre></td></tr></table></figure>
-
-<p>在你不确定那地方会出现问题的地方加上这么个方法去嵌套一下</p>
-<h2 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h2><p>本质上，其实只是新的东西入口的地方一定要做好<code>try catch</code></p>
-]]></content>
   </entry>
 </search>
