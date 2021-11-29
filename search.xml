@@ -669,4 +669,136 @@
         <tag>ios</tag>
       </tags>
   </entry>
+  <entry>
+    <title>提审记录</title>
+    <url>/2021/11/29/ios%E5%AE%A1%E6%A0%B8/</url>
+    <content><![CDATA[<h1 id="方案1"><a href="#方案1" class="headerlink" title="方案1"></a>方案1</h1><p>使用博客，从网页中获取某个标签然后判断这个标签隐藏</p>
+<blockquote>
+<p>核心-&gt;blog 网页</p>
+</blockquote>
+<blockquote>
+<p>来源 <a href="https://www.jianshu.com/p/0c6864055703" target="_blank" rel="noopener">https://www.jianshu.com/p/0c6864055703</a></p>
+</blockquote>
+<a id="more"></a>
+
+
+
+<h1 id="方案2"><a href="#方案2" class="headerlink" title="方案2"></a>方案2</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-040154.png?x-oss-process=style/shuiyin" alt="image-20200407120153630"></p>
+<p>代码命名规范</p>
+<blockquote>
+<p>来源: <a href="https://blog.csdn.net/kun__kun/article/details/89466477" target="_blank" rel="noopener">https://blog.csdn.net/kun__kun/article/details/89466477</a></p>
+</blockquote>
+<h1 id="方案3"><a href="#方案3" class="headerlink" title="方案3"></a>方案3</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041121.png?x-oss-process=style/shuiyin" alt="image-20200407121120680"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-041224.png?x-oss-process=style/shuiyin" alt="image-20200407121223576"></p>
+<h1 id="方案4"><a href="#方案4" class="headerlink" title="方案4"></a>方案4</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-063453.png?x-oss-process=style/shuiyin" alt="image-20200407143452555"></p>
+<blockquote>
+<p>来源 <a href="https://www.zhihu.com/question/351008255" target="_blank" rel="noopener">https://www.zhihu.com/question/351008255</a></p>
+</blockquote>
+<h1 id="方案5"><a href="#方案5" class="headerlink" title="方案5"></a>方案5</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-080900.png?x-oss-process=style/shuiyin" alt="image-20200407160859782"></p>
+<p>quick预审</p>
+<p>他们这个ios机审预检测还是可以看一下的,每个可能被拒原因都有案例</p>
+<blockquote>
+<p>链接:<a href="https://www.quicksdk.com/" target="_blank" rel="noopener">https://www.quicksdk.com/</a></p>
+</blockquote>
+<h1 id="方案6"><a href="#方案6" class="headerlink" title="方案6"></a>方案6</h1><p>跟钱有关的，提现页面</p>
+<p>个人觉得是不是可以考虑换成h5页面，然后点击某个按钮打开h5去提现。</p>
+<p>毕竟隐藏一个UI界面来讲，一个按钮应该还好</p>
+<p>不过这个测试可以放在，某个app通过之后测试。</p>
+<h1 id="方案7"><a href="#方案7" class="headerlink" title="方案7"></a>方案7</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-085424.png?x-oss-process=style/shuiyin" alt="image-20200407165423727"></p>
+<p>准备在某个无隐藏版本过了后试一下。</p>
+<p>录个视频，备注写详细，某些地方balabala的，通过备注，和视频向苹果那边回复，自己这边明确没有隐藏。</p>
+<p>个人猜测，可能苹果那边不太明白咱们的app然后就感觉你这app怪怪的就拒了。录个完整视频也许会有点效果。针对小果园，养鸡，这些app。</p>
+<p>在移除掉隐藏功能之后还是被拒是不是可以去申诉一下？我觉得这有点像被机审拒了。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090125.png?x-oss-process=style/shuiyin" alt="image-20200407170125303"></p>
+<p>还有,貌似可以确定的是<strong>审核人员一定在美国</strong>了。看知乎上说的，国内的审核好像只是负责传话。</p>
+<p>苹果好像对审核把控的很严，只在美国审核。</p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090936.jpg?x-oss-process=style/shuiyin" alt="image-20200407170758079"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-093226.png?x-oss-process=style/shuiyin" alt="image-20200407173226398"></p>
+<p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-090913.png?x-oss-process=style/shuiyin" alt="image-20200407170913403"></p>
+<p>下面这个连接都有说。</p>
+<blockquote>
+<p>来源:<a href="https://zhuanlan.zhihu.com/p/38181527" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/38181527</a></p>
+</blockquote>
+<h1 id="方案8"><a href="#方案8" class="headerlink" title="方案8"></a>方案8</h1><p><img data-src="https://nekoya.oss-cn-beijing.aliyuncs.com/blog/2020-04-07-091307.png?x-oss-process=style/shuiyin" alt="image-20200407171306815"></p>
+<p>尽量把能说明的都说明了。某些sdk的关键词，比如友盟有webview。之类的。</p>
+<blockquote>
+<p>来源:<a href="https://forum.cocos.org/t/ios/81504/19" target="_blank" rel="noopener">https://forum.cocos.org/t/ios/81504/19</a></p>
+</blockquote>
+<p>#方案9</p>
+<p>愤怒的飞刀被拒之前加入了广点通，而广点通的sdk里刚好有敏感词，这里等待这次(4.7日)审核结果。</p>
+<p>如果被拒绝，回复邮件：说明广点通sdk，不包含支付宝，不包含热更新。</p>
+<p>以上是我现在找到的所有资料了。</p>
+<p>极光合规政策:<a href="http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/" target="_blank" rel="noopener">http://docs.jiguang.cn/compliance_guide/compliance_and_security_policy_interpretation/compliance_and_security_policy_interpretation/</a></p>
+<h1 id="方案10"><a href="#方案10" class="headerlink" title="方案10"></a>方案10</h1><p>项目内参数判断，如，排行榜第一名，某个数据是n，如果为n，则骗审</p>
+<p>金额判断:当金币大于n，则显示提现</p>
+<h1 id="方案11"><a href="#方案11" class="headerlink" title="方案11"></a>方案11</h1><p>尝试性修改提审时的备注信息，文案一定要怂，别硬刚，把审核当客户，教他。如果确定没隐藏，则晓之以情动之以理。</p>
+<p>ps:个人经验，苹果那边好像隐藏管的不是很严，隐藏或<strong>营销</strong>营销应该才是重头。</p>
+<h1 id="方案12"><a href="#方案12" class="headerlink" title="方案12"></a>方案12</h1><p>应用一定要让苹果那边审核人审核完，把审核人员当傻子，每个功能都给他体验到。</p>
+<h1 id="方案13"><a href="#方案13" class="headerlink" title="方案13"></a>方案13</h1><p>被卡了不要慌，基本上卡你的都是机审，发现1-2天卡着的话，自己撤回，改代码也好，改逻辑也好，改完再提。还是卡就是你改的不对。</p>
+<h1 id="方案14"><a href="#方案14" class="headerlink" title="方案14"></a>方案14</h1><p>没用的图片一定要去掉，比如带提现，红包，现金，等字眼的图。</p>
+<h1 id="方案15"><a href="#方案15" class="headerlink" title="方案15"></a>方案15</h1><p>游戏框架里的webview之类的没用到一定不要引入。</p>
+<p>cocoscreater js  webview 全局搜索一共671为正常</p>
+<h1 id="最终方案"><a href="#最终方案" class="headerlink" title="最终方案"></a>最终方案</h1><p>前端混淆代码(核心：每次代码重合度不要太重) + 后端接口加密 + 隐藏功能</p>
+<p>包被标记后， 改ui，改项目名，改项目文件名，改内部类名，文件名。能改的都改了，不要求全改要都动一下。</p>
+<h2 id="注意点"><a href="#注意点" class="headerlink" title="注意点"></a>注意点</h2><ol>
+<li>wifi 测试环境不要用一样的</li>
+<li>设备 能不填苹果后台就不填（推荐tf测试）</li>
+<li>苹果账号,账号内信息，设备信息别绑</li>
+<li>虚拟机里打包上传app，注意ip问题</li>
+</ol>
+<h2 id="回复案例"><a href="#回复案例" class="headerlink" title="回复案例"></a>回复案例</h2><p>中心思想: 根据审核人员提出的1，2，3，4条，进行修改。已经符合要求。</p>
+<p>例子:<br>Q:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Guideline 2.1 - Performance - App Completeness</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We discovered one or more bugs in your app when reviewed on iPad running iOS 13.7 on Wi-Fi.</span><br><span class="line"></span><br><span class="line">Specifically, no action was taken when we tapped 微信登录</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please run your app on a device to identify any issues, then revise and resubmit your app for review.</span><br><span class="line"></span><br><span class="line">If we misunderstood the intended behavior of your app, please reply to this message in Resolution Center to provide information on how these features were intended to work.</span><br><span class="line"></span><br><span class="line">For new apps, uninstall all previous versions of your app from a device, then install and follow the steps to reproduce the issue. For updates, install the new version as an update to the previous version, then follow the steps to reproduce the issue.</span><br><span class="line"></span><br><span class="line">Resources</span><br><span class="line"></span><br><span class="line">For information about testing your app and preparing it for review, please see Technical Note TN2431: App Testing Guide.</span><br><span class="line"></span><br><span class="line">For a networking overview, please review About Networking.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Guideline 3.2.2 - Business - Other Business Model Issues - Unacceptable</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">The primary purpose of your app is to encourage users to watch ads or perform marketing-oriented tasks, which is not appropriate for the App Store.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">We encourage you to review your app concept and incorporate different content and features that are in compliance with the App Store Review Guidelines.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Guideline 4.8 - Design - Sign in with Apple</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">We noticed that your app uses a third-party login service but does not offer Sign in with Apple. Apps that use a third-party login service for account authentication must offer Sign in with Apple to users as an equivalent option.</span><br><span class="line"></span><br><span class="line">Next Steps</span><br><span class="line"></span><br><span class="line">To resolve this issue, please revise your app to offer Sign in with Apple as an equivalent login option.</span><br><span class="line"></span><br><span class="line">Resources</span><br><span class="line"></span><br><span class="line">- Review the sample code on Apple Developer Support to learn more about implementing Sign in with Apple in your app.</span><br><span class="line">- Read the Sign in with Apple Overview to learn more about the benefits Sign in with Apple offers users and developers.</span><br><span class="line"></span><br><span class="line">Please see attached screenshots for details.</span><br></pre></td></tr></table></figure>
+<p>A:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">苹果审核人员您好：非常高兴能够收到您的消息，经过您的建议我们对产品进行了调整，具体如下：</span><br><span class="line"></span><br><span class="line">1.我们去除了微信登陆功能 ，所有用户可以直接进入游戏进行体验</span><br><span class="line">2.我们对游戏的业务模式整体做了调整，去除激励相关内容，并调整了视频的场景，让游戏更具有可玩性。</span><br><span class="line">3.我们的产品只在iPhone发行，没有对ipad进行兼容，请审核人员使用iphone测试。</span><br><span class="line"></span><br><span class="line">开发不易，请您再次审阅，非常感谢</span><br></pre></td></tr></table></figure>
+
+
+
+<hr>
+<p>Q:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">准则2.1 - 所需信息</span><br><span class="line">我们已经开始审查您的应用程序，但我们不能继续，因为我们需要有关您的应用程序的更多信息。</span><br><span class="line">接下来的步骤</span><br><span class="line">为了帮助我们继续审查您的应用程序，请提供以下问题的详细信息。你提供的信息越多，我们就能越早完成你的评估。</span><br><span class="line">-用户如何获得红包显示在您的登录屏幕上？</span><br><span class="line">一旦您在解决中心回复此消息并提供所需信息，我们就可以继续您的审查。</span><br><span class="line">详情请看附件截图。</span><br><span class="line">由于你的应用商店连接状态是元数据拒绝，我们不需要一个新的二进制文件。要修改元数据，请访问App Store Connect以选择您的应用程序并修改所需的元数据值。一旦您完成了所有更改，请在解析中心回复此消息，我们将继续审核。</span><br></pre></td></tr></table></figure>
+
+<p>A:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">尊敬的苹果审核人员您好：</span><br><span class="line"></span><br><span class="line">非常高兴能够收到您的消息，再次感谢您上次的建议，这次我们主要是在您的建议下对游戏进行整体功能的调整。</span><br><span class="line">您附件截图中的红包现在只是图片背景的装饰作用，用户没有任何办法获取这个红包。</span><br><span class="line">如果您判断这个红包背景装饰可以使用，那辛苦您继续审阅。如果因为红包装饰图片给您造成了误解，我们可以重新上传新的版本对图片进行更换。</span><br><span class="line"></span><br><span class="line">期待您的回复，非常感谢！</span><br></pre></td></tr></table></figure>
+
+<h2 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h2><ol>
+<li>检查虚拟机设备id是否修改</li>
+<li>检查vpn是否打开(随时注意)</li>
+<li>检查账号信息是否修改完备(能改的都改一下)</li>
+<li>检查app元数据是否修改完备。涉及人员：波哥</li>
+<li>检查(提审前)是否删除后台所有相关设备信息(Devices之类的)</li>
+<li>检查构建没用的包删除感觉</li>
+<li>UIApplicationExitsOnSuspend 删掉</li>
+<li>App Uses Non-Exempt Encryption 设置为no</li>
+<li>检查友盟，微信，极光，巨量</li>
+</ol>
+<p>devices :<a href="https://github.com/search?p=2&amp;q=00008020-&amp;type=Issues" target="_blank" rel="noopener">https://github.com/search?p=2&amp;q=00008020-&amp;type=Issues</a></p>
+<h2 id="审核"><a href="#审核" class="headerlink" title="审核"></a>审核</h2><h2 id="猜测"><a href="#猜测" class="headerlink" title="猜测"></a>猜测</h2><p>有没有可能是ios代码问题？</p>
+<h3 id="v1"><a href="#v1" class="headerlink" title="v1"></a>v1</h3><blockquote>
+<ol>
+<li>项目未改名Unity默认名称</li>
+<li>unity纯净版包</li>
+<li>接口未修改</li>
+<li>无ios代码</li>
+<li>提审环境链接vpn，虚拟机</li>
+</ol>
+</blockquote>
+<p>元数据被拒</p>
+<h3 id="v2"><a href="#v2" class="headerlink" title="v2"></a>v2</h3><blockquote>
+<ol>
+<li>项目改名caige scheme改名caige</li>
+<li>unity包未混淆</li>
+<li>接口新的</li>
+<li>加了ios代码</li>
+<li>提审环境链接vpn，虚拟机</li>
+<li>测试用的vpn手机上ip不变</li>
+</ol>
+</blockquote>
+<h2 id="最新案例"><a href="#最新案例" class="headerlink" title="最新案例"></a>最新案例</h2><h4 id="合成大西瓜"><a href="#合成大西瓜" class="headerlink" title="合成大西瓜"></a>合成大西瓜</h4><ol>
+<li>项目改名</li>
+<li>接口名修改</li>
+<li>ios文件重新创建一份</li>
+</ol>
+]]></content>
+  </entry>
 </search>
